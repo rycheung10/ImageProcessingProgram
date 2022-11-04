@@ -22,11 +22,8 @@ public class IPModelImpl extends AIPModel {
    * a model.
    */
   public IPModelImpl() {
-<<<<<<< HEAD
     super();
-=======
     this.addedImages = new HashMap<>();
->>>>>>> 6aa3dfbe552b0c76166551be38662d1ee7a6d625
   }
   
   @Override
@@ -213,10 +210,6 @@ public class IPModelImpl extends AIPModel {
     
     return this.addedImages.get(imgName)[row][col].getPixelInfo();
   }
-<<<<<<< HEAD
-=======
-
->>>>>>> 6aa3dfbe552b0c76166551be38662d1ee7a6d625
   
   /**
    * This method checks if a specified image is not a part of the addedImages.
