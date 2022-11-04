@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <br>________________________________________________________________________________________________
 
 ## imageProcessingProgram Overview:
@@ -15,40 +14,16 @@ coupled with the command design pattern that allows for minimal coupling between
 Because of the MVC design pattern, we can see minimal coupling between classes in the diagram below.
 Please see Diagram.png.
 <br>
-=======
-Stuff we need to do still:
 
-2. finish this README with the correct info -- in progress
-4. an image of class diagram (see canvas for more details) -- ryan has this?
-
-Actual README content:
-<br>________________________________________________________________________________________________
-
-## imageProcessingProgram Overview:
-
-This is Ryan Cheung + Ethan Kong's image processing program that allows users to flip and edit
-images. After edits are done, the user is able to save their new image onto their computer! This
-program follows a standard Model View Controller (MVC) design pattern coupled with the Command
-design pattern that allows for minimal coupling between classes.
->>>>>>> 6aa3dfbe552b0c76166551be38662d1ee7a6d625
-
-<br>________________________________________________________________________________________________
-
-<<<<<<< HEAD
-## Class/Interface design choices:
-
-=======
 <br>________________________________________________________________________________________________
 
 ## Class/Interface design choices:
 
->>>>>>> 6aa3dfbe552b0c76166551be38662d1ee7a6d625
 - ### Model:
     - ##### PixelInfo class:
         - Represents all the data in a pixel, including Red, Green, Blue,
           Value, Intensity, and Luma
         - Fields:
-<<<<<<< HEAD
             - Max: represents the max value that red, green, or blue can have
             - Red: value of red in a pixel
             - Green: value of green in a pixel
@@ -58,18 +33,6 @@ design pattern that allows for minimal coupling between classes.
             - Luma: weighted average of red, green, and blue
         - Here, we assigned each pixel to a HashMap that maps the different components of pixel
           information to values.
-=======
-            - Max:
-            - Red:
-            - Green:
-            - Blue:
-            - Value:
-            - Intensity:
-            - Luma:
-        - Here, we assigned each pixel to a HashMap that maps the different types of pixel
-          information
-          to values.
->>>>>>> 6aa3dfbe552b0c76166551be38662d1ee7a6d625
             - For example: Red could be mapped to 255, Green could be mapped to 0 ...
               Intensity mapped to the average of the mapped values to Red, Green and Blue.
         - Using a HashMap here stores 7 pieces of data (Max, Red, Green, Blue, Value...) into one
@@ -82,7 +45,6 @@ design pattern that allows for minimal coupling between classes.
         - getPixelInfo() allows us to obtain the data of a specific pixel
         - These 3 methods in the interface allows methods in the IPModelImpl to easily return
           information about the state of the image, effectively reducing code repetition without
-<<<<<<< HEAD
           manipulating the image
     - ##### IPModel interface:
         - This interface extends the IPModelState and represents the controls
@@ -100,32 +62,13 @@ design pattern that allows for minimal coupling between classes.
     - ##### IPModelImpl class:
         - Implements the methods of the model interfaces (extends AIPModel)
         - Uses key word super to call abstract constructor.
-=======
-          accidentally manipulating the image
-    - ##### IPModel interface:
-        - This interface extends the IPModelState and represents the controls
-          of the program (ie. save(), load(), greyscale(), flip() etc...) that modifies an image
-    - ##### IPModelImpl class:
-        - Implements the methods of the model interfaces (IPModel, IPModelState)
-        - Fields:
-            - addedImages - allows a user to load and store modified images during
-              the duration of the program
-                - This field is private as we don't want the controller or view
-                  to modify our collection of images. Manipulation of the model object should only
-                  happen
-                  within the implementation class
->>>>>>> 6aa3dfbe552b0c76166551be38662d1ee7a6d625
         - Private helper: imageExists - is a helper that is utilized by all Model interface methods
           to
           check if the desired image to modified is loaded into the program or not.
             - This method is private as it is only meant to supplement the methods within the class
               and used to reduce code duplication. Furthermore, the methods aren't directly publicly
               used
-<<<<<<< HEAD
             - For example: greyscale() takes an image name and utilizes the imageExists method to
-=======
-            - For example: greyScale() takes an imgName and utilizes the imageExists method to
->>>>>>> 6aa3dfbe552b0c76166551be38662d1ee7a6d625
               check if the desired image is ready to be modified or not. If the image isn't loaded
               into
               the program, the program should not attempt to modify the image and throw an IAE. The
@@ -134,7 +77,6 @@ design pattern that allows for minimal coupling between classes.
 - ### View:
     - ##### IPView interface:
         - Represents the methods that allow for outputs to be rendered
-<<<<<<< HEAD
     - ##### AIPView abstract class:
       - This abstract class (implements IPView) is made in anticipation of future models that display messages
       - All views will have an Appendable as a field (only some will need a model -- our current view does not)
@@ -143,13 +85,6 @@ design pattern that allows for minimal coupling between classes.
         - Fields:
             - output: represents the place where the desired messages should be stored to send
               to the viewer
-=======
-    - ##### IPViewImpl class:
-        - Currently only implements the method that renders messages to the output
-        - Fields:
-            - model:
-            - output:
->>>>>>> 6aa3dfbe552b0c76166551be38662d1ee7a6d625
         - renderMessage() throws an IOE when there is an error rendering the input to the output
           (ie. CorruptedAppendable tests)
 - ### Controller:
@@ -159,7 +94,6 @@ design pattern that allows for minimal coupling between classes.
     - ##### IPControllerImpl class:
         - This class implements the IPController interface.
         - Fields:
-<<<<<<< HEAD
             - model: represents the model object that is being controlled by the user through the
               controller
             - view: represents the view object that messages should be given to to be displayed to
@@ -185,41 +119,6 @@ design pattern that allows for minimal coupling between classes.
 - Illegal State Exceptions are thrown in the controller when the readable is out of arguments.
 - Aside for controller: controller catches illegal argument exceptions and IOExceptions in order to
   prevent the program from breaking prematurely or due to a reason that is invalid.
-=======
-            - model
-            - view
-            - input
-            - programmingRunning - boolean that tracks if the program should continue running.
-              This field should be private and not final as the model or view should not mutate it.
-              However, within the IPControllerImpl class, the boolean needs to be reassigned
-              when the program ends (when "q" is entered as a command).
-
-        - Private helper renderMessage() allows us to render messages when certain
-          input criterias aren't met or when the program is ending.
-        - Private method getStringInput() allows the program to take user commands
-        - Private handler getIntInput() parses strings inputs containing integers for methods that
-          require an integer value to perform the command.
-        - Private handler method commandHandler() takes the string or integer inputs and calls the
-          necessary model methods to perform the desired modifications to the image.
-        - Each of these helpers are private as they only serve the purpose of assisting the
-          startIP()
-          method.
-        - !!!!!!!!!!!!!!!!!!!!!!!!!!! talk about try catch exceptions
-
-### Other design choices:
-
-- Illegal Exceptions (generalized explanations) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-<br>________________________________________________________________________________________________
-
-### Diagram:
-
-Because of the MVC design pattern, we can see minimal coupling between classes in the diagram below.
-<br>
-!!!!!!!!!!!! diagram image
-
-
->>>>>>> 6aa3dfbe552b0c76166551be38662d1ee7a6d625
 
 <br>________________________________________________________________________________________________
 
@@ -240,25 +139,15 @@ otherwise, the image-editing commands will do nothing. - Ex: "load res/techsuppo
 3. "vertical-flip [String targeted img name] [String desired name of new img]"
     - vertically flips an image
     - Ex: "vertical-flip tech techFlipped"
-<<<<<<< HEAD
 4. "horizontal-flip [String targeted img name] [String desired name of new img]"
     - horizontally flips an image
     - Ex: "horizontal-flip tech techFlipped2"
-=======
-4. "horizontal flip [String targeted img name] [String desired name of new img]"
-    - horizontally flips an image
-    - Ex: "vertical-flip tech techFlipped2"
->>>>>>> 6aa3dfbe552b0c76166551be38662d1ee7a6d625
 5. "red-component [String targeted img name] [String desired name of new img]"
     - greyscales the image according to the red-component value of each pixel
     - Ex: "red-component tech techRed"
 6. "green-component [String targeted img name] [String desired name of new img]"
     - greyscales the image according to the green-component value of each pixel
-<<<<<<< HEAD
     - Ex: "green-component tech techGreen"
-=======
-    - Ex: "green-component tech techRed"
->>>>>>> 6aa3dfbe552b0c76166551be38662d1ee7a6d625
 7. "blue-component [String targeted img name] [String desired name of new img]"
     - greyscales the image according to the blue-component value of each pixel
     - Ex: "blue-component tech techBlue"
@@ -280,12 +169,8 @@ otherwise, the image-editing commands will do nothing. - Ex: "load res/techsuppo
     - Ex: "save res/techsupportLuma.ppm techLuma"
 12. "q" - quits and ends the program
 
-<<<<<<< HEAD
 <br>After an attempted command input is given, a success message or an error message will appear if
 the
-=======
-<br>After an attempted command input is given, a success message or an error message will appear if the
->>>>>>> 6aa3dfbe552b0c76166551be38662d1ee7a6d625
 command was executed properly or not. More image-editing commands may be executed over the duration
 of the program.
 
@@ -293,27 +178,15 @@ If the user wants to quit the program, the user should input "q" in response to 
 "What would you like to do?"
 
 <br>Important Notes:
-<<<<<<< HEAD
 
 - "q" should be treated like its own command and should not be attempted as an
   argument of a different command. Ex: Do not: "vertical flip q" - this will not work
 - Spaces between each word/[] is placed with purpose
 - To darken image, one should use the brighten command but with negative integer values
-=======
-  - "q" should be treated like its own command and should not be attempted as an
-argument of a different command. Ex: Do not: "vertical flip q" - this will not work
-  - Spaces between each word/[] is placed with purpose
-  - To darken image, one should use the brighten command but with a negative integer value
->>>>>>> 6aa3dfbe552b0c76166551be38662d1ee7a6d625
 
 <br>________________________________________________________________________________________________
 
 #### CITATION:
 
-<<<<<<< HEAD
 techsupport.png and all derivatives are from an image taken by a friend, Matthew Wang,
 who has given us, Ethan Kong and Ryan Cheung, permission to use in our project.
-=======
-techsupport.png and techsupport.ppm is an image taken by a friend, Matthew Wang, who has given us,
-Ethan Kong and Ryan Cheung permission to use in our project.
->>>>>>> 6aa3dfbe552b0c76166551be38662d1ee7a6d625
