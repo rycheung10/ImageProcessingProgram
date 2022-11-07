@@ -175,10 +175,55 @@ public class IPModelImpl extends AIPModel {
     }
   }
   
+  private void savePPM(String path, String imgName) throws IllegalArgumentException {
+  
+  }
+  
   @Override
   public void load(String path, String name) throws IllegalArgumentException {
-    // add loadedPixels to addedImages
+    // check that extension is valid (.ppm, .jpg, .jpeg, .png, .bmp)
+    String extension;
+    if (path.lastIndexOf(".") > 0) {
+      extension = path.substring(path.lastIndexOf("."));
+    } else {
+      throw new IllegalArgumentException("Unusable extension");
+    }
+    
+    if (extension.equalsIgnoreCase(".ppm")) {
+      this.loadPPM(path, name);
+    } else {
+      this.loadElse(path, name);
+    }
+  }
+  
+  private void loadPPM(String path, String name) throws IllegalArgumentException {
     this.addImage(name, ImageUtil.readPPM(path));
+  }
+  
+  private void loadElse(String path, String name) throws IllegalArgumentException {
+    BufferedImage img;
+    try {
+      img = ImageIO.read(new File(path));
+    } catch (IOException e) {
+      throw new IllegalArgumentException("Error reading");
+    }
+    
+    int height = img.getHeight();
+    int width = img.getWidth();
+  
+    PixelInfo[][] loadedPixels = new PixelInfo[height][width];
+    
+    for (int i = 0; i < height; i++) {
+      for (int j = 0; j < width; j++) {
+        Color c = new Color(img.getRGB(j, i));
+        int red = c.getRed();
+        int green = c.getGreen();
+        int blue = c.getBlue();
+        
+        loadedPixels[i][j] = new PixelInfo(red, green, blue, 255);
+      }
+    }
+    this.addImage(name, loadedPixels);
   }
 
   @Override
