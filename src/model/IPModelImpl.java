@@ -180,7 +180,71 @@ public class IPModelImpl extends AIPModel {
     // add loadedPixels to addedImages
     this.addImage(name, ImageUtil.readPPM(path));
   }
-  
+
+  @Override
+  public void filter(double[][] kernel, String imgName, String rename)
+          throws IllegalArgumentException {
+    imageExists(imgName);
+    if(kernel.length % 2 == 0 || kernel[0].length % 2 == 0 || kernel == null) {
+      throw new IllegalArgumentException("Input a valid kernel!");
+    }
+
+    PixelInfo[][] filteredImage = new PixelInfo[this.getHeight(imgName)][this.getWidth(imgName)];
+
+    for(int i = 0; i < this.getHeight(imgName); i++) {
+      for(int j = 0; j < this.getWidth(imgName); j++) {
+
+        int filteredMax = this.getPixelInfo(imgName, i, j).get(Max);
+        int filteredRed = filterPixel(Red, kernel, i, j, filteredMax, imgName);
+        int filteredGreen = filterPixel(Green, kernel, i, j, filteredMax, imgName);
+        int filteredBlue = filterPixel(Blue, kernel, i, j, filteredMax, imgName);
+
+
+        filteredImage[i][j] = new PixelInfo(filteredRed, filteredGreen, filteredBlue, filteredMax);
+      }
+    }
+    this.addImage(rename, filteredImage);
+  }
+
+  //performs the matrix calculation on a pixel for a given pixel component
+  private int filterPixel(PixelComponents component, double[][] kernel, int pRow, int pCol,
+                          int filteredMax, String imgName) {
+
+    double newValue = 0;
+
+    for(int i = pRow - (kernel.length / 2); i < pRow + (kernel.length / 2); i++) {
+      for(int j = pCol - (kernel.length / 2); j < pCol - (kernel[0].length / 2); j++) {
+
+        if(checkPixelInBounds(i, j, imgName)) {
+
+          Map<PixelComponents, Integer> pixelInfoFiltered = this.getPixelInfo(imgName, i, j);
+          int pixelValue = pixelInfoFiltered.get(component);
+
+          newValue += kernel[i - pRow + kernel.length / 2][j - pCol + (kernel.length / 2)]
+                  * pixelValue;
+        }
+      }
+    }
+
+    int intNewValue = (int) Math.round(newValue);
+
+    if(intNewValue > filteredMax) {
+      intNewValue = filteredMax;
+    } else if(intNewValue < 0) {
+      intNewValue = 0;
+    }
+
+    return intNewValue;
+  }
+
+  //checks if a given coordinate is within bounds on an image
+  private boolean checkPixelInBounds(int pRow, int pCol, String imgName) {
+    int height = this.getHeight(imgName);
+    int width = this.getWidth(imgName);
+    return pRow >= 0 && pRow < height && pCol >= 0 && pCol < width;
+  }
+
+
   @Override
   public int getHeight(String imgName) throws IllegalArgumentException {
     // check to see if imgName exists in addedImages already (throw IAE if not)
@@ -207,7 +271,7 @@ public class IPModelImpl extends AIPModel {
     if (row < 0 || col < 0 || row > maxRow || col > maxCol) {
       throw new IllegalArgumentException("invalid coordinates given");
     }
-    
+
     return this.addedImages.get(imgName)[row][col].getPixelInfo();
   }
   

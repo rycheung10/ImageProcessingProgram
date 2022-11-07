@@ -52,4 +52,7 @@ public abstract class AIPModel implements IPModel {
   @Override
   public abstract Map<PixelComponents, Integer> getPixelInfo(String imgName, int row, int col)
       throws IllegalArgumentException;
+
+  public abstract void filter(double[][] kernel, String imgName, String rename)
+          throws IllegalArgumentException;
 }
