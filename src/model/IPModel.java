@@ -79,4 +79,14 @@ public interface IPModel extends IPModelState {
    * @throws IllegalArgumentException when the given path is invalid or the given name is invalid.
    */
   void load(String path, String name) throws IllegalArgumentException;
+
+  /**
+   *
+   * @param kernel
+   * @param imgName
+   * @param rename
+   * @throws IllegalArgumentException
+   */
+  void filter(double[][] kernel, String imgName, String rename)
+          throws IllegalArgumentException;
 }
