@@ -146,15 +146,15 @@ public class IPModelImpl extends AIPModel {
       return i;
     }
   }
-  
+
   @Override
   public void save(String path, String imgName) throws IllegalArgumentException {
     // check to see if imgName exists in addedImages already (throw IAE if not)
     this.imageExists(imgName);
-    
+
     int height = this.getHeight(imgName);
     int width = this.getWidth(imgName);
-    
+
     // check that extension is valid (.ppm, .jpg, .jpeg, .png, .bmp)
     String extension;
     if (path.lastIndexOf(".") > 0) {
@@ -162,22 +162,25 @@ public class IPModelImpl extends AIPModel {
     } else {
       throw new IllegalArgumentException("Unusable extension");
     }
-    
+
     if (!(extension.equalsIgnoreCase(".ppm")
-        || extension.equalsIgnoreCase(".jpg")
-        || extension.equalsIgnoreCase(".jpeg")
-        || extension.equalsIgnoreCase(".png")
-        || extension.equalsIgnoreCase(".bmp"))) {
+            || extension.equalsIgnoreCase(".txt")
+            || extension.equalsIgnoreCase(".jpg")
+            || extension.equalsIgnoreCase(".jpeg")
+            || extension.equalsIgnoreCase(".png")
+            || extension.equalsIgnoreCase(".bmp"))) {
       throw new IllegalArgumentException("Unusable extension");
     }
-    
-    if (extension.equalsIgnoreCase(".ppm")) {
+
+    if (extension.equalsIgnoreCase(".ppm")
+            || extension.equalsIgnoreCase(".txt")) {
       this.savePPM(path, imgName, height, width);
     } else {
       this.saveElse(path, imgName, height, width);
     }
   }
-  
+
+
   private void savePPM(String path, String imgName, int height, int width)
       throws IllegalArgumentException {
     // create file
@@ -350,6 +353,53 @@ public class IPModelImpl extends AIPModel {
     int width = this.getWidth(imgName);
     return pRow >= 0 && pRow < height && pCol >= 0 && pCol < width;
   }
+
+
+  public void colorTransformation(double[][] kernel, String imgName, String rename)
+          throws IllegalArgumentException {
+    imageExists(imgName);
+
+    PixelInfo[][] transformedImage = new PixelInfo[getHeight(imgName)][getWidth(imgName)];
+
+    for(int i = 0; i < transformedImage.length; i++) {
+      for(int j = 0; j < transformedImage[0].length; j++) {
+
+        int transformedMax = this.getPixelInfo(imgName, i, j).get(Max);
+
+        int currRedVal = this.getPixelInfo(imgName, i, j).get(Red);
+        int currGreenVal =  this.getPixelInfo(imgName, i, j).get(Green);
+        int currBlueVal = this.getPixelInfo(imgName, i, j).get(Blue);
+
+        int[] rgb = {currRedVal, currGreenVal, currBlueVal};
+
+        int red = valueTransform(kernel[0], rgb);
+        int green = valueTransform(kernel[1], rgb);
+        int blue = valueTransform(kernel[2], rgb);
+
+        transformedImage[i][j] = new PixelInfo(red, green, blue, transformedMax);
+      }
+    }
+    this.addImage(rename, transformedImage);
+  }
+
+  public int valueTransform(double[] partOfKernel, int[] rgb) {
+
+    double newValue = 0;
+
+    for(int i = 0; i < partOfKernel.length; i++) {
+        newValue += partOfKernel[i] * rgb[i];
+    }
+
+    int intNewValue = (int) newValue;
+    if(intNewValue > 255) {
+      intNewValue = 255;
+    } else if(intNewValue < 0) {
+      intNewValue = 0;
+    }
+    return intNewValue;
+  }
+
+
   
   
   @Override

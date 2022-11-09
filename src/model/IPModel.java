@@ -89,4 +89,7 @@ public interface IPModel extends IPModelState {
    */
   void filter(double[][] kernel, String imgName, String rename)
           throws IllegalArgumentException;
+
+  public void colorTransformation(double[][] kernel, String imgName, String rename)
+          throws IllegalArgumentException;
 }

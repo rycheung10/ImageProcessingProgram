@@ -6,6 +6,8 @@
       <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/ImageProcessing.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/ImageProcessing.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/model/IPModelImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/model/IPModelImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ImageProcessing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageProcessing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/IPControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/IPControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/IPModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IPModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/IPModelImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IPModelImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,18 +27,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/ry.cheung/Desktop/CS3500/Image Processing/ImageProcessingProgram&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/ry.cheung/Desktop/CS3500/Image Processing/ImageProcessingProgram",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Application.ImageProcessing">
     <configuration name="ImageProcessing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ImageProcessing" />
       <module name="imageProcessingProgram" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in imageProcessingProgram" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="imageProcessingProgram" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -50,20 +61,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IPModelImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="IPModelImplTest.testBlur" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="imageProcessingProgram" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="IPModelImplTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IPViewImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="imageProcessingProgram" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="IPViewImplTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="testBlur" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -80,10 +83,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.ImageProcessing" />
+        <item itemvalue="JUnit.IPModelImplTest.testBlur" />
+        <item itemvalue="JUnit.All in imageProcessingProgram" />
         <item itemvalue="JUnit.ImageUtilTest" />
         <item itemvalue="JUnit.IPControllerImplTest" />
-        <item itemvalue="JUnit.IPModelImplTest" />
-        <item itemvalue="JUnit.IPViewImplTest" />
       </list>
     </recent_temporary>
   </component>

@@ -22,7 +22,7 @@ public class ImageProcessing {
     IPView v1 = new IPViewImpl();
     Readable is = new StringReader("load res/techsupport.ppm ts save /users/ry.cheung/desktop/techsupportpng.jpg ts q");
     Readable re = new InputStreamReader(System.in);
-    IPController c1 = new IPControllerImpl(m1, v1, is);
+    IPController c1 = new IPControllerImpl(m1, v1, re);
     
     c1.startIP();
   }
