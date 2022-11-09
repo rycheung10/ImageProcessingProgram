@@ -103,6 +103,13 @@ public class IPControllerImpl implements IPController {
             {-0.125, 0.250, 0.250, 0.250, -0.125},
             {-0.125, -0.125, -0.125, -0.125, -0.125}};
 
+    double[][] greyscale_luma =
+                            {{0.216, 0.7152, 0.0722},
+                            {0.216, 0.7152, 0.0722},
+                            {0.216, 0.7152, 0.0722}};
+
+    double[][] sepia = {{0.393, 0.769, 0.189},
+            {0.349, 0.686, 0.168}, {0.272, 0.534, 0.131}};
     try {
       switch (cmd) {
         case "q":
@@ -169,6 +176,17 @@ public class IPControllerImpl implements IPController {
           this.model.filter(sharpen, getStringInput(sc), getStringInput(sc));
           this.renderMessage("Sharpen success!\n");
           break;
+        case "greyscale-luma":
+          this.model.colorTransformation(
+                  greyscale_luma, getStringInput(sc), getStringInput(sc));
+          this.renderMessage("Greyscale-luma success!\n");
+          break;
+        case "sepia":
+          this.model.colorTransformation(
+                  sepia, getStringInput(sc), getStringInput(sc));
+          this.renderMessage("Sepia-tone success!\n");
+          break;
+
         default:
           this.renderMessage("Invalid command given: " + cmd + "\n");
       }
