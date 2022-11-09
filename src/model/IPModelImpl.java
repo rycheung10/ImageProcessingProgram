@@ -370,19 +370,20 @@ public class IPModelImpl extends AIPModel {
         int currGreenVal =  this.getPixelInfo(imgName, i, j).get(Green);
         int currBlueVal = this.getPixelInfo(imgName, i, j).get(Blue);
 
-        int[] rgb = {currRedVal, currGreenVal, currBlueVal};
+        int[] currRGB = {currRedVal, currGreenVal, currBlueVal};
 
-        int red = valueTransform(kernel[0], rgb);
-        int green = valueTransform(kernel[1], rgb);
-        int blue = valueTransform(kernel[2], rgb);
+        int newRed = valueTransform(kernel[0], currRGB);
+        int newGreen = valueTransform(kernel[1], currRGB);
+        int newBlue = valueTransform(kernel[2], currRGB);
 
-        transformedImage[i][j] = new PixelInfo(red, green, blue, transformedMax);
+        transformedImage[i][j] = new PixelInfo(newRed, newGreen, newBlue, transformedMax);
       }
     }
     this.addImage(rename, transformedImage);
   }
 
-  public int valueTransform(double[] partOfKernel, int[] rgb) {
+  //performs the change in value for each component of a PixelInfo
+  private int valueTransform(double[] partOfKernel, int[] rgb) {
 
     double newValue = 0;
 
