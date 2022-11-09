@@ -335,16 +335,7 @@ public class IPModelImpl extends AIPModel {
         }
       }
     }
-
-    int intNewValue = (int) (newValue);
-
-    if(intNewValue > 255) {
-      intNewValue = 255;
-    } else if(intNewValue < 0) {
-      intNewValue = 0;
-    }
-
-    return intNewValue;
+    return numInBounds(newValue);
   }
 
   //checks if a given coordinate is within bounds on an image
@@ -391,7 +382,11 @@ public class IPModelImpl extends AIPModel {
         newValue += partOfKernel[i] * rgb[i];
     }
 
-    int intNewValue = (int) newValue;
+    return numInBounds(newValue);
+  }
+
+  private int numInBounds(double num) {
+    int intNewValue = (int) num;
     if(intNewValue > 255) {
       intNewValue = 255;
     } else if(intNewValue < 0) {
@@ -399,8 +394,6 @@ public class IPModelImpl extends AIPModel {
     }
     return intNewValue;
   }
-
-
   
   
   @Override
