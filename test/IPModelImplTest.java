@@ -1489,7 +1489,7 @@ public class IPModelImplTest {
   // tests for save method
   // test saving image2 to res
   @Test
-  public void testSaveImage2() {
+  public void testSaveImage2PPM() {
     // check file does not currently exist
     // if this test has been run previously, delete image2.ppm or comment this test out
     //assertFalse(new File("res/image2.ppm").exists());
@@ -1505,7 +1505,7 @@ public class IPModelImplTest {
   // load the just-saved image1 and name it image1check
   // ensure the previously loaded image1 and image1check are the same
   @Test
-  public void testSaveImage1LoadImage1Check() {
+  public void testSaveImage1LoadImage1CheckPPM() {
     // add image to added images
     this.m1.addImage("image1", this.i1);
     // save image to desktop
@@ -1572,7 +1572,7 @@ public class IPModelImplTest {
   // tests for load method
   // test loading image1dupe duplicate from res
   @Test
-  public void testLoadImage1DupeRyanDesktop() {
+  public void testLoadImage1DupePPM() {
     this.m1.load("res/image1dupe.ppm", "image1res");
     
     // test dimensions
@@ -1607,9 +1607,9 @@ public class IPModelImplTest {
     }
   }
   
-  // test loading techsupport.ppm from res 
+  // test loading techsupport.ppm from res
   @Test
-  public void testLoadTechsupportFromRes() {
+  public void testLoadTechsupportFromResPPM() {
     this.m1.load("res/techsupport.ppm", "techsupport");
     
     // test dimensions
@@ -1649,5 +1649,457 @@ public class IPModelImplTest {
   @Test(expected = IllegalArgumentException.class)
   public void testLoadIAEInvalidPPM3() {
     this.m1.load("res/not a valid ppm.txt", "yikes");
+  }
+  
+  // try to save with no extension
+  @Test(expected = IllegalArgumentException.class)
+  public void testSaveIAENoExtension() {
+    this.m1.addImage("image1", this.i1);
+    this.m1.save("res/image1", "image1");
+  }
+  
+  // try to save with invalid extension
+  @Test(expected = IllegalArgumentException.class)
+  public void testSaveIAEInvalidExtension() {
+    this.m1.addImage("image1", this.i1);
+    this.m1.save("res/image1.zzz", "image1");
+  }
+  
+  // save png
+  @Test
+  public void testSavePNG1() {
+    this.m1.load("res/techsupport.ppm", "ts");
+    this.m1.save("res/techsupport.png", "ts");
+    
+    // check that file exists
+    assertTrue(new File("res/techsupport.png").exists());
+    
+    // reload it into the model and check the pixels are as expected
+    // to ensure it was saved successfully
+    this.m1.load("res/techsupport.png", "tspng");
+    for (int i = 0; i < this.m1.getHeight("ts"); i++) {
+      for (int j  = 0; j < this.m1.getWidth("ts"); j++) {
+        Map<PixelComponents, Integer> thisPixelInfo =
+            this.m1.getPixelInfo("tspng", i, j);
+        int redPNG = thisPixelInfo.get(Red);
+        int greenPNG = thisPixelInfo.get(Green);
+        int bluePNG = thisPixelInfo.get(Blue);
+        
+        Map<PixelComponents, Integer> thisPixelInfoEx =
+            this.m1.getPixelInfo("ts", i, j);
+        int redExpected = thisPixelInfoEx.get(Red);
+        int greenExpected = thisPixelInfoEx.get(Green);
+        int blueExpected = thisPixelInfoEx.get(Blue);
+        
+        assertEquals(redPNG, redExpected);
+        assertEquals(greenPNG, greenExpected);
+        assertEquals(bluePNG, blueExpected);
+      }
+    }
+  }
+  
+  @Test
+  public void testSavePNG2() {
+    this.m1.load("res/image1.ppm", "i1");
+    this.m1.save("res/image1.png", "i1");
+    
+    // check that file exists
+    assertTrue(new File("res/image1.png").exists());
+    
+    // reload it into the model and check the pixels are as expected
+    // to ensure it was saved successfully
+    this.m1.load("res/image1.png", "i1png");
+    for (int i = 0; i < this.m1.getHeight("i1"); i++) {
+      for (int j  = 0; j < this.m1.getWidth("i1"); j++) {
+        Map<PixelComponents, Integer> thisPixelInfo =
+            this.m1.getPixelInfo("i1png", i, j);
+        int redPNG = thisPixelInfo.get(Red);
+        int greenPNG = thisPixelInfo.get(Green);
+        int bluePNG = thisPixelInfo.get(Blue);
+        
+        Map<PixelComponents, Integer> thisPixelInfoEx =
+            this.m1.getPixelInfo("i1", i, j);
+        int redExpected = thisPixelInfoEx.get(Red);
+        int greenExpected = thisPixelInfoEx.get(Green);
+        int blueExpected = thisPixelInfoEx.get(Blue);
+        
+        assertEquals(redPNG, redExpected);
+        assertEquals(greenPNG, greenExpected);
+        assertEquals(bluePNG, blueExpected);
+      }
+    }
+  }
+  
+  // save jpeg
+  @Test
+  public void testSaveJPEG() {
+    this.m1.load("res/techsupport.ppm", "ts");
+    this.m1.save("res/techsupport.jpeg", "ts");
+    
+    // check that file exists
+    assertTrue(new File("res/techsupport.jpeg").exists());
+    
+    // reload it into the model and check the pixels are as expected
+    // to ensure it was saved successfully
+    this.m1.load("res/techsupport.jpeg", "tsjpeg");
+    int redSumDif = 0;
+    int greenSumDif = 0;
+    int blueSumDif = 0;
+    int pixelCount = 0;
+    for (int i = 0; i < this.m1.getHeight("ts"); i++) {
+      for (int j  = 0; j < this.m1.getWidth("ts"); j++) {
+        Map<PixelComponents, Integer> thisPixelInfo =
+            this.m1.getPixelInfo("tsjpeg", i, j);
+        int redPNG = thisPixelInfo.get(Red);
+        int greenPNG = thisPixelInfo.get(Green);
+        int bluePNG = thisPixelInfo.get(Blue);
+        
+        Map<PixelComponents, Integer> thisPixelInfoEx =
+            this.m1.getPixelInfo("ts", i, j);
+        int redExpected = thisPixelInfoEx.get(Red);
+        int greenExpected = thisPixelInfoEx.get(Green);
+        int blueExpected = thisPixelInfoEx.get(Blue);
+        
+        redSumDif += Math.abs(redPNG - redExpected);
+        greenSumDif += Math.abs(greenPNG - greenExpected);
+        blueSumDif += Math.abs(bluePNG - blueExpected);
+        pixelCount++;
+      }
+    }
+    // average difference between values is small
+    assertTrue(redSumDif / pixelCount < 5);
+    assertTrue(greenSumDif / pixelCount < 4);
+    assertTrue(blueSumDif / pixelCount < 6);
+  }
+  
+  // save jpg
+  @Test
+  public void testSaveJPG() {
+    this.m1.load("res/techsupport.ppm", "ts");
+    this.m1.save("res/techsupport.jpg", "ts");
+    
+    // check that file exists
+    assertTrue(new File("res/techsupport.jpg").exists());
+    
+    // reload it into the model and check the pixels are as expected
+    // to ensure it was saved successfully
+    this.m1.load("res/techsupport.jpg", "tsjpg");
+    int redSumDif = 0;
+    int greenSumDif = 0;
+    int blueSumDif = 0;
+    int pixelCount = 0;
+    for (int i = 0; i < this.m1.getHeight("ts"); i++) {
+      for (int j  = 0; j < this.m1.getWidth("ts"); j++) {
+        Map<PixelComponents, Integer> thisPixelInfo =
+            this.m1.getPixelInfo("tsjpg", i, j);
+        int redPNG = thisPixelInfo.get(Red);
+        int greenPNG = thisPixelInfo.get(Green);
+        int bluePNG = thisPixelInfo.get(Blue);
+        
+        Map<PixelComponents, Integer> thisPixelInfoEx =
+            this.m1.getPixelInfo("ts", i, j);
+        int redExpected = thisPixelInfoEx.get(Red);
+        int greenExpected = thisPixelInfoEx.get(Green);
+        int blueExpected = thisPixelInfoEx.get(Blue);
+        
+        redSumDif += Math.abs(redPNG - redExpected);
+        greenSumDif += Math.abs(greenPNG - greenExpected);
+        blueSumDif += Math.abs(bluePNG - blueExpected);
+        pixelCount++;
+      }
+    }
+    // average difference between values is small
+    assertTrue(redSumDif / pixelCount < 5);
+    assertTrue(greenSumDif / pixelCount < 4);
+    assertTrue(blueSumDif / pixelCount < 6);
+  }
+  
+  // save bmp
+  @Test
+  public void testSaveBMP() {
+    this.m1.load("res/techsupport.ppm", "ts");
+    this.m1.save("res/techsupport.BMP", "ts");
+    
+    // check that file exists
+    assertTrue(new File("res/techsupport.BMP").exists());
+    
+    // reload it into the model and check the pixels are as expected
+    // to ensure it was saved successfully
+    this.m1.load("res/techsupport.BMP", "tsBMP");
+    for (int i = 0; i < this.m1.getHeight("ts"); i++) {
+      for (int j  = 0; j < this.m1.getWidth("ts"); j++) {
+        Map<PixelComponents, Integer> thisPixelInfo =
+            this.m1.getPixelInfo("tsBMP", i, j);
+        int redPNG = thisPixelInfo.get(Red);
+        int greenPNG = thisPixelInfo.get(Green);
+        int bluePNG = thisPixelInfo.get(Blue);
+        
+        Map<PixelComponents, Integer> thisPixelInfoEx =
+            this.m1.getPixelInfo("ts", i, j);
+        int redExpected = thisPixelInfoEx.get(Red);
+        int greenExpected = thisPixelInfoEx.get(Green);
+        int blueExpected = thisPixelInfoEx.get(Blue);
+        
+        assertEquals(redPNG, redExpected);
+        assertEquals(greenPNG, greenExpected);
+        assertEquals(bluePNG, blueExpected);
+      }
+    }
+  }
+  
+  // try to load with no extension
+  @Test(expected = IllegalArgumentException.class)
+  public void testLoadIAENoExtension() {
+    this.m1.load("res/LeGoat", "nah");
+  }
+  
+  // try to load with invalid extension
+  @Test(expected = IllegalArgumentException.class)
+  public void testLoadIAEInvalidExtension() {
+    this.m1.load("res/techsupport.txt", "nah");
+  }
+  
+  // load png
+  @Test
+  public void testLoadPNG() {
+    this.m1.load("res/techsupport.ppm", "ts");
+    
+    // reload it into the model and check the pixels are as expected
+    // to ensure it was saved successfully
+    this.m1.load("res/techsupport.png", "tspng");
+    for (int i = 0; i < this.m1.getHeight("ts"); i++) {
+      for (int j  = 0; j < this.m1.getWidth("ts"); j++) {
+        Map<PixelComponents, Integer> thisPixelInfo =
+            this.m1.getPixelInfo("tspng", i, j);
+        int redPNG = thisPixelInfo.get(Red);
+        int greenPNG = thisPixelInfo.get(Green);
+        int bluePNG = thisPixelInfo.get(Blue);
+        
+        Map<PixelComponents, Integer> thisPixelInfoEx =
+            this.m1.getPixelInfo("ts", i, j);
+        int redExpected = thisPixelInfoEx.get(Red);
+        int greenExpected = thisPixelInfoEx.get(Green);
+        int blueExpected = thisPixelInfoEx.get(Blue);
+        
+        assertEquals(redPNG, redExpected);
+        assertEquals(greenPNG, greenExpected);
+        assertEquals(bluePNG, blueExpected);
+      }
+    }
+  }
+  
+  // load jpeg
+  @Test
+  public void testLoadJPEG() {
+    this.m1.load("res/techsupport.ppm", "ts");
+    
+    // reload it into the model and check the pixels are as expected
+    // to ensure it was saved successfully
+    this.m1.load("res/techsupport.jpeg", "tsjpeg");
+    int redSumDif = 0;
+    int greenSumDif = 0;
+    int blueSumDif = 0;
+    int pixelCount = 0;
+    for (int i = 0; i < this.m1.getHeight("ts"); i++) {
+      for (int j  = 0; j < this.m1.getWidth("ts"); j++) {
+        Map<PixelComponents, Integer> thisPixelInfo =
+            this.m1.getPixelInfo("tsjpeg", i, j);
+        int redPNG = thisPixelInfo.get(Red);
+        int greenPNG = thisPixelInfo.get(Green);
+        int bluePNG = thisPixelInfo.get(Blue);
+        
+        Map<PixelComponents, Integer> thisPixelInfoEx =
+            this.m1.getPixelInfo("ts", i, j);
+        int redExpected = thisPixelInfoEx.get(Red);
+        int greenExpected = thisPixelInfoEx.get(Green);
+        int blueExpected = thisPixelInfoEx.get(Blue);
+        
+        redSumDif += Math.abs(redPNG - redExpected);
+        greenSumDif += Math.abs(greenPNG - greenExpected);
+        blueSumDif += Math.abs(bluePNG - blueExpected);
+        pixelCount++;
+      }
+    }
+    // average difference between values is small
+    assertTrue(redSumDif / pixelCount < 5);
+    assertTrue(greenSumDif / pixelCount < 4);
+    assertTrue(blueSumDif / pixelCount < 6);
+  }
+  
+  // load jpg
+  @Test
+  public void testLoadJPG() {
+    this.m1.load("res/techsupport.ppm", "ts");
+    
+    // reload it into the model and check the pixels are as expected
+    // to ensure it was saved successfully
+    this.m1.load("res/techsupport.jpg", "tsjpg");
+    int redSumDif = 0;
+    int greenSumDif = 0;
+    int blueSumDif = 0;
+    int pixelCount = 0;
+    for (int i = 0; i < this.m1.getHeight("ts"); i++) {
+      for (int j  = 0; j < this.m1.getWidth("ts"); j++) {
+        Map<PixelComponents, Integer> thisPixelInfo =
+            this.m1.getPixelInfo("tsjpg", i, j);
+        int redPNG = thisPixelInfo.get(Red);
+        int greenPNG = thisPixelInfo.get(Green);
+        int bluePNG = thisPixelInfo.get(Blue);
+        
+        Map<PixelComponents, Integer> thisPixelInfoEx =
+            this.m1.getPixelInfo("ts", i, j);
+        int redExpected = thisPixelInfoEx.get(Red);
+        int greenExpected = thisPixelInfoEx.get(Green);
+        int blueExpected = thisPixelInfoEx.get(Blue);
+        
+        redSumDif += Math.abs(redPNG - redExpected);
+        greenSumDif += Math.abs(greenPNG - greenExpected);
+        blueSumDif += Math.abs(bluePNG - blueExpected);
+        pixelCount++;
+      }
+    }
+    // average difference between values is small
+    assertTrue(redSumDif / pixelCount < 5);
+    assertTrue(greenSumDif / pixelCount < 4);
+    assertTrue(blueSumDif / pixelCount < 6);
+  }
+  
+  // load bmp
+  @Test
+  public void testLoadBMP() {
+    this.m1.load("res/techsupport.ppm", "ts");
+    
+    // reload it into the model and check the pixels are as expected
+    // to ensure it was saved successfully
+    this.m1.load("res/techsupport.bmp", "tsbmp");
+    for (int i = 0; i < this.m1.getHeight("ts"); i++) {
+      for (int j  = 0; j < this.m1.getWidth("ts"); j++) {
+        Map<PixelComponents, Integer> thisPixelInfo =
+            this.m1.getPixelInfo("tsbmp", i, j);
+        int redPNG = thisPixelInfo.get(Red);
+        int greenPNG = thisPixelInfo.get(Green);
+        int bluePNG = thisPixelInfo.get(Blue);
+        
+        Map<PixelComponents, Integer> thisPixelInfoEx =
+            this.m1.getPixelInfo("ts", i, j);
+        int redExpected = thisPixelInfoEx.get(Red);
+        int greenExpected = thisPixelInfoEx.get(Green);
+        int blueExpected = thisPixelInfoEx.get(Blue);
+        
+        assertEquals(redPNG, redExpected);
+        assertEquals(greenPNG, greenExpected);
+        assertEquals(bluePNG, blueExpected);
+      }
+    }
+  }
+  
+  // filter
+  // sharpen
+  @Test
+  public void testFilterSharpen() {
+    double[][] sharpen =
+        {{-0.125, -0.125, -0.125, -0.125, -0.125},
+            {-0.125, 0.250, 0.250, 0.250, -0.125},
+            {-0.125, 0.250, 1.000, 0.250, -0.125},
+            {-0.125, 0.250, 0.250, 0.250, -0.125},
+            {-0.125, -0.125, -0.125, -0.125, -0.125}};
+    
+    this.m1.addImage("image1", this.i1);
+    this.m1.filter(sharpen, "image1", "image1sharpen");
+    
+    PixelInfo[][] expected = new PixelInfo[][]{
+        {new PixelInfo(95, 0, 255, 255),
+            new PixelInfo(255, 0, 255, 255)},
+        {new PixelInfo(191, 0, 255, 255),
+            new PixelInfo(255, 0, 255, 255)},
+        {new PixelInfo(95, 0, 255, 255),
+            new PixelInfo(255, 0, 255, 255)}};
+    
+    for (int i =  0; i < this.m1.getHeight("image1sharpen"); i++) {
+      for (int j = 0; j < this.m1.getWidth("image1sharpen"); j++) {
+        assertEquals(this.m1.getPixelInfo("image1sharpen", i, j),
+            expected[i][j].getPixelInfo());
+      }
+    }
+  }
+  
+  // blur
+  @Test
+  public void testFilterBlur() {
+    double[][] blur =
+        {{0.0625, 0.1250, 0.0625},
+            {0.1250, 0.2500, 0.1250},
+            {0.0625, 0.1250, 0.0625}};
+    
+    this.m1.addImage("image1", this.i1);
+    this.m1.filter(blur, "image1", "image1blur");
+    
+    PixelInfo[][] expected = new PixelInfo[][]{
+        {new PixelInfo(47, 0, 143, 255),
+            new PixelInfo(95, 0, 143, 255)},
+        {new PixelInfo(63, 0, 191, 255),
+            new PixelInfo(127, 0, 191, 255)},
+        {new PixelInfo(47, 0, 143, 255),
+            new PixelInfo(95, 0, 143, 255)}};
+    
+    for (int i =  0; i < this.m1.getHeight("image1blur"); i++) {
+      for (int j = 0; j < this.m1.getWidth("image1blur"); j++) {
+        assertEquals(this.m1.getPixelInfo("image1blur", i, j),
+            expected[i][j].getPixelInfo());
+      }
+    }
+  }
+  
+  // color transformation
+  // luma
+  @Test
+  public void testColorTransformationLuma() {
+    double[][] greyscale_luma =
+        {{0.216, 0.7152, 0.0722},
+            {0.216, 0.7152, 0.0722},
+            {0.216, 0.7152, 0.0722}};
+  
+    this.m1.addImage("image1", this.i1);
+    this.m1.colorTransformation(greyscale_luma, "image1", "image1luma");
+  
+    PixelInfo[][] expected = new PixelInfo[][]{
+        {new PixelInfo(18, 18, 18, 255),
+            new PixelInfo(73, 73, 73, 255)},
+        {new PixelInfo(18, 18, 18, 255),
+            new PixelInfo(73, 73, 73, 255)},
+        {new PixelInfo(18, 18, 18, 255),
+            new PixelInfo(73, 73, 73, 255)}};
+  
+    for (int i =  0; i < this.m1.getHeight("image1luma"); i++) {
+      for (int j = 0; j < this.m1.getWidth("image1luma"); j++) {
+        assertEquals(this.m1.getPixelInfo("image1luma", i, j),
+            expected[i][j].getPixelInfo());
+      }
+    }
+  }
+  
+  // sepia
+  @Test
+  public void testColorTransformationSep() {
+    double[][] sepia = {{0.393, 0.769, 0.189},
+        {0.349, 0.686, 0.168}, {0.272, 0.534, 0.131}};
+  
+    this.m1.addImage("image1", this.i1);
+    this.m1.colorTransformation(sepia, "image1", "image1sep");
+  
+    PixelInfo[][] expected = new PixelInfo[][]{
+        {new PixelInfo(48, 42, 33, 255),
+            new PixelInfo(148, 131, 102, 255)},
+        {new PixelInfo(48, 42, 33, 255),
+            new PixelInfo(148, 131, 102, 255)},
+        {new PixelInfo(48, 42, 33, 255),
+            new PixelInfo(148, 131, 102, 255)}};
+  
+    for (int i =  0; i < this.m1.getHeight("image1sep"); i++) {
+      for (int j = 0; j < this.m1.getWidth("image1sep"); j++) {
+        assertEquals(this.m1.getPixelInfo("image1sep", i, j),
+            expected[i][j].getPixelInfo());
+      }
+    }
   }
 }

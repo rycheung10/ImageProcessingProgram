@@ -76,20 +76,32 @@ public interface IPModel extends IPModelState {
    *
    * @param path A String representing the path to where the image should be retrieved from.
    * @param name A String representing the name that the image should be named in the model.
-   * @throws IllegalArgumentException when the given path is invalid or the given name is invalid.
+   * @throws IllegalArgumentException when the given path is invalid or the given name is invalid
    */
   void load(String path, String name) throws IllegalArgumentException;
-
+  
   /**
+   * This method applies a filter onto an image based on the given kernel double indexed array.
    *
-   * @param kernel
-   * @param imgName
-   * @param rename
-   * @throws IllegalArgumentException
+   * @param kernel  A double indexed array representing the values needed to compute new values
+   *                for the filter
+   * @param imgName A String representing the desired name of the image in the model
+   * @param rename  A String representing the name that the new image should be named in the model
+   * @throws IllegalArgumentException when the given path is invalid or the given name is invalid
    */
   void filter(double[][] kernel, String imgName, String rename)
-          throws IllegalArgumentException;
-
-  public void colorTransformation(double[][] kernel, String imgName, String rename)
-          throws IllegalArgumentException;
+      throws IllegalArgumentException;
+  
+  /**
+   * This method applies a color transformation onto an image based on the given kernel double
+   * indexed array.
+   *
+   * @param kernel  A double indexed array representing the values needed to compute new values for
+   *                the color transformation
+   * @param imgName A String representing the desired name of the image in  the model
+   * @param rename  A String representing the name that the new image should be named in the model
+   * @throws IllegalArgumentException when the given path is invalid or the given name is invalid
+   */
+  void colorTransformation(double[][] kernel, String imgName, String rename)
+      throws IllegalArgumentException;
 }
