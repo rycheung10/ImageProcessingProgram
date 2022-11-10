@@ -334,7 +334,7 @@ public class IPModelImpl implements IPModel {
   public void filter(double[][] kernel, String imgName, String rename)
       throws IllegalArgumentException {
     imageExists(imgName);
-    if (kernel.length % 2 == 0 || kernel[0].length % 2 == 0 || kernel == null) {
+    if (kernel.length % 2 == 0 || kernel[0].length % 2 == 0) {
       throw new IllegalArgumentException("Input a valid kernel!");
     }
     
@@ -373,16 +373,7 @@ public class IPModelImpl implements IPModel {
         }
       }
     }
-    
-    int intNewValue = (int) (newValue);
-    
-    if (intNewValue > 255) {
-      intNewValue = 255;
-    } else if (intNewValue < 0) {
-      intNewValue = 0;
-    }
-    
-    return intNewValue;
+    return numInBounds(newValue);
   }
   
   //checks if a given coordinate is within bounds on an image
@@ -428,8 +419,14 @@ public class IPModelImpl implements IPModel {
     for (int i = 0; i < partOfKernel.length; i++) {
       newValue += partOfKernel[i] * rgb[i];
     }
-    
-    int intNewValue = (int) newValue;
+
+    return numInBounds(newValue);
+  }
+
+  private int numInBounds(double num) {
+
+    int intNewValue = (int) num;
+
     if (intNewValue > 255) {
       intNewValue = 255;
     } else if (intNewValue < 0) {
@@ -437,6 +434,7 @@ public class IPModelImpl implements IPModel {
     }
     return intNewValue;
   }
+
   
   @Override
   public int getHeight(String imgName) throws IllegalArgumentException {
