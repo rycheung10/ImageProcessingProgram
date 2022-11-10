@@ -2,8 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5fc8b992-2743-4992-9e92-ada7cc27bcd4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/ImageProcessing.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/ImageProcessing.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/IPControllerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/IPControllerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/model/IPModelImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/model/IPModelImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/imageProcessingProgram/IPControllerImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/imageProcessingProgram/IPControllerImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/imageProcessingProgram/IPModelImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/imageProcessingProgram/IPModelImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/example2xblurnyc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/exampleblurnyc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/examplegreyscalenyc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/examplegreyscaletext.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/exampleoriginalnyc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/examplesepianyc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/examplesepianyc.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/examplesharpnyc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/lumanyc.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/sepianyc.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageProcessing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageProcessing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/IPControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/IPControllerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/IPModelImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IPModelImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/IPControllerImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/IPControllerImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/IPModelImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/IPModelImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,62 +46,70 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "/Users/ry.cheung/Desktop/CS3500/Image Processing/ImageProcessingProgram",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.ImageProcessing">
-    <configuration name="ImageProcessing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ImageProcessing" />
-      <module name="imageProcessingProgram" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in imageProcessingProgram" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="imageProcessingProgram" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IPControllerImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.IPControllerImplTest.testSepia">
+    <configuration name="IPControllerImplTest.testBlur" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="imageProcessingProgram" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="IPControllerImplTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IPModelImplTest.testBlur" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="imageProcessingProgram" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="IPModelImplTest" />
       <option name="METHOD_NAME" value="testBlur" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ImageUtilTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="IPControllerImplTest.testGreyScaleLuma" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="imageProcessingProgram" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ImageUtilTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="IPControllerImplTest" />
+      <option name="METHOD_NAME" value="testGreyScaleLuma" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IPControllerImplTest.testSepia" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="imageProcessingProgram" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="IPControllerImplTest" />
+      <option name="METHOD_NAME" value="testSepia" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IPControllerImplTest.testSharpen" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="imageProcessingProgram" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="IPControllerImplTest" />
+      <option name="METHOD_NAME" value="testSharpen" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IPModelImplTest.testColorTransformationSep" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="imageProcessingProgram" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="IPModelImplTest" />
+      <option name="METHOD_NAME" value="testColorTransformationSep" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ImageProcessing" />
-        <item itemvalue="JUnit.IPModelImplTest.testBlur" />
-        <item itemvalue="JUnit.All in imageProcessingProgram" />
-        <item itemvalue="JUnit.ImageUtilTest" />
-        <item itemvalue="JUnit.IPControllerImplTest" />
+        <item itemvalue="JUnit.IPControllerImplTest.testSepia" />
+        <item itemvalue="JUnit.IPControllerImplTest.testGreyScaleLuma" />
+        <item itemvalue="JUnit.IPControllerImplTest.testSharpen" />
+        <item itemvalue="JUnit.IPControllerImplTest.testBlur" />
+        <item itemvalue="JUnit.IPModelImplTest.testColorTransformationSep" />
       </list>
     </recent_temporary>
   </component>
