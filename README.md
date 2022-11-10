@@ -50,18 +50,15 @@ Please see Diagram.png.
         - This interface extends the IPModelState and represents the controls
           of the program (ie. save(), load(), greyscale(), flip() etc...) that modifies an image or
           the model itself
-    - ##### AIPModel abstract class:
-        - This abstract class (implements IPModel) is made in anticipation of future models that operate on images in
-          different manners.
+
+    - ##### IPModelImpl class:
+        - Implements the methods of the model interfaces (extends AIPModel)
         - Fields:
             - addedImages - allows a user to load and store images
                 - This field is private, as we don't want the controller or view
                   to modify our collection of images. Manipulation of the model object should only
                   happen
                   within the implementation of this class
-    - ##### IPModelImpl class:
-        - Implements the methods of the model interfaces (extends AIPModel)
-        - Uses key word super to call abstract constructor.
         - Private helper: imageExists - is a helper that is utilized by all Model interface methods
           to
           check if the desired image to modified is loaded into the program or not.
@@ -73,16 +70,19 @@ Please see Diagram.png.
               into
               the program, the program should not attempt to modify the image and throw an IAE. The
               program will not end due to the IAE as it will be caught later in the controller.
+        - Private helper: numberInBounds() - a helper that ensures a newly calculated decimal value
+          for a component of a Pixel is converted into an integer within the bounds 0 and 255
 
 - ### View:
     - ##### IPView interface:
         - Represents the methods that allow for outputs to be rendered
-    - ##### AIPView abstract class:
-      - This abstract class (implements IPView) is made in anticipation of future models that display messages
-      - All views will have an Appendable as a field (only some will need a model -- our current view does not)
     - ##### IPViewImpl class:
+        - All views will have an Appendable as a field (only some will need a model -- our current
+          view does not)
         - Currently only implements the method that renders messages to the output
         - Fields:
+            - model: represents the model, however it is not being used and is placed here in
+              anticipation that it will be used in the future
             - output: represents the place where the desired messages should be stored to send
               to the viewer
         - renderMessage() throws an IOE when there is an error rendering the input to the output
@@ -122,69 +122,18 @@ Please see Diagram.png.
 
 <br>________________________________________________________________________________________________
 
-### How to use the program:
+#### Changes made since Assignment 4:
 
-When the program starts, the terminal will prompt, "What would you like to do?"
-The user must use the load command first before attempting to use any image-editing command,
-otherwise, the image-editing commands will do nothing. - Ex: "load res/techsupport.ppm tech".
-
-##### Commands that the program accepts:
-
-1. "load [String directory path to image] [String name of img]"
-    - loads an image into view
-    - Ex: "load res/techsupport.ppm tech"
-2. "brighten [integer amount] [String targeted img name] [String desired name of new img]"
-    - brightens an image by an integer amount
-    - Ex: "brighten 100 tech techBrighten"
-3. "vertical-flip [String targeted img name] [String desired name of new img]"
-    - vertically flips an image
-    - Ex: "vertical-flip tech techFlipped"
-4. "horizontal-flip [String targeted img name] [String desired name of new img]"
-    - horizontally flips an image
-    - Ex: "horizontal-flip tech techFlipped2"
-5. "red-component [String targeted img name] [String desired name of new img]"
-    - greyscales the image according to the red-component value of each pixel
-    - Ex: "red-component tech techRed"
-6. "green-component [String targeted img name] [String desired name of new img]"
-    - greyscales the image according to the green-component value of each pixel
-    - Ex: "green-component tech techGreen"
-7. "blue-component [String targeted img name] [String desired name of new img]"
-    - greyscales the image according to the blue-component value of each pixel
-    - Ex: "blue-component tech techBlue"
-8. "value-component [String targeted img name] [String desired name of new img]"
-    - greyscales the image according to the value-component value of each pixel (the value-component
-      is the maximum value between the red/green/blue components)
-    - Ex: "value-component tech techValue"
-9. "intensity-component [String targeted img name] [String desired name of new img]"
-    - greyscales the image according to the intensity-component value of each pixel
-      (the intensity-component is the average value between the red/green/blue components)
-    - Ex: "intensity-component tech techIntensity"
-10. "luma-component [String targeted img name] [String desired name of new img]"
-    - greyscales the image according to the luma-component value of each pixel
-      (luma is a weighted average between the rgb component values)
-    - Ex: "luma-component tech techLuma"
-11. "save [String desired directory path for new image]
-    [String name of image created]"
-    - saves the desired image to the computer
-    - Ex: "save res/techsupportLuma.ppm techLuma"
-12. "q" - quits and ends the program
-
-<br>After an attempted command input is given, a success message or an error message will appear if
-the
-command was executed properly or not. More image-editing commands may be executed over the duration
-of the program.
-
-If the user wants to quit the program, the user should input "q" in response to the question
-"What would you like to do?"
-
-<br>Important Notes:
-
-- "q" should be treated like its own command and should not be attempted as an
-  argument of a different command. Ex: Do not: "vertical flip q" - this will not work
-- Spaces between each word/[] is placed with purpose
-- To darken image, one should use the brighten command but with negative integer values
-
-<br>________________________________________________________________________________________________
+- Removed any indication of the previous abstract classes AIPModel and AIPView, including 'super'ing
+  constructors in its child classes. We originally anticipated abstraction for new models and views
+  for different image types. However, we quickly realized that was not
+  needed to load, save, and use methods on the new image types, and so we removed it.
+- Added new methods filter() and colorTransformation() that allow for the user to blur, sharpen,
+  place a sepia tone and greyscale luma filter onto an image
+    - Both of these methods utilize specialized helpers that calculate the new values of each
+      component within each PixelInfo object
+- Added support for new commands (blur, sharpen, sepia and greyscale-luma) in the IPControllerImpl
+- Added support to load and save new file types (.png, .jpg/.jpeg, .txt, .bmp???)
 
 #### CITATION:
 
