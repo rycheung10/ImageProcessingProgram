@@ -1,9 +1,21 @@
 package controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.util.function.Function;
 
+import controller.commands.Brighten;
+import controller.commands.ColorTransformation;
+import controller.commands.Component;
+import controller.commands.Filter;
+import controller.commands.Flip;
+import controller.commands.IPCommand;
+import controller.commands.Load;
+import controller.commands.Matrices;
+import controller.commands.Save;
 import model.IPModel;
 import view.IPView;
 
@@ -25,6 +37,8 @@ public class IPControllerImpl implements IPController {
   private final Readable input;
   private boolean programRunning;
   
+  private final Map<String, Function<Scanner, IPCommand>> commands;
+  
   /**
    * Constructor that represents a controller .
    *
@@ -45,6 +59,8 @@ public class IPControllerImpl implements IPController {
     this.input = input;
     this.programRunning = true;
     
+    commands = new HashMap<>();
+    this.loadCommands();
   }
   
   /**
@@ -53,15 +69,39 @@ public class IPControllerImpl implements IPController {
   @Override
   public void startIP() throws IllegalStateException {
     Scanner sc = new Scanner(this.input);
+    IPCommand command;
+    
+    // while the program should be running
     while (programRunning) {
       
+      // render the instructional message
       this.renderMessage("What would you like to do?\n");
       
-      // throw ISE if readable is out of arguments (sc.next() not possible)
-      try {
-        this.commandHandler(getStringInput(sc), sc);
-      } catch (IllegalArgumentException e) {
-        this.renderMessage("Error: " + e.getMessage() + "\n");
+      // assume the first string entered to be the desired command to be executed
+      String commandEntered = getStringInput(sc);
+      
+      // if it is "q", quit the program
+      if (commandEntered.equals("q")) {
+        programRunning = false;
+        this.renderMessage("IP quit!");
+        break;
+      }
+      
+      // find the command in the Map and set it equal to cmd, if not there, set cmd to null
+      Function<Scanner, IPCommand> cmd =
+          this.commands.getOrDefault(commandEntered, null);
+      
+      // if cmd is null
+      if (cmd == null) {
+        this.renderMessage("Invalid command given: " + commandEntered + "\n");
+      } else {
+        try {
+          command = cmd.apply(sc);
+          command.execute(this.model);
+          this.renderMessage(commandEntered + " success!\n");
+        } catch (IllegalArgumentException e) {
+          this.renderMessage("Error: " + e.getMessage() + "\n");
+        }
       }
     }
   }
@@ -82,121 +122,6 @@ public class IPControllerImpl implements IPController {
   }
   
   /**
-   * This method takes a String and a scanner and determines if the string is a valid command. If
-   * it is, get the correct amount of arguments from the scanner.
-   *
-   * @param cmd A String representing a phrase to check to see if it is a command.
-   * @param sc  A Scanner that represents the users' inputs.
-   * @throws IllegalArgumentException when there are not enough arguments in the readable.
-   */
-  private void commandHandler(String cmd, Scanner sc) throws IllegalArgumentException {
-
-    double[][] blur =
-                    {{0.0625, 0.1250, 0.0625},
-                    {0.1250, 0.2500, 0.1250},
-                    {0.0625, 0.1250, 0.0625}};
-
-    double[][] sharpen =
-            {{-0.125, -0.125, -0.125, -0.125, -0.125},
-            {-0.125, 0.250, 0.250, 0.250, -0.125},
-            {-0.125, 0.250, 1.000, 0.250, -0.125},
-            {-0.125, 0.250, 0.250, 0.250, -0.125},
-            {-0.125, -0.125, -0.125, -0.125, -0.125}};
-
-    double[][] greyscale_luma =
-                            {{0.216, 0.7152, 0.0722},
-                            {0.216, 0.7152, 0.0722},
-                            {0.216, 0.7152, 0.0722}};
-
-    double[][] sepia = {{0.393, 0.769, 0.189},
-            {0.349, 0.686, 0.168}, {0.272, 0.534, 0.131}};
-    
-    try {
-      switch (cmd) {
-        case "q":
-          this.renderMessage("IP quit!");
-          this.programRunning = false;
-          break;
-        case "load":
-          this.model.load(getStringInput(sc), getStringInput(sc));
-          this.renderMessage("Load success!\n");
-          break;
-        case "brighten":
-          
-          int amount;
-          try {
-            amount = Integer.parseInt(getStringInput(sc));
-          } catch (NumberFormatException e) {
-            throw new IllegalStateException();
-          }
-          
-          this.model.brighten(amount, getStringInput(sc), getStringInput(sc));
-          this.renderMessage("Brighten success!\n");
-          break;
-        case "vertical-flip":
-          this.model.flip(true, getStringInput(sc), getStringInput(sc));
-          this.renderMessage("Vertical flip success!\n");
-          break;
-        case "horizontal-flip":
-          this.model.flip(false, getStringInput(sc), getStringInput(sc));
-          this.renderMessage("Horizontal flip success!\n");
-          break;
-        case "red-component":
-          this.model.greyscale(Red, getStringInput(sc), getStringInput(sc));
-          this.renderMessage("Red component greyscale success!\n");
-          break;
-        case "green-component":
-          this.model.greyscale(Green, getStringInput(sc), getStringInput(sc));
-          this.renderMessage("Green component greyscale success!\n");
-          break;
-        case "blue-component":
-          this.model.greyscale(Blue, getStringInput(sc), getStringInput(sc));
-          this.renderMessage("Blue component greyscale success!\n");
-          break;
-        case "value-component":
-          this.model.greyscale(Value, getStringInput(sc), getStringInput(sc));
-          this.renderMessage("Value component greyscale success!\n");
-          break;
-        case "intensity-component":
-          this.model.greyscale(Intensity, getStringInput(sc), getStringInput(sc));
-          this.renderMessage("Intensity component greyscale success!\n");
-          break;
-        case "luma-component":
-          this.model.greyscale(Luma, getStringInput(sc), getStringInput(sc));
-          this.renderMessage("Luma component greyscale success!\n");
-          break;
-        case "save":
-          this.model.save(getStringInput(sc), getStringInput(sc));
-          this.renderMessage("Image saved!\n");
-          break;
-        case "blur":
-          this.model.filter(blur, getStringInput(sc), getStringInput(sc));
-          this.renderMessage("Blur success!\n");
-          break;
-        case "sharpen":
-          this.model.filter(sharpen, getStringInput(sc), getStringInput(sc));
-          this.renderMessage("Sharpen success!\n");
-          break;
-        case "greyscale-luma":
-          this.model.colorTransformation(
-                  greyscale_luma, getStringInput(sc), getStringInput(sc));
-          this.renderMessage("Greyscale-luma success!\n");
-          break;
-        case "sepia":
-          this.model.colorTransformation(
-                  sepia, getStringInput(sc), getStringInput(sc));
-          this.renderMessage("Sepia-tone success!\n");
-          break;
-
-        default:
-          this.renderMessage("Invalid command given: " + cmd + "\n");
-      }
-    } catch (IllegalStateException e) {
-      this.renderMessage("Invalid command arguments given\n");
-    }
-  }
-  
-  /**
    * This method gets the next String from the given scanner if possible.
    *
    * @param sc A Scanner representing the user's inputs.
@@ -210,5 +135,57 @@ public class IPControllerImpl implements IPController {
     } catch (NoSuchElementException e) {
       throw new IllegalStateException("Readable out of arguments");
     }
+  }
+  
+  /**
+   * This method gets the next integer from the given scanner if possible.
+   *
+   * @param sc A Scanner representing the user's inputs
+   * @return An integer representing the next integer the user inputted into the scanner
+   * @throws IllegalArgumentException If the readable is out of arguments or if the next input
+   *                               is not an integer
+   */
+  private int getIntInput(Scanner sc) throws IllegalArgumentException {
+    try {
+      return Integer.parseInt(getStringInput(sc));
+    } catch (NumberFormatException e) {
+      throw new IllegalArgumentException("invalid command arguments given");
+    }
+  }
+  
+  /**
+   * This method loads all valid commands into the commands Map for this controller.
+   */
+  private void loadCommands() {
+    this.commands.put("load", sc ->
+        new Load(getStringInput(sc), getStringInput(sc)));
+    this.commands.put("brighten", sc ->
+        new Brighten(getIntInput(sc), getStringInput(sc), getStringInput(sc)));
+    this.commands.put("vertical-flip", sc ->
+        new Flip(true, getStringInput(sc), getStringInput(sc)));
+    this.commands.put("horizontal-flip", sc ->
+        new Flip(false, getStringInput(sc), getStringInput(sc)));
+    this.commands.put("red-component", sc ->
+        new Component(Red, getStringInput(sc), getStringInput(sc)));
+    this.commands.put("green-component", sc ->
+        new Component(Green, getStringInput(sc), getStringInput(sc)));
+    this.commands.put("blue-component", sc ->
+        new Component(Blue, getStringInput(sc), getStringInput(sc)));
+    this.commands.put("value-component", sc ->
+        new Component(Value, getStringInput(sc), getStringInput(sc)));
+    this.commands.put("intensity-component", sc ->
+        new Component(Intensity, getStringInput(sc), getStringInput(sc)));
+    this.commands.put("luma-component", sc ->
+        new Component(Luma, getStringInput(sc), getStringInput(sc)));
+    this.commands.put("save", sc ->
+        new Save(getStringInput(sc), getStringInput(sc)));
+    this.commands.put("blur", sc ->
+        new Filter(Matrices.blur, getStringInput(sc), getStringInput(sc)));
+    this.commands.put("sharpen", sc ->
+        new Filter(Matrices.sharpen, getStringInput(sc), getStringInput(sc)));
+    this.commands.put("greyscale-luma", sc ->
+        new ColorTransformation(Matrices.greyscale_luma, getStringInput(sc), getStringInput(sc)));
+    this.commands.put("sepia", sc ->
+        new ColorTransformation(Matrices.sepia, getStringInput(sc), getStringInput(sc)));
   }
 }

@@ -12,8 +12,6 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
-import controller.ImageUtil;
-
 import static model.IPModelState.PixelComponents.Blue;
 import static model.IPModelState.PixelComponents.Green;
 import static model.IPModelState.PixelComponents.Max;
