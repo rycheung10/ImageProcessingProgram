@@ -59,9 +59,10 @@ Please see Diagram.png.
                   to modify our collection of images. Manipulation of the model object should only
                   happen
                   within the implementation of this class
+        - Currently, colorTransformation() assumes that the kernels being used in the transformation
+          is of 3x3 size as RGB calculations only require 3 calculations for each of the RGB values. 
         - Private helper: imageExists - is a helper that is utilized by all Model interface methods
-          to
-          check if the desired image to modified is loaded into the program or not.
+          to check if the desired image to modified is loaded into the program or not.
             - This method is private as it is only meant to supplement the methods within the class
               and used to reduce code duplication. Furthermore, the methods aren't directly publicly
               used
@@ -133,6 +134,10 @@ Please see Diagram.png.
     - Both of these methods utilize specialized helpers that calculate the new values of each
       component within each PixelInfo object
 - Added support for new commands (blur, sharpen, sepia and greyscale-luma) in the IPControllerImpl
+- The controller now implements the command design pattern. Each command has it's own class object
+  and inherits the AIPCommand abstract class.
+    - To utilize the command design pattern, the IPControllerImpl uses lambda functions to execute
+      the commands
 - Added support to load and save new file types (.png, .jpg/.jpeg, .txt, .bmp???)
 
 #### CITATION:
