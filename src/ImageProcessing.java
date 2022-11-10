@@ -43,7 +43,7 @@ public class ImageProcessing {
    * @return A String containing the contents of the script file.
    * @throws IllegalArgumentException when the path does not lead to a readable file
    */
-  private static String read(String path) throws IllegalArgumentException {
+  public static String read(String path) throws IllegalArgumentException {
     Scanner sc;
     
     try {

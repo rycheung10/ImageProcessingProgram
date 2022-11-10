@@ -9,6 +9,33 @@ coupled with the command design pattern that allows for minimal coupling between
 
 <br>________________________________________________________________________________________________
 
+#### Changes made since Assignment 4:
+
+- Removed the previous abstract classes AIPModel and AIPView and removed the 'super'ing of
+  constructors in its child classes. We originally anticipated abstraction for new models and views
+  for different image types. However, we quickly realized that was not
+  needed to load, save, and use methods on the new image types, and so we removed it.
+- Added new methods filter() and colorTransformation() that allow for the user to blur, sharpen,
+  place a sepia tone and greyscale luma filter onto an image
+    - Both of these methods utilize specialized helpers that calculate the new values of each
+      component within each PixelInfo object
+- Added support for new commands (blur, sharpen, sepia and greyscale-luma) in the IPControllerImpl
+- The controller now implements the command design pattern with command classes. Each command has
+  its own class object
+  and inherits the AIPCommand abstract class (which extends IPCommand interface). IPCommand contains
+  an execute method, where a model has a command executed upon it. The AIPCommand class contains an
+  abstracted constructor for all child classes.
+    - To utilize the command design pattern, the IPControllerImpl uses lambda functions to execute
+      the commands from a Map
+- Added support to load and save new file types (.png, .jpg/.jpeg, .bmp)
+- Added functionality in the main ImageProcessing class and method in order to take in command line arguments
+  - A valid command line argument would be: "-file name-of-script.txt"
+- Created a jar file that can run the program itself.
+- The required jar file is named ImageProcessing.jar and can be found in the res folder.
+- The required script file is named script.txt and can be found in the res folder.
+
+<br>________________________________________________________________________________________________
+
 ### Diagram:
 
 Because of the MVC design pattern, we can see minimal coupling between classes in the diagram below.
@@ -60,7 +87,7 @@ Please see Diagram.png.
                   happen
                   within the implementation of this class
         - Currently, colorTransformation() assumes that the kernels being used in the transformation
-          is of 3x3 size as RGB calculations only require 3 calculations for each of the RGB values. 
+          is of 3x3 size as RGB calculations only require 3 calculations for each of the RGB values.
         - Private helper: imageExists - is a helper that is utilized by all Model interface methods
           to check if the desired image to modified is loaded into the program or not.
             - This method is private as it is only meant to supplement the methods within the class
@@ -122,23 +149,6 @@ Please see Diagram.png.
   prevent the program from breaking prematurely or due to a reason that is invalid.
 
 <br>________________________________________________________________________________________________
-
-#### Changes made since Assignment 4:
-
-- Removed any indication of the previous abstract classes AIPModel and AIPView, including 'super'ing
-  constructors in its child classes. We originally anticipated abstraction for new models and views
-  for different image types. However, we quickly realized that was not
-  needed to load, save, and use methods on the new image types, and so we removed it.
-- Added new methods filter() and colorTransformation() that allow for the user to blur, sharpen,
-  place a sepia tone and greyscale luma filter onto an image
-    - Both of these methods utilize specialized helpers that calculate the new values of each
-      component within each PixelInfo object
-- Added support for new commands (blur, sharpen, sepia and greyscale-luma) in the IPControllerImpl
-- The controller now implements the command design pattern. Each command has it's own class object
-  and inherits the AIPCommand abstract class.
-    - To utilize the command design pattern, the IPControllerImpl uses lambda functions to execute
-      the commands
-- Added support to load and save new file types (.png, .jpg/.jpeg, .txt, .bmp???)
 
 #### CITATION:
 
