@@ -407,23 +407,22 @@ public class IPModelImpl implements IPModel {
         int currRedVal = this.getPixelInfo(imgName, i, j).get(Red);
         int currGreenVal = this.getPixelInfo(imgName, i, j).get(Green);
         int currBlueVal = this.getPixelInfo(imgName, i, j).get(Blue);
-        
-        int[] rgb = {currRedVal, currGreenVal, currBlueVal};
-        
-        int red = valueTransform(kernel[0], rgb);
-        int green = valueTransform(kernel[1], rgb);
-        int blue = valueTransform(kernel[2], rgb);
-        
-        transformedImage[i][j] = new PixelInfo(red, green, blue, transformedMax);
+
+        int[] currRGB = {currRedVal, currGreenVal, currBlueVal};
+
+        int newRed = valueTransform(kernel[0], currRGB);
+        int newGreen = valueTransform(kernel[1], currRGB);
+        int newBlue = valueTransform(kernel[2], currRGB);
+
+        transformedImage[i][j] = new PixelInfo(newRed, newGreen, newBlue, transformedMax);
       }
     }
     this.addImage(rename, transformedImage);
   }
-  
-  // helps colorTransformation by taking in an array of a part of the kernel
-  // and an array of rgb values and making a smaller scaled calculation
+
+  //performs the change in value for each component of a PixelInfo
   private int valueTransform(double[] partOfKernel, int[] rgb) {
-    
+  
     double newValue = 0;
     
     for (int i = 0; i < partOfKernel.length; i++) {
