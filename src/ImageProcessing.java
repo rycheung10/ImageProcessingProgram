@@ -28,7 +28,7 @@ public class ImageProcessing {
     
     if (args.length == 0) {
       in = new InputStreamReader(System.in);
-    } else if (args[0].equals("-file")) {
+    } else if (args[0].equalsIgnoreCase("-file")) {
       in = new StringReader(read(args[1]));
     }
     
