@@ -2,10 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5fc8b992-2743-4992-9e92-ada7cc27bcd4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/imageProcessingProgram_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/imageProcessingProgram_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/imageProcessingProgram_jar/imageProcessingProgram.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/ImageProcessing.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diagram.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/Diagram.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/imageProcessingProgram_jar/imageProcessingProgram.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/imageProcessingProgram_jar/imageProcessingProgram.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/ImageProcessing.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/ImageProcessing.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/IPControllerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/IPControllerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/commands/Matrices.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/commands/Matrices.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/model/IPModelState$PixelComponents.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/model/IPModelState$PixelComponents.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPViewImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPViewImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageProcessing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageProcessing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/IPControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/IPControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/commands/Matrices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/commands/Matrices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/IPModelImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IPModelImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/IPModelState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IPModelState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/IPViewImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/IPViewImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ImageProcessingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageProcessingTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +51,7 @@
     "WebServerToolWindowFactoryState": "false",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
-    "last_opened_file_path": "/Users/ry.cheung/Desktop/CS3500/Image Processing/ImageProcessingProgram",
+    "last_opened_file_path": "/Users/ry.cheung/Desktop/CS3500/Image Processing/ImageProcessingProgram/res",
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -46,10 +59,14 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/res" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/res" />
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
@@ -113,8 +130,8 @@
       <list>
         <item itemvalue="JUnit.PixelInfoTest" />
         <item itemvalue="JUnit.IPViewImplTest" />
-        <item itemvalue="JUnit.IPModelImplTest" />
         <item itemvalue="JUnit.IPControllerImplTest" />
+        <item itemvalue="JUnit.IPModelImplTest" />
         <item itemvalue="JUnit.ImageUtilTest" />
       </list>
     </recent_temporary>

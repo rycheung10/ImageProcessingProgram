@@ -26,7 +26,7 @@ public interface Matrices {
   /**
    * This double indexed array represents the values required to transform an image using luma.
    */
-  double[][] greyscale_luma =
+  double[][] greyscaleluma =
       {{0.216, 0.7152, 0.0722},
           {0.216, 0.7152, 0.0722},
           {0.216, 0.7152, 0.0722}};

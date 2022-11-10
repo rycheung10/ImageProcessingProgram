@@ -39,7 +39,7 @@ coupled with the command design pattern that allows for minimal coupling between
 ### Diagram:
 
 Because of the MVC design pattern, we can see minimal coupling between classes in the diagram below.
-Please see Diagram.png.
+Please see Diagram.png in the res folder.
 <br>
 
 <br>________________________________________________________________________________________________

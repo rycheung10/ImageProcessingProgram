@@ -4,7 +4,6 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.util.Scanner;
 
-import controller.IPController;
 import controller.IPControllerImpl;
 import model.IPModel;
 import model.IPModelImpl;
