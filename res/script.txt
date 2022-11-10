@@ -1,0 +1,3 @@
+load res/techsupport.ppm ts
+vertical-flip ts tsvert
+save /users/ry.cheung/desktop/verticalcrap.png tsvert

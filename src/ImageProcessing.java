@@ -1,5 +1,8 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.io.StringReader;
+import java.util.Scanner;
 
 import controller.IPController;
 import controller.IPControllerImpl;
@@ -12,21 +15,50 @@ import view.IPViewImpl;
  * This class contains the main method for running the Image Processing program.
  */
 public class ImageProcessing {
+  
   /**
    * This method is the main method that runs the program on a controller.
    *
-   * @param args An array list of Strings representing the user's inputs.
+   * @param args An array list of Strings representing the user's inputs into the command line.
    */
   public static void main(String[] args) {
-    IPModel m1 = new IPModelImpl();
-    IPView v1 = new IPViewImpl();
-    Readable is = new StringReader("load res/image1.ppm i1 " +
-        "sepia i1 nycsep " +
-        "save /users/ry.cheung/desktop/luma.txt nycsep q");
-    Readable re = new InputStreamReader(System.in);
-    IPController c1 = new IPControllerImpl(m1, v1, re);
+    IPModel model = new IPModelImpl();
+    IPView view = new IPViewImpl();
+    Readable in = null;
     
-    c1.startIP();
+    if (args.length == 0) {
+      in = new InputStreamReader(System.in);
+    } else if (args[0].equals("-file")) {
+      in = new StringReader(read(args[1]));
+    }
+    
+    new IPControllerImpl(model, view, in).startIP();
+    
   }
   
+  /**
+   * This method reads a text file and copies it over to a string that can be read by the
+   * image processing program.
+   * @param path A String representing the path to the script file
+   * @return A String containing the contents of the script file.
+   * @throws IllegalArgumentException when the path does not lead to a readable file
+   */
+  private static String read(String path) throws IllegalArgumentException {
+    Scanner sc;
+    
+    try {
+      sc = new Scanner(new FileInputStream(path));
+    } catch (FileNotFoundException e) {
+      throw new IllegalArgumentException("file not found from path");
+    }
+    
+    StringBuilder builder = new StringBuilder();
+    while (sc.hasNextLine()) {
+      String s = sc.nextLine();
+      builder.append(s + " ");
+    }
+    
+    return builder.append("q").toString();
+    
+  }
 }
