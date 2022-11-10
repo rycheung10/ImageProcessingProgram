@@ -2,28 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5fc8b992-2743-4992-9e92-ada7cc27bcd4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/ImageProcessing.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/ImageProcessing.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/IPControllerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/IPControllerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/model/IPModelImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/model/IPModelImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/imageProcessingProgram/IPControllerImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/imageProcessingProgram/IPControllerImplTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/imageProcessingProgram/IPModelImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/imageProcessingProgram/IPModelImplTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/example2xblurnyc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/exampleblurnyc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/examplegreyscalenyc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/examplegreyscaletext.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/exampleoriginalnyc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/examplesepianyc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/examplesepianyc.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/examplesharpnyc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/lumanyc.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/sepianyc.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageProcessing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageProcessing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/IPControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/IPControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/AIPModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/IPModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IPModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/IPModelImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IPModelImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/IPControllerImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/IPControllerImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/IPModelImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/IPModelImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/AIPView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/IPViewImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/IPViewImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

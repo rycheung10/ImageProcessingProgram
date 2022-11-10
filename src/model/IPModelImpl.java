@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -23,14 +22,16 @@ import static model.IPModelState.PixelComponents.Red;
 /**
  * This class represents an object of a model of an image processor.
  */
-public class IPModelImpl extends AIPModel {
+public class IPModelImpl implements IPModel {
+  
+  private final Map<String, PixelInfo[][]> addedImages;
   
   /**
    * This first constructor takes no arguments and calls the abstract constructor to create
    * a model.
    */
   public IPModelImpl() {
-    super();
+    this.addedImages = new HashMap<>();
   }
   
   @Override
@@ -146,15 +147,15 @@ public class IPModelImpl extends AIPModel {
       return i;
     }
   }
-
+  
   @Override
   public void save(String path, String imgName) throws IllegalArgumentException {
     // check to see if imgName exists in addedImages already (throw IAE if not)
     this.imageExists(imgName);
-
+    
     int height = this.getHeight(imgName);
     int width = this.getWidth(imgName);
-
+    
     // check that extension is valid (.ppm, .jpg, .jpeg, .png, .bmp)
     String extension;
     if (path.lastIndexOf(".") > 0) {
@@ -162,40 +163,49 @@ public class IPModelImpl extends AIPModel {
     } else {
       throw new IllegalArgumentException("Unusable extension");
     }
-
+    
     if (!(extension.equalsIgnoreCase(".ppm")
-            || extension.equalsIgnoreCase(".txt")
-            || extension.equalsIgnoreCase(".jpg")
-            || extension.equalsIgnoreCase(".jpeg")
-            || extension.equalsIgnoreCase(".png")
-            || extension.equalsIgnoreCase(".bmp"))) {
+        || extension.equalsIgnoreCase(".txt")
+        || extension.equalsIgnoreCase(".jpg")
+        || extension.equalsIgnoreCase(".jpeg")
+        || extension.equalsIgnoreCase(".png")
+        || extension.equalsIgnoreCase(".bmp"))) {
       throw new IllegalArgumentException("Unusable extension");
     }
-
+    
     if (extension.equalsIgnoreCase(".ppm")
-            || extension.equalsIgnoreCase(".txt")) {
+        || extension.equalsIgnoreCase(".txt")) {
       this.savePPM(path, imgName, height, width);
     } else {
       this.saveElse(path, imgName, height, width);
     }
   }
-
-
+  
+  /**
+   * This method serves as a helper to the save method and specifically saves PPM files.
+   *
+   * @param path    A String representing the path on the computer to save the image
+   * @param imgName A String representing the desired image's name in the model
+   * @param height  An integer representing the height of the desired image
+   * @param width   An integer representing the width of the desired image
+   * @throws IllegalArgumentException when the method is unable to write to the path or when an
+   *                                  error occurs during the method
+   */
   private void savePPM(String path, String imgName, int height, int width)
       throws IllegalArgumentException {
     // create file
     try {
       // create file at path location
       BufferedWriter bw = new BufferedWriter(new FileWriter(path));
-  
+      
       Map<PixelComponents, Integer> thisPixel = this.getPixelInfo(imgName, 0, 0);
-    
+      
       // add the formatting of PPM (i.e. P3, width x height, max value, etc)
       bw.write("P3\n");
       bw.write("#Created by RC & EK\n");
       bw.write(width + " " + height + "\n");
       bw.write(thisPixel.get(Max) + "\n");
-    
+      
       // write the RGB values
       for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
@@ -211,24 +221,35 @@ public class IPModelImpl extends AIPModel {
     }
   }
   
+  /**
+   * This method serves as a helper to the save method and specifically saves PNG, JPG, JPEG, or
+   * BMP files.
+   *
+   * @param path    A String representing the path on the computer to save the image
+   * @param imgName A String representing the desired image's name in the model
+   * @param height  An integer representing the height of the desired image
+   * @param width   An integer representing the width of the desired image
+   * @throws IllegalArgumentException when the method is unable to write to the path or when an
+   *                                  error occurs during the method
+   */
   private void saveElse(String path, String imgName, int height, int width)
       throws IllegalArgumentException {
     
     BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
     
-    for (int i = 0; i < height; i++)  {
+    for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
         Map<PixelComponents, Integer> thisPixelInfo = this.getPixelInfo(imgName, i, j);
         int red = thisPixelInfo.get(Red);
         int green = thisPixelInfo.get(Green);
         int blue = thisPixelInfo.get(Blue);
         
-        int rgb = ( red << 16 ) | ( green << 8 ) | ( blue << 0 );
+        int rgb = (red << 16) | (green << 8) | (blue << 0);
         
         img.setRGB(j, i, rgb);
       }
     }
-  
+    
     try {
       FileOutputStream f = new FileOutputStream(path);
       ImageIO.write(img, path.substring(path.lastIndexOf(".") + 1), f);
@@ -246,7 +267,7 @@ public class IPModelImpl extends AIPModel {
     } else {
       throw new IllegalArgumentException("Unusable extension");
     }
-  
+    
     if (!(extension.equalsIgnoreCase(".ppm")
         || extension.equalsIgnoreCase(".jpg")
         || extension.equalsIgnoreCase(".jpeg")
@@ -262,10 +283,27 @@ public class IPModelImpl extends AIPModel {
     }
   }
   
+  /**
+   * This method loads a PPM image from the computer into the model's image collection.
+   *
+   * @param path A String representing the location of the desired image to be loaded
+   * @param name A String representing the name that the loaded image should go by in the model
+   * @throws IllegalArgumentException when the method is unable to write to the path or when an
+   *                                  error occurs during the method
+   */
   private void loadPPM(String path, String name) throws IllegalArgumentException {
     this.addImage(name, ImageUtil.readPPM(path));
   }
   
+  /**
+   * This method loads a PNG, JPG, JPEG, or BMP image from the computer into the model's image
+   * collection.
+   *
+   * @param path A String representing the location of the desired image to be loaded
+   * @param name A String representing the name that the loaded image should go by in the model
+   * @throws IllegalArgumentException when the method is unable to write to the path or when an
+   *                                  error occurs during the method
+   */
   private void loadElse(String path, String name) throws IllegalArgumentException {
     BufferedImage img;
     try {
@@ -294,80 +332,80 @@ public class IPModelImpl extends AIPModel {
   
   @Override
   public void filter(double[][] kernel, String imgName, String rename)
-          throws IllegalArgumentException {
+      throws IllegalArgumentException {
     imageExists(imgName);
-    if(kernel.length % 2 == 0 || kernel[0].length % 2 == 0 || kernel == null) {
+    if (kernel.length % 2 == 0 || kernel[0].length % 2 == 0 || kernel == null) {
       throw new IllegalArgumentException("Input a valid kernel!");
     }
-
+    
     PixelInfo[][] filteredImage = new PixelInfo[this.getHeight(imgName)][this.getWidth(imgName)];
-
-    for(int i = 0; i < this.getHeight(imgName); i++) {
-      for(int j = 0; j < this.getWidth(imgName); j++) {
-
+    
+    for (int i = 0; i < this.getHeight(imgName); i++) {
+      for (int j = 0; j < this.getWidth(imgName); j++) {
+        
         int filteredMax = this.getPixelInfo(imgName, i, j).get(Max);
         int filteredRed = filterPixel(Red, kernel, i, j, filteredMax, imgName);
         int filteredGreen = filterPixel(Green, kernel, i, j, filteredMax, imgName);
         int filteredBlue = filterPixel(Blue, kernel, i, j, filteredMax, imgName);
-
+        
         filteredImage[i][j] = new PixelInfo(filteredRed, filteredGreen, filteredBlue, filteredMax);
       }
     }
     this.addImage(rename, filteredImage);
   }
-
+  
   //performs the matrix calculation on a pixel for a given pixel component
   private int filterPixel(PixelComponents component, double[][] kernel,
                           int pRow, int pCol, int filteredMax, String imgName) {
-
+    
     double newValue = 0.00000;
-
+    
     int halfKernel = (kernel.length / 2);
-
-    for(int i = pRow - halfKernel; i <= pRow + halfKernel; i++) {
-      for(int j = pCol - halfKernel; j <= pCol + halfKernel; j++) {
-
-        if(checkPixelInBounds(i, j, imgName)) {
+    
+    for (int i = pRow - halfKernel; i <= pRow + halfKernel; i++) {
+      for (int j = pCol - halfKernel; j <= pCol + halfKernel; j++) {
+        
+        if (checkPixelInBounds(i, j, imgName)) {
           Map<PixelComponents, Integer> pixelInfoFiltered = this.getPixelInfo(imgName, i, j);
           int pixelValue = pixelInfoFiltered.get(component);
-
+          
           newValue += kernel[i - pRow + halfKernel][j - pCol + halfKernel] * pixelValue;
         }
       }
     }
-
+    
     int intNewValue = (int) (newValue);
-
-    if(intNewValue > 255) {
+    
+    if (intNewValue > 255) {
       intNewValue = 255;
-    } else if(intNewValue < 0) {
+    } else if (intNewValue < 0) {
       intNewValue = 0;
     }
-
+    
     return intNewValue;
   }
-
+  
   //checks if a given coordinate is within bounds on an image
   private boolean checkPixelInBounds(int pRow, int pCol, String imgName) {
     int height = this.getHeight(imgName);
     int width = this.getWidth(imgName);
     return pRow >= 0 && pRow < height && pCol >= 0 && pCol < width;
   }
-
-
+  
+  @Override
   public void colorTransformation(double[][] kernel, String imgName, String rename)
-          throws IllegalArgumentException {
+      throws IllegalArgumentException {
     imageExists(imgName);
-
+    
     PixelInfo[][] transformedImage = new PixelInfo[getHeight(imgName)][getWidth(imgName)];
-
-    for(int i = 0; i < transformedImage.length; i++) {
-      for(int j = 0; j < transformedImage[0].length; j++) {
-
+    
+    for (int i = 0; i < transformedImage.length; i++) {
+      for (int j = 0; j < transformedImage[0].length; j++) {
+        
         int transformedMax = this.getPixelInfo(imgName, i, j).get(Max);
-
+        
         int currRedVal = this.getPixelInfo(imgName, i, j).get(Red);
-        int currGreenVal =  this.getPixelInfo(imgName, i, j).get(Green);
+        int currGreenVal = this.getPixelInfo(imgName, i, j).get(Green);
         int currBlueVal = this.getPixelInfo(imgName, i, j).get(Blue);
 
         int[] currRGB = {currRedVal, currGreenVal, currBlueVal};
@@ -384,17 +422,17 @@ public class IPModelImpl extends AIPModel {
 
   //performs the change in value for each component of a PixelInfo
   private int valueTransform(double[] partOfKernel, int[] rgb) {
-
+  
     double newValue = 0;
-
-    for(int i = 0; i < partOfKernel.length; i++) {
-        newValue += partOfKernel[i] * rgb[i];
+    
+    for (int i = 0; i < partOfKernel.length; i++) {
+      newValue += partOfKernel[i] * rgb[i];
     }
-
+    
     int intNewValue = (int) newValue;
-    if(intNewValue > 255) {
+    if (intNewValue > 255) {
       intNewValue = 255;
-    } else if(intNewValue < 0) {
+    } else if (intNewValue < 0) {
       intNewValue = 0;
     }
     return intNewValue;
