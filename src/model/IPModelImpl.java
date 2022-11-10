@@ -398,9 +398,6 @@ public class IPModelImpl extends AIPModel {
     }
     return intNewValue;
   }
-
-
-  
   
   @Override
   public int getHeight(String imgName) throws IllegalArgumentException {

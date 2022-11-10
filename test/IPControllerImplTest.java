@@ -1113,6 +1113,94 @@ public class IPControllerImplTest {
   }
   
   @Test
+  public void testBlur() {
+    this.m1.load("res/image1.png", "image1");
+    
+    makeController("blur image1 image1blur q").startIP();
+    
+    PixelInfo[][] expected = new PixelInfo[][]{
+        {new PixelInfo(47, 0, 143, 255),
+            new PixelInfo(95, 0, 143, 255)},
+        {new PixelInfo(63, 0, 191, 255),
+            new PixelInfo(127, 0, 191, 255)},
+        {new PixelInfo(47, 0, 143, 255),
+            new PixelInfo(95, 0, 143, 255)}};
+    
+    for (int i = 0; i < this.m1.getHeight("image1blur"); i++) {
+      for (int j = 0; j < this.m1.getWidth("image1blur"); j++) {
+        assertEquals(this.m1.getPixelInfo("image1blur", i, j),
+            expected[i][j].getPixelInfo());
+      }
+    }
+  }
+  
+  @Test
+  public void testSharpen() {
+    this.m1.load("res/image1.png", "image1");
+  
+    makeController("sharpen image1 image1sharpen q").startIP();
+  
+    PixelInfo[][] expected = new PixelInfo[][]{
+        {new PixelInfo(95, 0, 255, 255),
+            new PixelInfo(255, 0, 255, 255)},
+        {new PixelInfo(191, 0, 255, 255),
+            new PixelInfo(255, 0, 255, 255)},
+        {new PixelInfo(95, 0, 255, 255),
+            new PixelInfo(255, 0, 255, 255)}};
+  
+    for (int i =  0; i < this.m1.getHeight("image1sharpen"); i++) {
+      for (int j = 0; j < this.m1.getWidth("image1sharpen"); j++) {
+        assertEquals(this.m1.getPixelInfo("image1sharpen", i, j),
+            expected[i][j].getPixelInfo());
+      }
+    }
+  }
+  
+  @Test
+  public void testGreyScaleLuma() {
+    this.m1.load("res/image1.png", "image1");
+  
+    makeController("greyscale-luma image1 image1luma q").startIP();
+  
+    PixelInfo[][] expected = new PixelInfo[][]{
+        {new PixelInfo(18, 18, 18, 255),
+            new PixelInfo(73, 73, 73, 255)},
+        {new PixelInfo(18, 18, 18, 255),
+            new PixelInfo(73, 73, 73, 255)},
+        {new PixelInfo(18, 18, 18, 255),
+            new PixelInfo(73, 73, 73, 255)}};
+  
+    for (int i =  0; i < this.m1.getHeight("image1luma"); i++) {
+      for (int j = 0; j < this.m1.getWidth("image1luma"); j++) {
+        assertEquals(this.m1.getPixelInfo("image1luma", i, j),
+            expected[i][j].getPixelInfo());
+      }
+    }
+  }
+  
+  @Test
+  public void testSepia() {
+    this.m1.load("res/image1.png", "image1");
+  
+    makeController("sepia image1 image1sep q").startIP();
+  
+    PixelInfo[][] expected = new PixelInfo[][]{
+        {new PixelInfo(48, 42, 33, 255),
+            new PixelInfo(148, 131, 102, 255)},
+        {new PixelInfo(48, 42, 33, 255),
+            new PixelInfo(148, 131, 102, 255)},
+        {new PixelInfo(48, 42, 33, 255),
+            new PixelInfo(148, 131, 102, 255)}};
+  
+    for (int i =  0; i < this.m1.getHeight("image1sep"); i++) {
+      for (int j = 0; j < this.m1.getWidth("image1sep"); j++) {
+        assertEquals(this.m1.getPixelInfo("image1sep", i, j),
+            expected[i][j].getPixelInfo());
+      }
+    }
+  }
+  
+  @Test
   public void testDealingWithBadInputs() {
     makeController("wow this is nothing and should be ignored but i have decided" +
         " to load res/image1.ppm image1 q").startIP();
