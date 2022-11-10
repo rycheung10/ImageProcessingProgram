@@ -184,7 +184,7 @@ public class IPControllerImpl implements IPController {
     this.commands.put("sharpen", sc ->
         new Filter(Matrices.sharpen, getStringInput(sc), getStringInput(sc)));
     this.commands.put("greyscale-luma", sc ->
-        new ColorTransformation(Matrices.greyscale_luma, getStringInput(sc), getStringInput(sc)));
+        new ColorTransformation(Matrices.greyscaleluma, getStringInput(sc), getStringInput(sc)));
     this.commands.put("sepia", sc ->
         new ColorTransformation(Matrices.sepia, getStringInput(sc), getStringInput(sc)));
   }

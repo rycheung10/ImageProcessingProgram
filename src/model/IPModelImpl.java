@@ -1,6 +1,6 @@
 package model;
 
-import java.awt.*;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -134,7 +134,7 @@ public class IPModelImpl implements IPModel {
    *
    * @param i An integer representing the value that should be checked.
    * @return An integer representing a valid RGB value. If the value is less than 0, return 0. If
-   * the value is greater than 255, return 255.
+   *         the value is greater than 255, return 255.
    */
   private int rgbInBounds(int i, Map<PixelComponents, Integer> p) {
     if (i < 0) {
@@ -299,7 +299,8 @@ public class IPModelImpl implements IPModel {
   }
   
   /**
-   * This method checks if a path's extension is a valid one that the program can handle
+   * This method checks if a path's extension is a valid one that the program can handle.
+   *
    * @param path A String representing the path to the desired image
    * @return A String representing the extension of the image after being determined to be valid
    * @throws IllegalArgumentException when an extension is unusable or non-existing
@@ -311,7 +312,7 @@ public class IPModelImpl implements IPModel {
     } else {
       throw new IllegalArgumentException("Unusable extension");
     }
-  
+    
     if (!(extension.equalsIgnoreCase(".ppm")
         || extension.equalsIgnoreCase(".jpg")
         || extension.equalsIgnoreCase(".jpeg")
@@ -390,35 +391,35 @@ public class IPModelImpl implements IPModel {
         int currRedVal = this.getPixelInfo(imgName, i, j).get(Red);
         int currGreenVal = this.getPixelInfo(imgName, i, j).get(Green);
         int currBlueVal = this.getPixelInfo(imgName, i, j).get(Blue);
-
+        
         int[] currRGB = {currRedVal, currGreenVal, currBlueVal};
-
+        
         int newRed = valueTransform(kernel[0], currRGB);
         int newGreen = valueTransform(kernel[1], currRGB);
         int newBlue = valueTransform(kernel[2], currRGB);
-
+        
         transformedImage[i][j] = new PixelInfo(newRed, newGreen, newBlue, transformedMax);
       }
     }
     this.addImage(rename, transformedImage);
   }
-
+  
   //performs the change in value for each component of a PixelInfo
   private int valueTransform(double[] partOfKernel, int[] rgb) {
-  
+    
     double newValue = 0;
     
     for (int i = 0; i < partOfKernel.length; i++) {
       newValue += partOfKernel[i] * rgb[i];
     }
-
+    
     return numInBounds(newValue);
   }
-
+  
   private int numInBounds(double num) {
-
+    
     int intNewValue = (int) num;
-
+    
     if (intNewValue > 255) {
       intNewValue = 255;
     } else if (intNewValue < 0) {
@@ -426,7 +427,7 @@ public class IPModelImpl implements IPModel {
     }
     return intNewValue;
   }
-
+  
   
   @Override
   public int getHeight(String imgName) throws IllegalArgumentException {

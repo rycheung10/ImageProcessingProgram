@@ -8,7 +8,7 @@ import model.IPModelImpl;
 import view.IPView;
 import view.IPViewImpl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * This class represents tests for the ImageProcessing class. More specifically, we are
