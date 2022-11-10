@@ -3,6 +3,8 @@ package view;
 
 import java.io.IOException;
 
+import model.IPModelState;
+
 /**
  * Class represents the implementation of the interface that creates the text view.
  */

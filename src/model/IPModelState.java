@@ -2,6 +2,8 @@ package model;
 
 import java.util.Map;
 
+import view.IPView;
+
 /**
  * This interface represents operations that can be used to monitor the state of an image
  * processing model, without changing it.

@@ -1248,4 +1248,6 @@ public class IPControllerImplTest {
     IPControllerImpl controller = new IPControllerImpl(this.m1, view, new StringReader("q"));
     controller.startIP();
   }
+  
+  
 }
