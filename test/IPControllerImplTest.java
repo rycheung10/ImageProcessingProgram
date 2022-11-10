@@ -103,7 +103,7 @@ public class IPControllerImplTest {
       makeController("load res/techsupport.ppm ts").startIP();
       fail("you fail");
     } catch (IllegalStateException e) {
-      assertEquals("What would you like to do?\nLoad success!\n" +
+      assertEquals("What would you like to do?\nload success!\n" +
           "What would you like to do?\n", this.a1.toString());
       assertEquals(188, this.m1.getHeight("ts"));
       assertEquals(250, this.m1.getWidth("ts"));
@@ -113,7 +113,7 @@ public class IPControllerImplTest {
   @Test
   public void testConstructorAfterCommandWithQ() {
     makeController("load res/image1.ppm image1 q").startIP();
-    assertEquals("What would you like to do?\nLoad success!\n" +
+    assertEquals("What would you like to do?\nload success!\n" +
         "What would you like to do?\nIP quit!", this.a1.toString());
     assertEquals(3, this.m1.getHeight("image1"));
     assertEquals(2, this.m1.getWidth("image1"));
@@ -166,7 +166,7 @@ public class IPControllerImplTest {
   @Test
   public void testQuit2() {
     makeController("load res/image1.ppm image1 q").startIP();
-    assertEquals("What would you like to do?\nLoad success!\n" +
+    assertEquals("What would you like to do?\nload success!\n" +
         "What would you like to do?\nIP quit!", this.a1.toString());
     assertEquals(3, this.m1.getHeight("image1"));
     assertEquals(2, this.m1.getWidth("image1"));
@@ -175,7 +175,7 @@ public class IPControllerImplTest {
   @Test
   public void testQuitAfterOneCommand() {
     makeController("load res/image1.ppm image1 q").startIP();
-    assertEquals("What would you like to do?\nLoad success!\n" +
+    assertEquals("What would you like to do?\nload success!\n" +
         "What would you like to do?\nIP quit!", this.a1.toString());
     assertEquals(3, this.m1.getHeight("image1"));
     assertEquals(2, this.m1.getWidth("image1"));
@@ -184,8 +184,8 @@ public class IPControllerImplTest {
   @Test
   public void testQuitAfterTwoCommands() {
     makeController("load res/techsupport.ppm ts red-component ts ts-red q").startIP();
-    assertEquals("What would you like to do?\nLoad success!\n" +
-        "What would you like to do?\nRed component greyscale success!\n" +
+    assertEquals("What would you like to do?\nload success!\n" +
+        "What would you like to do?\nred-component success!\n" +
         "What would you like to do?\nIP quit!", this.a1.toString());
     assertEquals(188, this.m1.getHeight("ts"));
     assertEquals(250, this.m1.getWidth("ts"));
@@ -236,8 +236,8 @@ public class IPControllerImplTest {
   @Test
   public void testCommandHandlerInvalidCommandArgumentsGiven() {
     makeController("load res/techsupport.ppm ts brighten oops q").startIP();
-    assertEquals("What would you like to do?\nLoad success!\nWhat would you like to do?\n" +
-            "Invalid command arguments given\nWhat would you like to do?\nIP quit!",
+    assertEquals("What would you like to do?\nload success!\nWhat would you like to do?\n" +
+            "Error: invalid command arguments given\nWhat would you like to do?\nIP quit!",
         this.a1.toString());
   }
   
@@ -247,7 +247,7 @@ public class IPControllerImplTest {
       makeController("load res/techsupport.ppm ts").startIP();
       fail("you fail");
     } catch (IllegalStateException e) {
-      assertEquals("What would you like to do?\nLoad success!\n" +
+      assertEquals("What would you like to do?\nload success!\n" +
           "What would you like to do?\n", this.a1.toString());
       assertEquals(188, this.m1.getHeight("ts"));
       assertEquals(250, this.m1.getWidth("ts"));
@@ -260,8 +260,8 @@ public class IPControllerImplTest {
       makeController("load res/techsupport.ppm ts brighten 10 ts ts-b").startIP();
       fail("you fail");
     } catch (IllegalStateException e) {
-      assertEquals("What would you like to do?\nLoad success!\n" +
-              "What would you like to do?\nBrighten success!\nWhat would you like to do?\n",
+      assertEquals("What would you like to do?\nload success!\n" +
+              "What would you like to do?\nbrighten success!\nWhat would you like to do?\n",
           this.a1.toString());
       assertEquals(188, this.m1.getHeight("ts"));
       assertEquals(250, this.m1.getWidth("ts"));
@@ -331,7 +331,7 @@ public class IPControllerImplTest {
       makeController("vertical-flip image3 flippedVertical").startIP();
       fail("you fail");
     } catch (IllegalStateException e) {
-      assertEquals("What would you like to do?\nVertical flip success!" +
+      assertEquals("What would you like to do?\nvertical-flip success!" +
           "\nWhat would you like to do?\n", this.a1.toString());
       assertEquals(4, this.m1.getHeight("image3"));
       assertEquals(3, this.m1.getWidth("image3"));
@@ -408,7 +408,7 @@ public class IPControllerImplTest {
       makeController("horizontal-flip image1 flippedHorizontal").startIP();
       fail("you fail");
     } catch (IllegalStateException e) {
-      assertEquals("What would you like to do?\nHorizontal flip success!" +
+      assertEquals("What would you like to do?\nhorizontal-flip success!" +
           "\nWhat would you like to do?\n", this.a1.toString());
       assertEquals(3, this.m1.getHeight("image1"));
       assertEquals(2, this.m1.getWidth("image1"));
@@ -474,7 +474,7 @@ public class IPControllerImplTest {
     try {
       makeController("red-component image1 image1red").startIP();
     } catch (IllegalStateException e) {
-      assertEquals("What would you like to do?\nRed component greyscale success!" +
+      assertEquals("What would you like to do?\nred-component success!" +
           "\nWhat would you like to do?\n", this.a1.toString());
       
       assertEquals(3, this.m1.getHeight("image1"));
@@ -541,7 +541,7 @@ public class IPControllerImplTest {
     try {
       makeController("green-component image1 image1green").startIP();
     } catch (IllegalStateException e) {
-      assertEquals("What would you like to do?\nGreen component greyscale success!" +
+      assertEquals("What would you like to do?\ngreen-component success!" +
           "\nWhat would you like to do?\n", this.a1.toString());
       
       assertEquals(3, this.m1.getHeight("image1"));
@@ -597,7 +597,7 @@ public class IPControllerImplTest {
     try {
       makeController("blue-component image1 image1blue").startIP();
     } catch (IllegalStateException e) {
-      assertEquals("What would you like to do?\nBlue component greyscale success!" +
+      assertEquals("What would you like to do?\nblue-component success!" +
           "\nWhat would you like to do?\n", this.a1.toString());
       
       assertEquals(3, this.m1.getHeight("image1"));
@@ -653,7 +653,7 @@ public class IPControllerImplTest {
     try {
       makeController("value-component image1 image1value").startIP();
     } catch (IllegalStateException e) {
-      assertEquals("What would you like to do?\nValue component greyscale success!" +
+      assertEquals("What would you like to do?\nvalue-component success!" +
           "\nWhat would you like to do?\n", this.a1.toString());
       
       assertEquals(3, this.m1.getHeight("image1"));
@@ -705,7 +705,7 @@ public class IPControllerImplTest {
     try {
       makeController("intensity-component image1 image1intensity").startIP();
     } catch (IllegalStateException e) {
-      assertEquals("What would you like to do?\nIntensity component greyscale success!" +
+      assertEquals("What would you like to do?\nintensity-component success!" +
           "\nWhat would you like to do?\n", this.a1.toString());
       
       assertEquals(3, this.m1.getHeight("image1"));
@@ -768,7 +768,7 @@ public class IPControllerImplTest {
     try {
       makeController("luma-component image1 image1luma").startIP();
     } catch (IllegalStateException e) {
-      assertEquals("What would you like to do?\nLuma component greyscale success!" +
+      assertEquals("What would you like to do?\nluma-component success!" +
           "\nWhat would you like to do?\n", this.a1.toString());
       
       assertEquals(3, this.m1.getHeight("image1"));
@@ -804,9 +804,9 @@ public class IPControllerImplTest {
   public void testSave1() {
     makeController("load res/techsupport.ppm ts green-component ts tsgreen " +
         "save res/techsupportgreen.ppm tsgreen q").startIP();
-    assertEquals("What would you like to do?\nLoad success!\n" +
-            "What would you like to do?\nGreen component greyscale success!\n" +
-            "What would you like to do?\nImage saved!\nWhat would you like to do?\nIP quit!",
+    assertEquals("What would you like to do?\nload success!\n" +
+            "What would you like to do?\ngreen-component success!\n" +
+            "What would you like to do?\nsave success!\nWhat would you like to do?\nIP quit!",
         this.a1.toString());
     assertTrue(new File("res/techsupportgreen.ppm").exists());
     
@@ -843,9 +843,9 @@ public class IPControllerImplTest {
   public void testSave2() {
     makeController("load res/techsupport.ppm ts blue-component ts tsblue " +
         "save res/techsupportblue.ppm tsblue q").startIP();
-    assertEquals("What would you like to do?\nLoad success!\n" +
-            "What would you like to do?\nBlue component greyscale success!\n" +
-            "What would you like to do?\nImage saved!\nWhat would you like to do?\nIP quit!",
+    assertEquals("What would you like to do?\nload success!\n" +
+            "What would you like to do?\nblue-component success!\n" +
+            "What would you like to do?\nsave success!\nWhat would you like to do?\nIP quit!",
         this.a1.toString());
     assertTrue(new File("res/techsupportblue.ppm").exists());
     
@@ -882,9 +882,9 @@ public class IPControllerImplTest {
   public void testSave3() {
     makeController("load res/techsupport.ppm ts value-component ts tsvalue " +
         "save res/techsupportvalue.ppm tsvalue q").startIP();
-    assertEquals("What would you like to do?\nLoad success!\n" +
-            "What would you like to do?\nValue component greyscale success!\n" +
-            "What would you like to do?\nImage saved!\nWhat would you like to do?\nIP quit!",
+    assertEquals("What would you like to do?\nload success!\n" +
+            "What would you like to do?\nvalue-component success!\n" +
+            "What would you like to do?\nsave success!\nWhat would you like to do?\nIP quit!",
         this.a1.toString());
     assertTrue(new File("res/techsupportvalue.ppm").exists());
     
@@ -921,9 +921,9 @@ public class IPControllerImplTest {
   public void testSave4() {
     makeController("load res/techsupport.ppm ts intensity-component ts tsintensity " +
         "save res/techsupportintensity.ppm tsintensity q").startIP();
-    assertEquals("What would you like to do?\nLoad success!\n" +
-            "What would you like to do?\nIntensity component greyscale success!\n" +
-            "What would you like to do?\nImage saved!\nWhat would you like to do?\nIP quit!",
+    assertEquals("What would you like to do?\nload success!\n" +
+            "What would you like to do?\nintensity-component success!\n" +
+            "What would you like to do?\nsave success!\nWhat would you like to do?\nIP quit!",
         this.a1.toString());
     assertTrue(new File("res/techsupportintensity.ppm").exists());
     
@@ -960,9 +960,9 @@ public class IPControllerImplTest {
   public void testSave5() {
     makeController("load res/techsupport.ppm ts luma-component ts tsluma " +
         "save res/techsupportluma.ppm tsluma q").startIP();
-    assertEquals("What would you like to do?\nLoad success!\n" +
-            "What would you like to do?\nLuma component greyscale success!\n" +
-            "What would you like to do?\nImage saved!\nWhat would you like to do?\nIP quit!",
+    assertEquals("What would you like to do?\nload success!\n" +
+            "What would you like to do?\nluma-component success!\n" +
+            "What would you like to do?\nsave success!\nWhat would you like to do?\nIP quit!",
         this.a1.toString());
     assertTrue(new File("res/techsupportluma.ppm").exists());
     
@@ -999,9 +999,9 @@ public class IPControllerImplTest {
   public void testSave6() {
     makeController("load res/techsupport.ppm ts brighten -100 ts tsdarken " +
         "save res/techsupportdarken.ppm tsdarken q").startIP();
-    assertEquals("What would you like to do?\nLoad success!\n" +
-            "What would you like to do?\nBrighten success!\n" +
-            "What would you like to do?\nImage saved!\nWhat would you like to do?\nIP quit!",
+    assertEquals("What would you like to do?\nload success!\n" +
+            "What would you like to do?\nbrighten success!\n" +
+            "What would you like to do?\nsave success!\nWhat would you like to do?\nIP quit!",
         this.a1.toString());
     assertTrue(new File("res/techsupportdarken.ppm").exists());
     
@@ -1038,9 +1038,9 @@ public class IPControllerImplTest {
   public void testSave7() {
     makeController("load res/techsupport.ppm ts vertical-flip ts tsvert " +
         "save res/techsupportvertical.ppm tsvert q").startIP();
-    assertEquals("What would you like to do?\nLoad success!\n" +
-            "What would you like to do?\nVertical flip success!\n" +
-            "What would you like to do?\nImage saved!\nWhat would you like to do?\nIP quit!",
+    assertEquals("What would you like to do?\nload success!\n" +
+            "What would you like to do?\nvertical-flip success!\n" +
+            "What would you like to do?\nsave success!\nWhat would you like to do?\nIP quit!",
         this.a1.toString());
     assertTrue(new File("res/techsupportvertical.ppm").exists());
     
@@ -1077,9 +1077,9 @@ public class IPControllerImplTest {
   public void testSave8() {
     makeController("load res/techsupport.ppm ts horizontal-flip ts tshori " +
         "save res/techsupporthorizontal.ppm tshori q").startIP();
-    assertEquals("What would you like to do?\nLoad success!\n" +
-            "What would you like to do?\nHorizontal flip success!\n" +
-            "What would you like to do?\nImage saved!\nWhat would you like to do?\nIP quit!",
+    assertEquals("What would you like to do?\nload success!\n" +
+            "What would you like to do?\nhorizontal-flip success!\n" +
+            "What would you like to do?\nsave success!\nWhat would you like to do?\nIP quit!",
         this.a1.toString());
     assertTrue(new File("res/techsupporthorizontal.ppm").exists());
     
@@ -1231,7 +1231,7 @@ public class IPControllerImplTest {
         "What would you like to do?\n" +
         "Invalid command given: to\n" +
         "What would you like to do?\n" +
-        "Load success!\n" +
+        "load success!\n" +
         "What would you like to do?\n" +
         "IP quit!", this.a1.toString());
     for (int i = 0; i < this.m1.getHeight("image1"); i++) {

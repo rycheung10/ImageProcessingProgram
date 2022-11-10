@@ -24,7 +24,7 @@ public class ImageProcessing {
         "sepia i1 nycsep " +
         "save /users/ry.cheung/desktop/luma.txt nycsep q");
     Readable re = new InputStreamReader(System.in);
-    IPController c1 = new IPControllerImpl(m1, v1, is);
+    IPController c1 = new IPControllerImpl(m1, v1, re);
     
     c1.startIP();
   }

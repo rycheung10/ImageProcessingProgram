@@ -2,7 +2,7 @@ import org.junit.Test;
 
 import model.PixelInfo;
 
-import static controller.ImageUtil.readPPM;
+import static model.ImageUtil.readPPM;
 import static org.junit.Assert.assertEquals;
 
 /**
