@@ -154,25 +154,9 @@ public class IPModelImpl implements IPModel {
     int height = this.getHeight(imgName);
     int width = this.getWidth(imgName);
     
-    // check that extension is valid (.ppm, .jpg, .jpeg, .png, .bmp)
-    String extension;
-    if (path.lastIndexOf(".") > 0) {
-      extension = path.substring(path.lastIndexOf("."));
-    } else {
-      throw new IllegalArgumentException("Unusable extension");
-    }
+    String extension = checkExtension(path);
     
-    if (!(extension.equalsIgnoreCase(".ppm")
-        || extension.equalsIgnoreCase(".txt")
-        || extension.equalsIgnoreCase(".jpg")
-        || extension.equalsIgnoreCase(".jpeg")
-        || extension.equalsIgnoreCase(".png")
-        || extension.equalsIgnoreCase(".bmp"))) {
-      throw new IllegalArgumentException("Unusable extension");
-    }
-    
-    if (extension.equalsIgnoreCase(".ppm")
-        || extension.equalsIgnoreCase(".txt")) {
+    if (extension.equalsIgnoreCase(".ppm")) {
       this.savePPM(path, imgName, height, width);
     } else {
       this.saveElse(path, imgName, height, width);
@@ -258,21 +242,7 @@ public class IPModelImpl implements IPModel {
   
   @Override
   public void load(String path, String name) throws IllegalArgumentException {
-    // check that extension is valid (.ppm, .jpg, .jpeg, .png, .bmp)
-    String extension;
-    if (path.lastIndexOf(".") > 0) {
-      extension = path.substring(path.lastIndexOf("."));
-    } else {
-      throw new IllegalArgumentException("Unusable extension");
-    }
-    
-    if (!(extension.equalsIgnoreCase(".ppm")
-        || extension.equalsIgnoreCase(".jpg")
-        || extension.equalsIgnoreCase(".jpeg")
-        || extension.equalsIgnoreCase(".png")
-        || extension.equalsIgnoreCase(".bmp"))) {
-      throw new IllegalArgumentException("Unusable extension");
-    }
+    String extension = checkExtension(path);
     
     if (extension.equalsIgnoreCase(".ppm")) {
       this.loadPPM(path, name);
@@ -326,6 +296,30 @@ public class IPModelImpl implements IPModel {
       }
     }
     this.addImage(name, loadedPixels);
+  }
+  
+  /**
+   * This method checks if a path's extension is a valid one that the program can handle
+   * @param path A String representing the path to the desired image
+   * @return A String representing the extension of the image after being determined to be valid
+   * @throws IllegalArgumentException when an extension is unusable or non-existing
+   */
+  private String checkExtension(String path) throws IllegalArgumentException {
+    String extension;
+    if (path.lastIndexOf(".") > 0) {
+      extension = path.substring(path.lastIndexOf("."));
+    } else {
+      throw new IllegalArgumentException("Unusable extension");
+    }
+  
+    if (!(extension.equalsIgnoreCase(".ppm")
+        || extension.equalsIgnoreCase(".jpg")
+        || extension.equalsIgnoreCase(".jpeg")
+        || extension.equalsIgnoreCase(".png")
+        || extension.equalsIgnoreCase(".bmp"))) {
+      throw new IllegalArgumentException("Unusable extension");
+    }
+    return extension;
   }
   
   @Override

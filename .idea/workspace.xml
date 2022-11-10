@@ -3,21 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5fc8b992-2743-4992-9e92-ada7cc27bcd4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/ImageProcessing.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/ImageProcessing.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/IPControllerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/IPControllerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/ImageUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/model/AIPModel.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/model/IPModelImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/model/IPModelImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/AIPView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPViewImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPViewImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/imageProcessingProgram/IPControllerImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/imageProcessingProgram/IPControllerImplTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/imageProcessingProgram/ImageUtilTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/imageProcessingProgram/ImageUtilTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageProcessing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageProcessing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/IPControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/IPControllerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ImageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ImageUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/imageProcessingProgram/IPModelImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/imageProcessingProgram/IPModelImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/techsupport.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/techsupport.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/IPModelImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IPModelImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/IPControllerImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/IPControllerImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ImageUtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageUtilTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,18 +42,10 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.IPControllerImplTest">
+  <component name="RunManager" selected="JUnit.IPModelImplTest.test">
     <configuration name="ImageProcessing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ImageProcessing" />
       <module name="imageProcessingProgram" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in imageProcessingProgram" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="imageProcessingProgram" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -88,11 +69,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IPModelImplTest.testBlur" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="IPModelImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="imageProcessingProgram" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="IPModelImplTest" />
-      <option name="METHOD_NAME" value="testBlur" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IPModelImplTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="imageProcessingProgram" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="IPModelImplTest" />
+      <option name="METHOD_NAME" value="test" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -100,11 +90,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.IPModelImplTest.test" />
+        <item itemvalue="JUnit.IPModelImplTest" />
         <item itemvalue="JUnit.IPControllerImplTest" />
         <item itemvalue="Application.ImageProcessing" />
         <item itemvalue="JUnit.IPControllerImplTest.testCommandHandlerInvalidCommandArgumentsGiven" />
-        <item itemvalue="JUnit.IPModelImplTest.testBlur" />
-        <item itemvalue="JUnit.All in imageProcessingProgram" />
       </list>
     </recent_temporary>
   </component>
