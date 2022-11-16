@@ -40,7 +40,8 @@ public class IPControllerImpl implements IPController {
   private final Map<String, Function<Scanner, IPCommand>> commands;
   
   /**
-   * Constructor that represents a controller .
+   * This first constructor takes a model, view, and readable to create a controller
+   * that operates with all three objects in cohesion and appropriately.
    *
    * @param model an image processing model
    * @param view  an image processing textview
@@ -59,7 +60,7 @@ public class IPControllerImpl implements IPController {
     this.input = input;
     this.programRunning = true;
     
-    commands = new HashMap<>();
+    this.commands = new HashMap<>();
     this.loadCommands();
   }
   
@@ -143,7 +144,7 @@ public class IPControllerImpl implements IPController {
    * @param sc A Scanner representing the user's inputs
    * @return An integer representing the next integer the user inputted into the scanner
    * @throws IllegalArgumentException If the readable is out of arguments or if the next input
-   *                               is not an integer
+   *                                  is not an integer
    */
   private int getIntInput(Scanner sc) throws IllegalArgumentException {
     try {
