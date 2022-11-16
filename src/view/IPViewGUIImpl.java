@@ -3,13 +3,21 @@ package view;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.Map;
 
 import javax.swing.*;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import controller.IPControllerGUI;
+import model.IPModel;
+
+import static model.IPModelState.PixelComponents.Blue;
+import static model.IPModelState.PixelComponents.Green;
+import static model.IPModelState.PixelComponents;
+import static model.IPModelState.PixelComponents.Red;
 
 /**
  * This class represents a view of the IP program with a GUI.
@@ -17,19 +25,29 @@ import controller.IPControllerGUI;
 public class IPViewGUIImpl extends JFrame implements IPViewGUI, ActionListener {
   
   private final String[] buttons;
+  private final IPModel model;
   private IPControllerGUI controllerGUI;
+  
+  private final JLabel imgLabel;
+  private final JPanel histogramPanel;
+  private final JPanel buttonsPanel;
   
   /**
    * This first constructor creates the view with a GUI of an IP program.
    */
-  public IPViewGUIImpl() {
+  public IPViewGUIImpl(IPModel model) {
     super();
     
+    // initialize model
+    this.model = model;
+    
+    // create list of buttons required
     this.buttons = new String[]{"load", "save", "brighten", "darken", "vertical-flip",
         "horizontal-flip", "red-component", "green-component", "blue-component",
         "value-component", "intensity-component", "luma-component", "blur",
         "sharpen", "greyscale-luma", "sepia"};
     
+    // set up JFrame
     this.setTitle("IP Program");
     this.setSize(1500, 1000);
     this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -43,9 +61,10 @@ public class IPViewGUIImpl extends JFrame implements IPViewGUI, ActionListener {
 //    |                       ||     buttonsPanel      |
 //    |_______________________||_______________________|
     
-    // place panel to left (for image)
-    JPanel imgPanel = new JPanel();
-    this.add(imgPanel);
+    // place panel to left (for image) and make it scrollable
+    this.imgLabel = new JLabel();
+    JScrollPane scroll = new JScrollPane(this.imgLabel);
+    this.add(scroll);
     
     // place panel to the right (for histogram and buttons)
     JPanel rightPanel = new JPanel();
@@ -53,20 +72,22 @@ public class IPViewGUIImpl extends JFrame implements IPViewGUI, ActionListener {
     this.add(rightPanel);
     
     // place panel to top right (for histogram)
-    JPanel histogramPanel = new JPanel();
-    rightPanel.add(histogramPanel);
+    this.histogramPanel = new JPanel();
+    rightPanel.add(this.histogramPanel);
     
     // place panel to bottom right (for buttons)
-    JPanel buttonsPanel = new JPanel();
-    buttonsPanel.setLayout(new GridLayout(4, 4));
-    rightPanel.add(buttonsPanel);
+    this.buttonsPanel = new JPanel();
+    this.buttonsPanel.setLayout(new GridLayout(4, 4));
+    rightPanel.add(this.buttonsPanel);
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////
     
     // manage panels
     
     // manage image panel
-    imgPanel.setBackground(Color.yellow);
-    JLabel imageLabel = new JLabel("imgPanel");
-    imgPanel.add(imageLabel);
+//    imgPanel.setBackground(Color.yellow);
+//    JLabel imageLabel = new JLabel("imgPanel");
+//    imgPanel.add(imageLabel);
     
     // manage histogram panel
     histogramPanel.setBackground(Color.green);
@@ -95,6 +116,27 @@ public class IPViewGUIImpl extends JFrame implements IPViewGUI, ActionListener {
   @Override
   public void renderPopUpMessage(String body, String title, int type) {
     JOptionPane.showMessageDialog(this, body, title, type);
+  }
+  
+  @Override
+  public void drawImage(String imgName) throws IllegalArgumentException {
+    int width = this.model.getWidth(imgName);
+    int height = this.model.getHeight(imgName);
+    BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+    
+    for (int i = 0; i < height; i++) {
+      for (int j = 0; j < width; j++) {
+        Map<PixelComponents, Integer> thisPixelInfo = this.model.getPixelInfo(imgName, i, j);
+        int red = thisPixelInfo.get(Red);
+        int green = thisPixelInfo.get(Green);
+        int blue = thisPixelInfo.get(Blue);
+        
+        int rgb = (red  << 16) | (green << 8) | (blue << 0);
+        
+        img.setRGB(j, i, rgb);
+      }
+    }
+    this.imgLabel.setIcon(new ImageIcon(img));
   }
   
   @Override

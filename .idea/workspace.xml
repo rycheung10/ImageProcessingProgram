@@ -7,7 +7,8 @@
       <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/ImageProcessingWGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/ImageProcessingWGUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPViewGUIImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPViewGUIImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ImageProcessingWGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageProcessingWGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/IPControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/IPControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/IPControllerGUIImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/IPControllerGUIImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/IPViewGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/IPViewGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/IPViewGUIImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/IPViewGUIImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -137,7 +138,7 @@
       <workItem from="1667587431270" duration="33000" />
       <workItem from="1668487023280" duration="9000" />
       <workItem from="1668536298071" duration="2309000" />
-      <workItem from="1668553362376" duration="17729000" />
+      <workItem from="1668553362376" duration="22702000" />
     </task>
     <servers />
   </component>

@@ -41,9 +41,12 @@ public class IPControllerGUIImpl implements IPControllerGUI {
    * @param model An IPModel that represents the model that should be operated on.
    * @param view  An IPViewGUI that represents the view that should represent the model
    *              appropriately and display changes made via the controller.
+   * @throws IllegalArgumentException when a given parameter is null.
    */
-  public IPControllerGUIImpl(IPModel model, IPViewGUI view) {
-    // check for null inputs
+  public IPControllerGUIImpl(IPModel model, IPViewGUI view) throws IllegalArgumentException {
+    if (model == null || view == null) {
+      throw new IllegalArgumentException("null parameters given");
+    }
     this.model = model;
     this.view = view;
     this.commands = new HashMap<>();
@@ -72,6 +75,11 @@ public class IPControllerGUIImpl implements IPControllerGUI {
         command = cmd.apply(specialArgument);
         command.execute(this.model);
         // because command successfully went through, an image exists for sure at this stage
+        
+        // draw the image
+        this.view.drawImage("image");
+        
+        // give a success message
         this.renderPopUpMessage(method + " success!", "Success",
             JOptionPane.INFORMATION_MESSAGE);
       } catch (IllegalArgumentException e) {

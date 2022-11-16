@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.image.BufferedImage;
+
 import controller.IPControllerGUI;
 
 /**
@@ -31,4 +33,14 @@ public interface IPViewGUI {
    *              error, etc)
    */
   void renderPopUpMessage(String body, String title, int type);
+  
+  /**
+   * This method retrieves an image from the view's model based on the given String and draws it
+   * onto the GUI for the user to see.
+   *
+   * @param imgName A String representing the name of the desired image to draw onto the GUI.
+   * @throws IllegalArgumentException when the given String name cannot be found in
+   *                                  the view's model.
+   */
+  void drawImage(String imgName) throws IllegalArgumentException;
 }
