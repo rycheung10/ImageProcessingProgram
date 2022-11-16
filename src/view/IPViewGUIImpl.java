@@ -1,30 +1,47 @@
 package view;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.*;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
-import model.IPModelState;
+import controller.IPControllerGUI;
 
 /**
- * This class represents a view
+ * This class represents a view of the IP program with a GUI.
  */
-public class IPViewGUIImpl extends JFrame {
+public class IPViewGUIImpl extends JFrame implements IPViewGUI, ActionListener {
   
-  public IPViewGUIImpl(IPModelState model) {
+  private final String[] buttons;
+  private IPControllerGUI controllerGUI;
+  
+  /**
+   * This first constructor creates the view with a GUI of an IP program.
+   */
+  public IPViewGUIImpl() {
     super();
+    
+    this.buttons = new String[]{"load", "save", "brighten", "darken", "vertical-flip",
+        "horizontal-flip", "red-component", "green-component", "blue-component",
+        "value-component", "intensity-component", "luma-component", "blur",
+        "sharpen", "greyscale-luma", "sepia"};
+    
     this.setTitle("IP Program");
     this.setSize(1500, 1000);
     this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     
     // create the layout of the GUI
     this.setLayout(new GridLayout(1, 2));
-    
-//    |-----------------------|  |-----------------------|
-//    |                       |  |    histogramPanel     |
-//    |       imgPanel        |  |------rightPanel-------|
-//    |                       |  |     buttonsPanel      |
-//    |_______________________|  |_______________________|
+
+//    |-----------------------||-----------------------|
+//    |                       ||    histogramPanel     |
+//    |       imgPanel        ||------rightPanel-------|
+//    |                       ||     buttonsPanel      |
+//    |_______________________||_______________________|
     
     // place panel to left (for image)
     JPanel imgPanel = new JPanel();
@@ -45,7 +62,7 @@ public class IPViewGUIImpl extends JFrame {
     rightPanel.add(buttonsPanel);
     
     // manage panels
-
+    
     // manage image panel
     imgPanel.setBackground(Color.yellow);
     JLabel imageLabel = new JLabel("imgPanel");
@@ -57,43 +74,86 @@ public class IPViewGUIImpl extends JFrame {
     histogramPanel.add(histogramLabel);
     
     // manage buttons panel
-    JButton loadButton = new JButton("load");
-    buttonsPanel.add(loadButton);
-    JButton saveButton = new JButton("save");
-    buttonsPanel.add(saveButton);
-    JButton brightenButton = new JButton("brighten");
-    buttonsPanel.add(brightenButton);
-    JButton darkenButton = new JButton("darken");
-    buttonsPanel.add(darkenButton);
-    JButton verticalFlipButton = new JButton("vertical-flip");
-    buttonsPanel.add(verticalFlipButton);
-    JButton horizontalFlipButton = new JButton("horizontal-flip");
-    buttonsPanel.add(horizontalFlipButton);
-    JButton redComponentButton = new JButton("red-component");
-    buttonsPanel.add(redComponentButton);
-    JButton greenComponentButton = new JButton("green-component");
-    buttonsPanel.add(greenComponentButton);
-    JButton blueComponentButton = new JButton("blue-component");
-    buttonsPanel.add(blueComponentButton);
-    JButton valueComponentButton = new JButton("value-component");
-    buttonsPanel.add(valueComponentButton);
-    JButton intensityComponentButton = new JButton("intensity-component");
-    buttonsPanel.add(intensityComponentButton);
-    JButton lumaComponentButton = new JButton("luma-component");
-    buttonsPanel.add(lumaComponentButton);
-    JButton blurButton = new JButton("blur");
-    buttonsPanel.add(blurButton);
-    JButton sharpenButton = new JButton("sharpen");
-    buttonsPanel.add(sharpenButton);
-    JButton greyscaleLumaButton = new JButton("greyscale-luma");
-    buttonsPanel.add(greyscaleLumaButton);
-    JButton sepiaButton = new JButton("sepia");
-    buttonsPanel.add(sepiaButton);
-    
-    
-    
-    
-    
+    for (String button : this.buttons) {
+      JButton newButton = new JButton(button);
+      newButton.setActionCommand(button);
+      newButton.addActionListener(this);
+      buttonsPanel.add(newButton);
+    }
+  }
+  
+  @Override
+  public void controllerGUI(IPControllerGUI controller) {
+    this.controllerGUI = controller;
+  }
+  
+  @Override
+  public void seeGUI() {
     this.setVisible(true);
+  }
+  
+  @Override
+  public void renderPopUpMessage(String body, String title, int type) {
+    JOptionPane.showMessageDialog(this, body, title, type);
+  }
+  
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    String command = e.getActionCommand();
+    String specialArgument = "";
+    
+    switch (command) {
+      case "load":
+        specialArgument = this.browseFiles(true);
+        break;
+      case "save":
+        specialArgument = this.browseFiles(false);
+        break;
+      case "brighten":
+        specialArgument = JOptionPane.showInputDialog("Enter amount to brighten:");
+        break;
+      case "darken":
+        specialArgument = JOptionPane.showInputDialog("Enter amount to darken:");
+        break;
+      default:
+        break;
+    }
+    
+    this.controllerGUI.commandHandler(command, specialArgument);
+    
+  }
+  
+  /**
+   * This method allows the user to browse through files to either upload or save an image
+   * appropriately.
+   *
+   * @param load A boolean representing if the method should help a user load an image (true)
+   *             or save an image (false)
+   * @return A String representing the path of a file that has either been selected to be
+   * uploaded or the desired saving destination.
+   */
+  private String browseFiles(boolean load) {
+    
+    JFileChooser fileChooser = new JFileChooser();
+    
+    FileNameExtensionFilter filter = new FileNameExtensionFilter(
+        "ppm, png, jpg, jpeg, bmp images", "ppm", "png", "jpg", "jpeg", "bmp");
+    
+    fileChooser.setFileFilter(filter);
+    
+    int valid;
+    
+    if (load) {
+      valid = fileChooser.showOpenDialog(this);
+    } else {
+      valid = fileChooser.showSaveDialog(this);
+    }
+    
+    if (valid == JFileChooser.APPROVE_OPTION) {
+      File f = fileChooser.getSelectedFile();
+      return f.getAbsolutePath();
+    } else {
+      return "";
+    }
   }
 }
