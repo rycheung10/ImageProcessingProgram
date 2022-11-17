@@ -13,13 +13,17 @@ public class IPHistogramImpl extends JPanel implements IPHistogram{
   ArrayList<DataPoint> blueBarsData;
   ArrayList<DataPoint> intensityBarsData;
 
-  public IPHistogramImpl(ArrayList<DataPoint> redBarsData, ArrayList<DataPoint> greenBarsData,
-                         ArrayList<DataPoint> blueBarsData, ArrayList<DataPoint> intensityBarsData) {
+  int height;
+  int width;
 
-    this.redBarsData = redBarsData;
-    this.greenBarsData = greenBarsData;
-    this.blueBarsData = blueBarsData;
-    this.intensityBarsData = intensityBarsData;
+  public IPHistogramImpl(int height, int width) {
+
+    this.redBarsData = new ArrayList<DataPoint>();
+    this.greenBarsData = new ArrayList<DataPoint>();
+    this.blueBarsData = new ArrayList<DataPoint>();
+    this.intensityBarsData = new ArrayList<DataPoint>();
+    this.height = height;
+    this.width = width;
   }
 
 
