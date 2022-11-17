@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5fc8b992-2743-4992-9e92-ada7cc27bcd4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/view/DataPoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/IPHistogram.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/IPHistogramImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/imageProcessingProgram_jar/imageProcessingProgram.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/imageProcessingProgram_jar/imageProcessingProgram.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/ImageProcessingWGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/ImageProcessingWGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPViewGUIImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPViewGUIImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageProcessingWGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageProcessingWGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/IPControllerGUIImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/IPControllerGUIImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/IPViewGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/IPViewGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/IPViewGUIImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/IPViewGUIImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,9 +15,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit4 Test Class" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -42,34 +37,22 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/ry.cheung/Desktop/CS3500/Image Processing/ImageProcessingProgram/res&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;
+    &quot;last_opened_file_path&quot;: &quot;/Users/ry.cheung/Desktop/CS3500/Image Processing/ImageProcessingProgram&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/res" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/res" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Application.ImageProcessingWGUI">
-    <configuration name="ImageProcessingWGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ImageProcessingWGUI" />
+  <component name="RunManager" selected="Application.ImageProcessing">
+    <configuration name="ImageProcessing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ImageProcessing" />
       <module name="imageProcessingProgram" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in imageProcessingProgram" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="imageProcessingProgram" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -83,47 +66,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IPModelImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="IPModelImplTest.testBlur" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="imageProcessingProgram" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="IPModelImplTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="testBlur" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IPViewImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ImageUtilTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="imageProcessingProgram" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="IPViewImplTest" />
+      <option name="MAIN_CLASS_NAME" value="ImageUtilTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PixelInfoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="imageProcessingProgram" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="PixelInfoTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Application.ImageProcessingWGUI" />
-      <item itemvalue="JUnit.IPViewImplTest" />
-      <item itemvalue="JUnit.PixelInfoTest" />
-      <item itemvalue="JUnit.IPControllerImplTest" />
-      <item itemvalue="JUnit.IPModelImplTest" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ImageProcessingWGUI" />
-        <item itemvalue="JUnit.PixelInfoTest" />
-        <item itemvalue="JUnit.IPViewImplTest" />
+        <item itemvalue="Application.ImageProcessing" />
+        <item itemvalue="JUnit.IPModelImplTest.testBlur" />
+        <item itemvalue="JUnit.All in imageProcessingProgram" />
+        <item itemvalue="JUnit.ImageUtilTest" />
         <item itemvalue="JUnit.IPControllerImplTest" />
-        <item itemvalue="JUnit.IPModelImplTest" />
       </list>
     </recent_temporary>
   </component>
@@ -136,9 +104,6 @@
       <option name="presentableId" value="Default" />
       <updated>1667587426243</updated>
       <workItem from="1667587431270" duration="33000" />
-      <workItem from="1668487023280" duration="9000" />
-      <workItem from="1668536298071" duration="2309000" />
-      <workItem from="1668553362376" duration="22702000" />
     </task>
     <servers />
   </component>
@@ -155,9 +120,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>
