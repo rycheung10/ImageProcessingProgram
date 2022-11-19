@@ -16,18 +16,27 @@ import static model.IPModelState.PixelComponents.Intensity;
 import static model.IPModelState.PixelComponents.Red;
 
 //!!!!!!!! each histogram graph is 375 x 250
+
+/**
+ * Represents the implementation of the creation of the four histogram graphs for a given image
+ */
 public class IPHistogramImpl extends JPanel implements IPHistogram {
 
-  ArrayList<DataPoint> redBarsData;
-  ArrayList<DataPoint> greenBarsData;
-  ArrayList<DataPoint> blueBarsData;
-  ArrayList<DataPoint> intensityBarsData;
+  private final ArrayList<DataPoint> redBarsData;
+  private final ArrayList<DataPoint> greenBarsData;
+  private final ArrayList<DataPoint> blueBarsData;
+  private final ArrayList<DataPoint> intensityBarsData;
+  private final IPModel model;
+  private final int height;
+  private final int width;
 
-  IPModel model;
-
-  int height;
-  int width;
-
+  /**
+   * Represents the constructor to create histogram models
+   *
+   * @param height height of each histogram
+   * @param width width of each histogram
+   * @param model an IPModel object
+   */
   public IPHistogramImpl(int height, int width, IPModel model) {
 
     this.redBarsData = new ArrayList<DataPoint>();
@@ -40,8 +49,6 @@ public class IPHistogramImpl extends JPanel implements IPHistogram {
 
   }
 
-
-  //probably have to adjust the height (currently its like a percentage out of 100)
   @Override
   public void createHistogramModel(String imgName) {
     Map<Integer, Integer> redData = collectData(Red, imgName);
@@ -98,5 +105,4 @@ public class IPHistogramImpl extends JPanel implements IPHistogram {
     }
     return data;
   }
-
 }
