@@ -28,11 +28,23 @@ coupled with the command design pattern that allows for minimal coupling between
     - To utilize the command design pattern, the IPControllerImpl uses lambda functions to execute
       the commands from a Map
 - Added support to load and save new file types (.png, .jpg/.jpeg, .bmp)
-- Added functionality in the main ImageProcessing class and method in order to take in command line arguments
-  - A valid command line argument would be: "-file name-of-script.txt"
+- Added functionality in the main ImageProcessing class and method in order to take in command line
+  arguments
+    - A valid command line argument would be: "-file name-of-script.txt"
 - Created a jar file that can run the program itself.
 - The required jar file is named ImageProcessing.jar and can be found in the res folder.
 - The required script file is named script.txt and can be found in the res folder.
+
+<br>________________________________________________________________________________________________
+
+#### Changes made since Assignment 5:
+
+- Added a new view implementation of the Image processing program
+    - GUI implementation allows for the user to click button commands to make changes to desired
+      image
+    - Along with the GUI implementation, four histograms are displayed in the top right corner to
+      visualize the distribution of colors
+-
 
 <br>________________________________________________________________________________________________
 
@@ -115,6 +127,24 @@ Please see Diagram.png in the res folder.
               to the viewer
         - renderMessage() throws an IOE when there is an error rendering the input to the output
           (ie. CorruptedAppendable tests)
+    - ##### IPViewGUIImpl class:
+        - !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    - ##### IPHistogramImpl class:
+        - Fields:
+            - redBarsData: represents the list of data that goes into the red-component histogram
+            - greenBarsData: represents the list of data that goes into the green-component
+              histogram
+            - blueBarsData: represents the list of data that goes into the blue-component histogram
+            - intensityBarsData: represents the list of data that goes into the intensity-component
+              histogram
+            - height: height of each histogram
+            - width: width of each histogram
+            - model: represents the model object being used in the program
+            - All the fields are private final as none of them need to be modified or adjusted
+        - Methods:
+            - createHistogramModel() creates the model of each histogram (the four BarsData fields)
+                - this method uses a private method collectData() to sum all occurrences of each
+                  value for a given component type and stores the data in a HashMap
 - ### Controller:
     - ##### IPController interface:
         - Represents the method startIP() that allows the user to interact with the model

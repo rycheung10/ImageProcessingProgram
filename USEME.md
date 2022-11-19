@@ -2,6 +2,21 @@
 
 ### How to use the program:
 
+There are two ways to run the program:
+- one with a GUI (Recommended)
+- one without a GUI
+
+#### Program with GUI
+To run the program with a GUI, run the program from the file "ImageProcessingWGUI"
+
+1. Start by loading an image by clicking "load" and selecting a valid image (jpeg, png, etc.)
+2. Click other buttons to change and modify the image
+3. Click the save button to save the image to a local location
+
+
+#### Program without GUI
+To run the program without a GUI, run the program from the file "ImageProcessing"
+
 When the program starts, the terminal will prompt, "What would you like to do?"
 The user must use the load command first before attempting to use any image-editing command,
 otherwise, the image-editing commands will do nothing. - Ex: "load res/techsupport.ppm tech".
