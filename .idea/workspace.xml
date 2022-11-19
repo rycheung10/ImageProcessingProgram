@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5fc8b992-2743-4992-9e92-ada7cc27bcd4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/DataPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/DataPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/IPHistogram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/IPHistogram.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/IPHistogramImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/IPHistogramImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
