@@ -105,4 +105,28 @@ public class IPHistogramImpl extends JPanel implements IPHistogram {
     }
     return data;
   }
+
+  // frequency  |
+  //            |
+  //            |
+  //            |
+  //            |
+  //            |
+  //            |
+  //             ---------------------------------
+  //             color values
+
+  protected void paintComponent(Graphics g) {
+    super.paintComponent(g);
+
+    Graphics2D graphs = (Graphics2D) g;
+
+    if (this.redBarsData.size() > 0 && this.blueBarsData.size() > 0
+            && this.greenBarsData.size() > 0 && this.intensityBarsData.size() > 0) {
+      for (int i = 0; i <= 255; i++) {
+        graphs.setColor(this.redBarsData.get(i).color);
+        graphs.fillRect(i * this.redBarsData.get(i).width, this.height - 25 - this.redBarsData.get(i).height - this.height/2, this.redBarsData.get(i).width, this.redBarsData.get(i).height);
+      }
+    }
+  }
 }

@@ -29,7 +29,8 @@ public class IPViewGUIImpl extends JFrame implements IPViewGUI, ActionListener {
   private IPControllerGUI controllerGUI;
   
   private final JLabel imgLabel;
-  private final JPanel histogramPanel;
+  private final JPanel rightPanel;
+  private IPHistogram histogramPanel;
   private final JPanel buttonsPanel;
   
   /**
@@ -60,46 +61,46 @@ public class IPViewGUIImpl extends JFrame implements IPViewGUI, ActionListener {
 //    |       imgPanel        ||------rightPanel-------|
 //    |                       ||     buttonsPanel      |
 //    |_______________________||_______________________|
+
+    // histogramPanel:
+    // top left: red; top right: green; bottom left: blue; bottom right: intensity;
     
     // place panel to left (for image) and make it scrollable
     this.imgLabel = new JLabel();
-    JScrollPane scroll = new JScrollPane(this.imgLabel);
-    this.add(scroll);
+    JScrollPane scrollImg = new JScrollPane(this.imgLabel);
+    this.add(scrollImg);
     
     // place panel to the right (for histogram and buttons)
-    JPanel rightPanel = new JPanel();
-    rightPanel.setLayout(new GridLayout(2, 1));
-    this.add(rightPanel);
+    this.rightPanel = new JPanel();
+    this.rightPanel.setLayout(new GridLayout(2, 1));
+    this.add(this.rightPanel);
     
     // place panel to top right (for histogram)
-    this.histogramPanel = new JPanel();
-    rightPanel.add(this.histogramPanel);
+    this.histogramPanel = new IPHistogramImpl(500, 400, this.model);
+    JScrollPane scrollHisto = new JScrollPane((Component) this.histogramPanel);
+    this.rightPanel.add(scrollHisto);
     
     // place panel to bottom right (for buttons)
     this.buttonsPanel = new JPanel();
     this.buttonsPanel.setLayout(new GridLayout(4, 4));
-    rightPanel.add(this.buttonsPanel);
+    this.rightPanel.add(this.buttonsPanel);
     
     ////////////////////////////////////////////////////////////////////////////////////////////////
     
     // manage panels
     
-    // manage image panel
-//    imgPanel.setBackground(Color.yellow);
-//    JLabel imageLabel = new JLabel("imgPanel");
-//    imgPanel.add(imageLabel);
-    
     // manage histogram panel
-    histogramPanel.setBackground(Color.green);
-    JLabel histogramLabel = new JLabel("histogramPanel");
-    histogramPanel.add(histogramLabel);
+//    this.histogramPanel.setBackground(Color.green);
+//    this.histogramPanel.setLayout(new GridLayout(2, 2));
+//    JLabel histogramLabel = new JLabel("histogramPanel");
+//    this.histogramPanel.add(histogramLabel);
     
     // manage buttons panel
     for (String button : this.buttons) {
       JButton newButton = new JButton(button);
       newButton.setActionCommand(button);
       newButton.addActionListener(this);
-      buttonsPanel.add(newButton);
+      this.buttonsPanel.add(newButton);
     }
   }
   
@@ -137,6 +138,13 @@ public class IPViewGUIImpl extends JFrame implements IPViewGUI, ActionListener {
       }
     }
     this.imgLabel.setIcon(new ImageIcon(img));
+  }
+
+  // method that takes in a IPHistogramImpl, gets four drawn histograms, and places them in their
+  // respective panels
+  @Override
+  public void drawHistogram(String imgName) {
+    this.histogramPanel.createHistogramModel(imgName);
   }
   
   @Override
