@@ -134,29 +134,29 @@ public class IPHistogramImpl extends JPanel implements IPHistogram {
             && this.greenBarsData.size() > 0 && this.intensityBarsData.size() > 0) {
       for (int i = 0; i <= 255; i++) {
         graphs.setColor(this.redBarsData.get(i).color);
-        graphs.fillRect(i * this.redBarsData.get(i).width + 50,
-                this.height - 250 - this.redBarsData.get(i).height - this.height/2,
+        graphs.fillRect(i * this.redBarsData.get(i).width + ((int)(0.0833 * (double) this.width)),
+                this.height - ((int)(0.3125 * (double) this.height)) - this.redBarsData.get(i).height - this.height/2,
                 this.redBarsData.get(i).width, this.redBarsData.get(i).height);
       }
-
+//height: 800 width: 600
       for (int i = 0; i <= 255; i++) {
         graphs.setColor(this.greenBarsData.get(i).color);
-        graphs.fillRect(i * this.greenBarsData.get(i).width + 350,
-                this.height - 250 - this.greenBarsData.get(i).height - this.height/2,
+        graphs.fillRect(i * this.greenBarsData.get(i).width + ((int) (0.583 * (double) this.width)),
+                this.height - ((int)(0.3125 * (double) this.height)) - this.greenBarsData.get(i).height - this.height/2,
                 this.greenBarsData.get(i).width, this.greenBarsData.get(i).height);
       }
 
       for (int i = 0; i <= 255; i++) {
         graphs.setColor(this.blueBarsData.get(i).color);
-        graphs.fillRect(i * this.blueBarsData.get(i).width + 50,
-                this.height - 100 - this.blueBarsData.get(i).height - this.height/2,
+        graphs.fillRect(i * this.blueBarsData.get(i).width + ((int)(0.0833 * (double) this.width)),
+                this.height - ((int)(0.125 * (double) this.height)) - this.blueBarsData.get(i).height - this.height/2,
                 this.blueBarsData.get(i).width, this.blueBarsData.get(i).height);
       }
 
       for (int i = 0; i <= 255; i++) {
         graphs.setColor(this.intensityBarsData.get(i).color);
-        graphs.fillRect(i * this.intensityBarsData.get(i).width + 350,
-                this.height - 100 - this.intensityBarsData.get(i).height - this.height/2,
+        graphs.fillRect(i * this.intensityBarsData.get(i).width + ((int) (0.583 * (double) this.width)),
+                this.height - ((int)(0.125 * (double) this.height)) - this.intensityBarsData.get(i).height - this.height/2,
                 this.intensityBarsData.get(i).width, this.intensityBarsData.get(i).height);
       }
     }
