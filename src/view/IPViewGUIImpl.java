@@ -75,7 +75,7 @@ public class IPViewGUIImpl extends JFrame implements IPViewGUI, ActionListener {
     this.add(this.rightPanel);
     
     // place panel to top right (for histogram)
-    this.histogramPanel = new IPHistogramImpl(500, 400, this.model);
+    this.histogramPanel = new IPHistogramImpl(800, 600, this.model);
     JScrollPane scrollHisto = new JScrollPane((Component) this.histogramPanel);
     this.rightPanel.add(scrollHisto);
     

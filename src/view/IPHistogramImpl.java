@@ -135,28 +135,28 @@ public class IPHistogramImpl extends JPanel implements IPHistogram {
       for (int i = 0; i <= 255; i++) {
         graphs.setColor(this.redBarsData.get(i).color);
         graphs.fillRect(i * this.redBarsData.get(i).width + 50,
-                this.height - 100 - this.redBarsData.get(i).height - this.height/2,
+                this.height - 250 - this.redBarsData.get(i).height - this.height/2,
                 this.redBarsData.get(i).width, this.redBarsData.get(i).height);
       }
 
       for (int i = 0; i <= 255; i++) {
         graphs.setColor(this.greenBarsData.get(i).color);
         graphs.fillRect(i * this.greenBarsData.get(i).width + 350,
-                this.height - 100 - this.greenBarsData.get(i).height - this.height/2,
+                this.height - 250 - this.greenBarsData.get(i).height - this.height/2,
                 this.greenBarsData.get(i).width, this.greenBarsData.get(i).height);
       }
 
       for (int i = 0; i <= 255; i++) {
         graphs.setColor(this.blueBarsData.get(i).color);
         graphs.fillRect(i * this.blueBarsData.get(i).width + 50,
-                this.height - 25 - this.blueBarsData.get(i).height - this.height/2,
+                this.height - 100 - this.blueBarsData.get(i).height - this.height/2,
                 this.blueBarsData.get(i).width, this.blueBarsData.get(i).height);
       }
 
       for (int i = 0; i <= 255; i++) {
         graphs.setColor(this.intensityBarsData.get(i).color);
         graphs.fillRect(i * this.intensityBarsData.get(i).width + 350,
-                this.height - 25 - this.intensityBarsData.get(i).height - this.height/2,
+                this.height - 100 - this.intensityBarsData.get(i).height - this.height/2,
                 this.intensityBarsData.get(i).width, this.intensityBarsData.get(i).height);
       }
     }
