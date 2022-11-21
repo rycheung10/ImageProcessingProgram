@@ -27,7 +27,6 @@ public class IPViewGUIImpl extends JFrame implements IPViewGUI, ActionListener {
   private final String[] buttons;
   private final IPModel model;
   private IPControllerGUI controllerGUI;
-  
   private final JLabel imgLabel;
   private final JPanel rightPanel;
   private IPHistogram histogramPanel;
