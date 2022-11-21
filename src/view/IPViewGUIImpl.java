@@ -205,4 +205,8 @@ public class IPViewGUIImpl extends JFrame implements IPViewGUI, ActionListener {
       return "";
     }
   }
+
+  public void reloadGUI() {
+    this.repaint();
+  }
 }

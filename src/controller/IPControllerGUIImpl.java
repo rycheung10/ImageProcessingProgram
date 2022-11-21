@@ -90,6 +90,9 @@ public class IPControllerGUIImpl implements IPControllerGUI {
       // draw the histogram
       this.view.drawHistogram(this.thisImage);
 
+      // refresh GUI
+      this.view.reloadGUI();
+
       // give a success message
       this.renderPopUpMessage(method + " success!", "Success",
               JOptionPane.INFORMATION_MESSAGE);

@@ -22,10 +22,10 @@ import static model.IPModelState.PixelComponents.Red;
  */
 public class IPHistogramImpl extends JPanel implements IPHistogram {
 
-  private final ArrayList<DataPoint> redBarsData;
-  private final ArrayList<DataPoint> greenBarsData;
-  private final ArrayList<DataPoint> blueBarsData;
-  private final ArrayList<DataPoint> intensityBarsData;
+  private ArrayList<DataPoint> redBarsData;
+  private ArrayList<DataPoint> greenBarsData;
+  private ArrayList<DataPoint> blueBarsData;
+  private ArrayList<DataPoint> intensityBarsData;
   private final IPModel model;
   private final int height;
   private final int width;
@@ -38,19 +38,27 @@ public class IPHistogramImpl extends JPanel implements IPHistogram {
    * @param model an IPModel object
    */
   public IPHistogramImpl(int height, int width, IPModel model) {
-
-    this.redBarsData = new ArrayList<DataPoint>();
-    this.greenBarsData = new ArrayList<DataPoint>();
-    this.blueBarsData = new ArrayList<DataPoint>();
-    this.intensityBarsData = new ArrayList<DataPoint>();
+    this.redBarsData = new ArrayList();
+    this.greenBarsData = new ArrayList();
+    this.blueBarsData = new ArrayList();
+    this.intensityBarsData = new ArrayList();
     this.height = height;
     this.width = width;
     this.model = model;
 
   }
 
+  public void initEmptyArrayLists() {
+    this.redBarsData = new ArrayList();
+    this.greenBarsData = new ArrayList();
+    this.blueBarsData = new ArrayList();
+    this.intensityBarsData = new ArrayList();
+  }
+
   @Override
   public void createHistogramModel(String imgName) {
+    initEmptyArrayLists();
+
     Map<Integer, Integer> redData = collectData(Red, imgName);
     Map<Integer, Integer> greenData = collectData(Green, imgName);
     Map<Integer, Integer> blueData = collectData(Blue, imgName);
