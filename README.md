@@ -39,12 +39,17 @@ coupled with the command design pattern that allows for minimal coupling between
 
 #### Changes made since Assignment 5:
 
-- Added a new view implementation of the Image processing program
-    - GUI implementation allows for the user to click button commands to make changes to desired
+- Added a new interactive GUI interface implementation of the Image processing program
+    - Image is displayed within the GUI so that changes to the image are immediately visible
+    - Implementation allows for the user to click button commands to make changes to desired
       image
     - Along with the GUI implementation, four histograms are displayed in the top right corner to
       visualize the distribution of colors
--
+    - With the new GUI implementation
+        - To implement this new GUI, a new controller was requierd to work with the new GUI
+          interface
+        - Along with this, a "new" program to run the program with a GUI called "
+          ImageProcessingWGUI" was created
 
 <br>________________________________________________________________________________________________
 
@@ -128,7 +133,33 @@ Please see Diagram.png in the res folder.
         - renderMessage() throws an IOE when there is an error rendering the input to the output
           (ie. CorruptedAppendable tests)
     - ##### IPViewGUIImpl class:
-        - !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        - Fields:
+            - buttons: contains a list of strings that represent the names of the commands to be
+              used as buttons in the GUI
+            - model: an IPModel object
+            - controllerGUI: an IPControllerGUI object that accommodates for the reworked
+              functionalities of the GUI view
+            - imgLabel: a JLabel object that allows for the display of the image in the GUI
+            - rightPanel: a JPanel object that allots space for the histograms and the buttons in
+              the GUI
+            - histogramPanel: an IPHistogram object that visualizes the distribution of the colors
+              values of a given image
+            - buttonsPanel: a JPanel object that represents the creation of a 4x4 array of command
+              buttons
+            - All fields are private final except for two fields as we want to protect the fields
+              from improper modification. The two fields that are only private instead of final need
+              to be reassigned within the class
+        - Notable Methods:
+            - drawImage(): displays the image in the main JPanel.
+            - drawHistogram(): calls the necessary methods to draw the histograms in the
+              histogramPanel
+            - actionPerformed(): a method that uses the ActionEvent interface to allow certain
+              buttons that require further interaction past the intial button click further
+              interaction. Ex: when the load button is clicked, it allows the browseFiles() method
+              to be called. Another example: when a user clicks brighten or darken, the user is
+              prompted with a value amount
+            - browseFiles(): a private helper method that the "load" and "save" buttons utilize to
+              find a location to save an image or to find a picture to load into the program
     - ##### IPHistogramImpl class:
         - Fields:
             - redBarsData: represents the list of data that goes into the red-component histogram
@@ -145,6 +176,9 @@ Please see Diagram.png in the res folder.
             - createHistogramModel() creates the model of each histogram (the four BarsData fields)
                 - this method uses a private method collectData() to sum all occurrences of each
                   value for a given component type and stores the data in a HashMap
+            - paintComponent() is a built-in Java Swing method that allowed for the visualization of
+              the histogram graphs (the colored bars and the axes of each of the graphs)
+
 - ### Controller:
     - ##### IPController interface:
         - Represents the method startIP() that allows the user to interact with the model
@@ -168,6 +202,21 @@ Please see Diagram.png in the res folder.
           necessary model methods to perform the desired modifications to the image.
         - Each of these helpers are private as they only serve the purpose of assisting the
           startIP(), which is the public method.
+    - ##### IPControllerGUIImpl:
+        - Fields:
+            - model: an IPModel object
+            - view: an IPViewGUI object
+            - commands: a map object that maps string names of commands to function objects that
+              execute the desired command
+            - thisImage: a default string name given to any image loaded into the program that
+              allows for proper rewriting of image files and to be able to reuse our previous
+              command interfaces
+        - Notable Methods:
+            - commandHandler(): calls the proper commands to modify the image, updates the
+              histograms, and updates the new visualization of the image
+            - loadCommands(): a private method that adds the currently allowed commands to the
+              commands field
+            - renderPopUpMessage(): allows for popup messages when certain commands run properly
 
 ### Other design choices:
 
