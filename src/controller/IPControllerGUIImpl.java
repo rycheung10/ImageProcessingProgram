@@ -11,8 +11,10 @@ import controller.commands.Filter;
 import controller.commands.Flip;
 import controller.commands.IPCommand;
 import controller.commands.Load;
+import controller.commands.LoadGUI;
 import controller.commands.Matrices;
 import controller.commands.Save;
+import controller.commands.SaveGUI;
 import model.IPModel;
 import view.IPHistogram;
 import view.IPHistogramImpl;
@@ -86,16 +88,15 @@ public class IPControllerGUIImpl implements IPControllerGUI {
         // draw the histogram
         this.view.drawHistogram(this.thisImage);
 
-//        // refresh GUI
-//        this.view.reloadGUI();
-
         // give a success message
         this.renderPopUpMessage(method + " success!", "Success",
                 JOptionPane.INFORMATION_MESSAGE);
 
       } catch (IllegalArgumentException e) {
-        this.renderPopUpMessage("There was a problem: " + e.getMessage(), "Error",
-            JOptionPane.ERROR_MESSAGE);
+        if (!e.getMessage().equals("command was canceled")) {
+          this.renderPopUpMessage("There was a problem: " + e.getMessage(), "Error",
+                  JOptionPane.ERROR_MESSAGE);
+        }
       }
     }
   }
@@ -117,10 +118,14 @@ public class IPControllerGUIImpl implements IPControllerGUI {
    *
    * @param s A Scanner representing the user's inputs
    * @return An integer representing the next integer the user inputted into the scanner
-   * @throws IllegalArgumentException If the readable is out of arguments or if the next input
-   *                                  is not an integer
+   * @throws IllegalArgumentException If the readable is out of arguments, if the next input
+   *                                  is not an integer, or if the next input is empty (indicating
+   *                                  the command was canceled).
    */
-  private int getIntInput(String s) throws IllegalArgumentException {
+  private int parseAmountForBrighten(String s) throws IllegalArgumentException {
+    if (s == null) {
+      throw new IllegalArgumentException("command was canceled");
+    }
     try {
       return Integer.parseInt(s);
     } catch (NumberFormatException e) {
@@ -134,13 +139,13 @@ public class IPControllerGUIImpl implements IPControllerGUI {
   private void loadCommands() {
     
     this.commands.put("load", str ->
-        new Load(str, this.thisImage));
+        new LoadGUI(str, this.thisImage));
     this.commands.put("save", str ->
-        new Save(str, this.thisImage));
+        new SaveGUI(str, this.thisImage));
     this.commands.put("brighten", str ->
-        new Brighten(getIntInput(str), this.thisImage, this.thisImage));
+        new Brighten(parseAmountForBrighten(str), this.thisImage, this.thisImage));
     this.commands.put("darken", str ->
-        new Brighten(getIntInput(str) * -1, this.thisImage, this.thisImage));
+        new Brighten(parseAmountForBrighten(str) * -1, this.thisImage, this.thisImage));
     this.commands.put("vertical-flip", str ->
         new Flip(true, this.thisImage, this.thisImage));
     this.commands.put("horizontal-flip", str ->

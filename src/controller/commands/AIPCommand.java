@@ -5,8 +5,8 @@ package controller.commands;
  * it contains an abstracted constructor.
  */
 public abstract class AIPCommand implements IPCommand {
-  protected final String firstStringArg;
-  protected final String secondStringArg;
+  protected String firstStringArg;
+  protected String secondStringArg;
   
   /**
    * This first constructor takes two strings and initializes them as fields in an IPCommand model.
