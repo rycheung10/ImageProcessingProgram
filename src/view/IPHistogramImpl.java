@@ -123,7 +123,7 @@ public class IPHistogramImpl extends JPanel implements IPHistogram {
 
     for (int l = 0; l <= 255; l++) {
       if (intensityData.containsKey(l)) {
-        this.intensityBarsData.add(new DataPoint(Color.black,
+        this.intensityBarsData.add(new DataPoint(Color.gray,
                 (int) ((double) intensityData.get(l) * this.height) / max / 4,
                 1));
       } else {
@@ -159,9 +159,31 @@ public class IPHistogramImpl extends JPanel implements IPHistogram {
   //             color values
 
   protected void paintComponent(Graphics g) {
-//    super.paintComponent(g);
 
-//    Graphics2D graphs = (Graphics2D) g;
+    // red histogram axis
+    g.drawLine(29, 44, 29, 119); // y axis
+    g.drawLine(29, 119, 285, 119); // x axis
+
+    // green histogram axis
+    int shiftRight = 300;
+    g.drawLine(29 + shiftRight, 44, 29 + shiftRight, 119);
+    g.drawLine(29 + shiftRight, 119, 285 + shiftRight, 119);
+
+    // blue histogram axis
+    int shiftDown = 139;
+    g.drawLine(29, 44 + shiftDown, 29, 119 + shiftDown);
+    g.drawLine(29, 119 + shiftDown, 285, 119 + shiftDown);
+
+    // intensity histogram axis
+    g.drawLine(29 + shiftRight, 44 + shiftDown, 29 + shiftRight, 119 + shiftDown);
+    g.drawLine(29 + shiftRight, 119 + shiftDown, 285 + shiftRight, 119 + shiftDown);
+
+    g.drawString("x axis represents frequency and y axis represents color values [0, 255]", 29, 15);
+
+    g.drawString("red histogram", 123, 40);
+    g.drawString("green histogram", 123 + shiftRight, 40);
+    g.drawString("blue histogram", 123, 40 + shiftDown);
+    g.drawString("intensity histogram", 123 + shiftRight, 40 + shiftDown);
 
     if (this.redBarsData.size() > 0 && this.blueBarsData.size() > 0
             && this.greenBarsData.size() > 0 && this.intensityBarsData.size() > 0) {
