@@ -4,8 +4,14 @@
     <list default="true" id="5fc8b992-2743-4992-9e92-ada7cc27bcd4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/imageProcessingProgram_jar/imageProcessingProgram.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/imageProcessingProgram_jar/imageProcessingProgram.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/IPControllerGUIImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/IPControllerGUIImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPHistogramImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPHistogramImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPViewGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPViewGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPViewGUIImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPViewGUIImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/IPControllerGUIImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/IPControllerGUIImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/IPHistogramImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/IPHistogramImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/IPViewGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/IPViewGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/IPViewGUIImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/IPViewGUIImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

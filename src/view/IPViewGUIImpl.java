@@ -74,8 +74,8 @@ public class IPViewGUIImpl extends JFrame implements IPViewGUI, ActionListener {
     this.rightPanel.setLayout(new GridLayout(2, 1));
     this.add(this.rightPanel);
     
-    // place panel to top right (for histogram)
-    this.histogramPanel = new IPHistogramImpl(800, 600, this.model);
+    // place panel to top right (for histogram) and make it scrollable
+    this.histogramPanel = new IPHistogramImpl(300, 600, this.model);
     JScrollPane scrollHisto = new JScrollPane((Component) this.histogramPanel);
     this.rightPanel.add(scrollHisto);
     
@@ -86,15 +86,7 @@ public class IPViewGUIImpl extends JFrame implements IPViewGUI, ActionListener {
     
     ////////////////////////////////////////////////////////////////////////////////////////////////
     
-    // manage panels
-    
-    // manage histogram panel
-//    this.histogramPanel.setBackground(Color.green);
-//    this.histogramPanel.setLayout(new GridLayout(2, 2));
-//    JLabel histogramLabel = new JLabel("histogramPanel");
-//    this.histogramPanel.add(histogramLabel);
-    
-    // manage buttons panel
+    // create buttons
     for (String button : this.buttons) {
       JButton newButton = new JButton(button);
       newButton.setActionCommand(button);
@@ -144,6 +136,7 @@ public class IPViewGUIImpl extends JFrame implements IPViewGUI, ActionListener {
   @Override
   public void drawHistogram(String imgName) {
     this.histogramPanel.createHistogramModel(imgName);
+    this.repaint();
   }
   
   @Override
@@ -204,9 +197,5 @@ public class IPViewGUIImpl extends JFrame implements IPViewGUI, ActionListener {
     } else {
       return "";
     }
-  }
-
-  public void reloadGUI() {
-    this.repaint();
   }
 }
