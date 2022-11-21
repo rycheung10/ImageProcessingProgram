@@ -55,6 +55,29 @@ public class IPHistogramImpl extends JPanel implements IPHistogram {
     this.intensityBarsData = new ArrayList();
   }
 
+  private int mostFrequent(Map<Integer, Integer> redData, Map<Integer, Integer> greenData,
+                            Map<Integer, Integer> blueData, Map<Integer, Integer> intensityData) {
+    int max = 0;
+
+    for (Integer i : redData.keySet()) {
+      max = Math.max(max, redData.get(i));
+    }
+
+    for (Integer i : greenData.values()) {
+      max = Math.max(max, i);
+    }
+
+    for (Integer i : blueData.values()) {
+      max = Math.max(max, i);
+    }
+
+    for (Integer i : intensityData.values()) {
+      max = Math.max(max, i);
+    }
+
+    return max;
+  }
+
   @Override
   public void createHistogramModel(String imgName) {
     initEmptyArrayLists();
@@ -64,12 +87,13 @@ public class IPHistogramImpl extends JPanel implements IPHistogram {
     Map<Integer, Integer> blueData = collectData(Blue, imgName);
     Map<Integer, Integer> intensityData = collectData(Intensity, imgName);
 
+    int max = mostFrequent(redData, greenData, blueData, intensityData);
     int totalPixelsInImg = this.model.getHeight(imgName) * this.model.getWidth(imgName);
 
     for (int i = 0; i <= 255; i++) {
       if (redData.containsKey(i)) {
         this.redBarsData.add(new DataPoint(Color.red,
-                (int) (((double) redData.get(i) / (double) totalPixelsInImg) * this.height),
+                (int) ((double) redData.get(i) * this.height) / max / 8,
                 1));
       } else {
         this.redBarsData.add(new DataPoint(Color.red, 0, 1));
@@ -79,7 +103,7 @@ public class IPHistogramImpl extends JPanel implements IPHistogram {
     for (int j = 0; j <= 255; j++) {
       if (greenData.containsKey(j)) {
         this.greenBarsData.add(new DataPoint(Color.green,
-                (int) (((double) greenData.get(j) / (double) totalPixelsInImg) * this.height),
+                (int) ((double) greenData.get(j) * this.height) / max / 8,
                 1));
       } else {
         this.greenBarsData.add(new DataPoint(Color.green, 0, 1));
@@ -89,7 +113,7 @@ public class IPHistogramImpl extends JPanel implements IPHistogram {
     for (int k = 0; k <= 255; k++) {
       if (blueData.containsKey(k)) {
         this.blueBarsData.add(new DataPoint(Color.blue,
-                (int) (((double) blueData.get(k) / (double) totalPixelsInImg) * this.height),
+                (int) ((double) blueData.get(k) * this.height) / max / 8,
                 1));
       } else {
         this.blueBarsData.add(new DataPoint(Color.blue, 0, 1));
@@ -99,7 +123,7 @@ public class IPHistogramImpl extends JPanel implements IPHistogram {
     for (int l = 0; l <= 255; l++) {
       if (intensityData.containsKey(l)) {
         this.intensityBarsData.add(new DataPoint(Color.black,
-                (int) (((double) intensityData.get(l) / (double) totalPixelsInImg) * this.height),
+                (int) ((double) intensityData.get(l) * this.height) / max / 8,
                 1));
       } else {
         this.intensityBarsData.add(new DataPoint(Color.black, 0, 1));
