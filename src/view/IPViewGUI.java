@@ -43,4 +43,6 @@ public interface IPViewGUI {
    *                                  the view's model.
    */
   void drawImage(String imgName) throws IllegalArgumentException;
+
+  void drawHistogram(String imgName);
 }

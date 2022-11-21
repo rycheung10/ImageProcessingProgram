@@ -14,6 +14,8 @@ import controller.commands.Load;
 import controller.commands.Matrices;
 import controller.commands.Save;
 import model.IPModel;
+import view.IPHistogram;
+import view.IPHistogramImpl;
 import view.IPViewGUI;
 
 import javax.swing.JOptionPane;
@@ -33,6 +35,7 @@ public class IPControllerGUIImpl implements IPControllerGUI {
   private final IPModel model;
   private final IPViewGUI view;
   private final Map<String, Function<String, IPCommand>> commands;
+  private final String thisImage;
   
   /**
    * This first constructor takes a model and ViewGUI and creates a GUI controller
@@ -51,6 +54,7 @@ public class IPControllerGUIImpl implements IPControllerGUI {
     this.view = view;
     this.commands = new HashMap<>();
     this.loadCommands();
+    this.thisImage = "image";
   }
   
   @Override
@@ -74,18 +78,21 @@ public class IPControllerGUIImpl implements IPControllerGUI {
       try {
         command = cmd.apply(specialArgument);
         command.execute(this.model);
-        // because command successfully went through, an image exists for sure at this stage
-        
-        // draw the image
-        this.view.drawImage("image");
-        
-        // give a success message
-        this.renderPopUpMessage(method + " success!", "Success",
-            JOptionPane.INFORMATION_MESSAGE);
       } catch (IllegalArgumentException e) {
         this.renderPopUpMessage("There was a problem: " + e.getMessage(), "Error",
             JOptionPane.ERROR_MESSAGE);
       }
+      // because command successfully went through, an image exists for sure at this stage
+
+      // draw the image
+      this.view.drawImage(this.thisImage);
+
+      // draw the histogram
+      this.view.drawHistogram(this.thisImage);
+
+      // give a success message
+      this.renderPopUpMessage(method + " success!", "Success",
+              JOptionPane.INFORMATION_MESSAGE);
     }
   }
   
@@ -121,39 +128,38 @@ public class IPControllerGUIImpl implements IPControllerGUI {
    * This method loads all valid commands into the commands Map for this controller.
    */
   private void loadCommands() {
-    String placeHolder = "image";
     
     this.commands.put("load", str ->
-        new Load(str, placeHolder));
+        new Load(str, this.thisImage));
     this.commands.put("save", str ->
-        new Save(str, placeHolder));
+        new Save(str, this.thisImage));
     this.commands.put("brighten", str ->
-        new Brighten(getIntInput(str), placeHolder, placeHolder));
+        new Brighten(getIntInput(str), this.thisImage, this.thisImage));
     this.commands.put("darken", str ->
-        new Brighten(getIntInput(str) * -1, placeHolder, placeHolder));
+        new Brighten(getIntInput(str) * -1, this.thisImage, this.thisImage));
     this.commands.put("vertical-flip", str ->
-        new Flip(true, placeHolder, placeHolder));
+        new Flip(true, this.thisImage, this.thisImage));
     this.commands.put("horizontal-flip", str ->
-        new Flip(false, placeHolder, placeHolder));
+        new Flip(false, this.thisImage, this.thisImage));
     this.commands.put("red-component", str ->
-        new Component(Red, placeHolder, placeHolder));
+        new Component(Red, this.thisImage, this.thisImage));
     this.commands.put("green-component", str ->
-        new Component(Green, placeHolder, placeHolder));
+        new Component(Green, this.thisImage, this.thisImage));
     this.commands.put("blue-component", str ->
-        new Component(Blue, placeHolder, placeHolder));
+        new Component(Blue, this.thisImage, this.thisImage));
     this.commands.put("value-component", str ->
-        new Component(Value, placeHolder, placeHolder));
+        new Component(Value, this.thisImage, this.thisImage));
     this.commands.put("intensity-component", str ->
-        new Component(Intensity, placeHolder, placeHolder));
+        new Component(Intensity, this.thisImage, this.thisImage));
     this.commands.put("luma-component", str ->
-        new Component(Luma, placeHolder, placeHolder));
+        new Component(Luma, this.thisImage, this.thisImage));
     this.commands.put("blur", str ->
-        new Filter(Matrices.blur, placeHolder, placeHolder));
+        new Filter(Matrices.blur, this.thisImage, this.thisImage));
     this.commands.put("sharpen", str ->
-        new Filter(Matrices.sharpen, placeHolder, placeHolder));
-    this.commands.put("greystrale-luma", str ->
-        new ColorTransformation(Matrices.greyscaleluma, placeHolder, placeHolder));
+        new Filter(Matrices.sharpen, this.thisImage, this.thisImage));
+    this.commands.put("greyscale-luma", str ->
+        new ColorTransformation(Matrices.greyscaleluma, this.thisImage, this.thisImage));
     this.commands.put("sepia", str ->
-        new ColorTransformation(Matrices.sepia, placeHolder, placeHolder));
+        new ColorTransformation(Matrices.sepia, this.thisImage, this.thisImage));
   }
 }
