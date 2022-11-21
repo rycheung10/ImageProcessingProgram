@@ -5,13 +5,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/imageProcessingProgram_jar/imageProcessingProgram.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/imageProcessingProgram_jar/imageProcessingProgram.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/IPControllerGUIImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/IPControllerGUIImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPHistogramImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPHistogramImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPViewGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPViewGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPViewGUIImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPViewGUIImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/commands/AIPCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/commands/AIPCommand.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/IPControllerGUIImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/IPControllerGUIImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/IPHistogramImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/IPHistogramImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/IPViewGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/IPViewGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/IPViewGUIImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/IPViewGUIImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/commands/AIPCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/commands/AIPCommand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,5 +127,15 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
