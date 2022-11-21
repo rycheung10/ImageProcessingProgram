@@ -45,6 +45,4 @@ public interface IPViewGUI {
   void drawImage(String imgName) throws IllegalArgumentException;
 
   void drawHistogram(String imgName);
-
-  void reloadGUI();
 }

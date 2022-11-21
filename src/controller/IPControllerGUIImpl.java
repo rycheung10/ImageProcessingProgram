@@ -78,24 +78,25 @@ public class IPControllerGUIImpl implements IPControllerGUI {
       try {
         command = cmd.apply(specialArgument);
         command.execute(this.model);
+        // because command successfully went through, an image exists for sure at this stage
+
+        // draw the image
+        this.view.drawImage(this.thisImage);
+
+        // draw the histogram
+        this.view.drawHistogram(this.thisImage);
+
+//        // refresh GUI
+//        this.view.reloadGUI();
+
+        // give a success message
+        this.renderPopUpMessage(method + " success!", "Success",
+                JOptionPane.INFORMATION_MESSAGE);
+
       } catch (IllegalArgumentException e) {
         this.renderPopUpMessage("There was a problem: " + e.getMessage(), "Error",
             JOptionPane.ERROR_MESSAGE);
       }
-      // because command successfully went through, an image exists for sure at this stage
-
-      // draw the image
-      this.view.drawImage(this.thisImage);
-
-      // draw the histogram
-      this.view.drawHistogram(this.thisImage);
-
-      // refresh GUI
-      this.view.reloadGUI();
-
-      // give a success message
-      this.renderPopUpMessage(method + " success!", "Success",
-              JOptionPane.INFORMATION_MESSAGE);
     }
   }
   
