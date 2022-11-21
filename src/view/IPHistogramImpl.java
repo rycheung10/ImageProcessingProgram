@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.*;
+import javax.xml.crypto.Data;
 
 import model.IPModel;
 import model.IPModelState.PixelComponents;
@@ -22,10 +23,10 @@ import static model.IPModelState.PixelComponents.Red;
  */
 public class IPHistogramImpl extends JPanel implements IPHistogram {
 
-  private ArrayList<DataPoint> redBarsData;
-  private ArrayList<DataPoint> greenBarsData;
-  private ArrayList<DataPoint> blueBarsData;
-  private ArrayList<DataPoint> intensityBarsData;
+  private ArrayList<DataBar> redBarsData;
+  private ArrayList<DataBar> greenBarsData;
+  private ArrayList<DataBar> blueBarsData;
+  private ArrayList<DataBar> intensityBarsData;
   private final IPModel model;
   private final int height;
   private final int width;
@@ -93,41 +94,41 @@ public class IPHistogramImpl extends JPanel implements IPHistogram {
 
     for (int i = 0; i <= 255; i++) {
       if (redData.containsKey(i)) {
-        this.redBarsData.add(new DataPoint(Color.red,
+        this.redBarsData.add(new DataBar(
                 (int) ((double) redData.get(i) * this.height) / max / 4,
                 1));
       } else {
-        this.redBarsData.add(new DataPoint(Color.red, 0, 1));
+        this.redBarsData.add(new DataBar(0, 1));
       }
     }
 
     for (int j = 0; j <= 255; j++) {
       if (greenData.containsKey(j)) {
-        this.greenBarsData.add(new DataPoint(Color.green,
+        this.greenBarsData.add(new DataBar(
                 (int) ((double) greenData.get(j) * this.height) / max / 4,
                 1));
       } else {
-        this.greenBarsData.add(new DataPoint(Color.green, 0, 1));
+        this.greenBarsData.add(new DataBar(0, 1));
       }
     }
 
     for (int k = 0; k <= 255; k++) {
       if (blueData.containsKey(k)) {
-        this.blueBarsData.add(new DataPoint(Color.blue,
+        this.blueBarsData.add(new DataBar(
                 (int) ((double) blueData.get(k) * this.height) / max / 4,
                 1));
       } else {
-        this.blueBarsData.add(new DataPoint(Color.blue, 0, 1));
+        this.blueBarsData.add(new DataBar(0, 1));
       }
     }
 
     for (int l = 0; l <= 255; l++) {
       if (intensityData.containsKey(l)) {
-        this.intensityBarsData.add(new DataPoint(Color.gray,
+        this.intensityBarsData.add(new DataBar(
                 (int) ((double) intensityData.get(l) * this.height) / max / 4,
                 1));
       } else {
-        this.intensityBarsData.add(new DataPoint(Color.black, 0, 1));
+        this.intensityBarsData.add(new DataBar( 0, 1));
       }
     }
   }
@@ -188,31 +189,31 @@ public class IPHistogramImpl extends JPanel implements IPHistogram {
     if (this.redBarsData.size() > 0 && this.blueBarsData.size() > 0
             && this.greenBarsData.size() > 0 && this.intensityBarsData.size() > 0) {
       for (int i = 0; i <= 255; i++) {
-        g.setColor(this.redBarsData.get(i).color);
-        g.fillRect(i * this.redBarsData.get(i).width + ((int)(0.05 * (double) this.width)),
-                this.height - this.redBarsData.get(i).height - (int) (this.height / 1.65),
-                this.redBarsData.get(i).width, this.redBarsData.get(i).height);
+        g.setColor(Color.red);
+        g.fillRect(i * this.redBarsData.get(i).getWidth() + ((int)(0.05 * (double) this.width)),
+                this.height - this.redBarsData.get(i).getHeight() - (int) (this.height / 1.65),
+                this.redBarsData.get(i).getWidth(), this.redBarsData.get(i).getHeight());
       }
 
       for (int i = 0; i <= 255; i++) {
-        g.setColor(this.greenBarsData.get(i).color);
-        g.fillRect(i * this.greenBarsData.get(i).width + ((int) (0.55 * (double) this.width)),
-                this.height - this.greenBarsData.get(i).height - (int) (this.height / 1.65),
-                this.greenBarsData.get(i).width, this.greenBarsData.get(i).height);
+        g.setColor(Color.green);
+        g.fillRect(i * this.greenBarsData.get(i).getWidth() + ((int) (0.55 * (double) this.width)),
+                this.height - this.greenBarsData.get(i).getHeight() - (int) (this.height / 1.65),
+                this.greenBarsData.get(i).getWidth(), this.greenBarsData.get(i).getHeight());
       }
 
       for (int i = 0; i <= 255; i++) {
-        g.setColor(this.blueBarsData.get(i).color);
-        g.fillRect(i * this.blueBarsData.get(i).width + ((int)(0.05 * (double) this.width)),
-                this.height - this.blueBarsData.get(i).height - this.height/7,
-                this.blueBarsData.get(i).width, this.blueBarsData.get(i).height);
+        g.setColor(Color.blue);
+        g.fillRect(i * this.blueBarsData.get(i).getWidth() + ((int)(0.05 * (double) this.width)),
+                this.height - this.blueBarsData.get(i).getHeight() - this.height/7,
+                this.blueBarsData.get(i).getWidth(), this.blueBarsData.get(i).getHeight());
       }
 
       for (int i = 0; i <= 255; i++) {
-        g.setColor(this.intensityBarsData.get(i).color);
-        g.fillRect(i * this.intensityBarsData.get(i).width + ((int) (0.55 * (double) this.width)),
-                this.height - this.intensityBarsData.get(i).height - this.height/7,
-                this.intensityBarsData.get(i).width, this.intensityBarsData.get(i).height);
+        g.setColor(Color.gray);
+        g.fillRect(i * this.intensityBarsData.get(i).getWidth() + ((int) (0.55 * (double) this.width)),
+                this.height - this.intensityBarsData.get(i).getHeight() - this.height/7,
+                this.intensityBarsData.get(i).getWidth(), this.intensityBarsData.get(i).getHeight());
       }
     }
   }
