@@ -12,6 +12,8 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
+import controller.BufferedImageUtils;
+
 import static model.IPModelState.PixelComponents.Blue;
 import static model.IPModelState.PixelComponents.Green;
 import static model.IPModelState.PixelComponents.Max;
@@ -217,20 +219,7 @@ public class IPModelImpl implements IPModel {
   private void saveElse(String path, String imgName, int height, int width)
       throws IllegalArgumentException {
     
-    BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-    
-    for (int i = 0; i < height; i++) {
-      for (int j = 0; j < width; j++) {
-        Map<PixelComponents, Integer> thisPixelInfo = this.getPixelInfo(imgName, i, j);
-        int red = thisPixelInfo.get(Red);
-        int green = thisPixelInfo.get(Green);
-        int blue = thisPixelInfo.get(Blue);
-        
-        int rgb = (red << 16) | (green << 8) | (blue << 0);
-        
-        img.setRGB(j, i, rgb);
-      }
-    }
+    BufferedImage img = BufferedImageUtils.createBI(width, height, this, imgName);
     
     try {
       FileOutputStream f = new FileOutputStream(path);
@@ -273,12 +262,7 @@ public class IPModelImpl implements IPModel {
    *                                  error occurs during the method
    */
   private void loadElse(String path, String name) throws IllegalArgumentException {
-    BufferedImage img;
-    try {
-      img = ImageIO.read(new File(path));
-    } catch (IOException e) {
-      throw new IllegalArgumentException("Error reading");
-    }
+    BufferedImage img = BufferedImageUtils.turnIntoBI(path);
     
     int height = img.getHeight();
     int width = img.getWidth();

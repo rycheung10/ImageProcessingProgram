@@ -11,6 +11,7 @@ import javax.swing.*;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import controller.BufferedImageUtils;
 import controller.IPControllerGUI;
 import model.IPModel;
 
@@ -117,20 +118,7 @@ public class IPViewGUIImpl extends JFrame implements IPViewGUI, ActionListener {
   public void drawImage(String imgName) throws IllegalArgumentException {
     int width = this.model.getWidth(imgName);
     int height = this.model.getHeight(imgName);
-    BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-    
-    for (int i = 0; i < height; i++) {
-      for (int j = 0; j < width; j++) {
-        Map<PixelComponents, Integer> thisPixelInfo = this.model.getPixelInfo(imgName, i, j);
-        int red = thisPixelInfo.get(Red);
-        int green = thisPixelInfo.get(Green);
-        int blue = thisPixelInfo.get(Blue);
-        
-        int rgb = (red  << 16) | (green << 8) | (blue << 0);
-        
-        img.setRGB(j, i, rgb);
-      }
-    }
+    BufferedImage img = BufferedImageUtils.createBI(width, height, this.model, imgName);
     this.imgLabel.setIcon(new ImageIcon(img));
   }
 

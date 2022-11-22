@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5fc8b992-2743-4992-9e92-ada7cc27bcd4" name="Changes" comment="" />
+    <list default="true" id="5fc8b992-2743-4992-9e92-ada7cc27bcd4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/imageProcessingProgram_jar/imageProcessingProgram.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/imageProcessingProgram_jar/imageProcessingProgram.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/model/IPModelImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/model/IPModelImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPHistogramImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPHistogramImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPViewGUIImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPViewGUIImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/image1.ppm" beforeDir="false" afterPath="$PROJECT_DIR$/res/image1.ppm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/image2.ppm" beforeDir="false" afterPath="$PROJECT_DIR$/res/image2.ppm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/IPModelImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IPModelImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/IPViewGUIImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/IPViewGUIImpl.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,70 +63,71 @@
       <recent name="view" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.IPControllerGUIImplTest">
-    <configuration name="IPControllerGUIImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.BufferedImageUtilsTest.testTurnIntoBICreateBIEquality">
+    <configuration name="BufferedImageUtilsTest.testCreateBI" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="imageProcessingProgram" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="IPControllerGUIImplTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IPControllerGUIImplTest.testCommandHandlerBadCommand" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="imageProcessingProgram" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="IPControllerGUIImplTest" />
-      <option name="METHOD_NAME" value="testCommandHandlerBadCommand" />
+      <option name="MAIN_CLASS_NAME" value="BufferedImageUtilsTest" />
+      <option name="METHOD_NAME" value="testCreateBI" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IPControllerGUIImplTest.testCommandHandlerBadSpecialArgument" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BufferedImageUtilsTest.testTurnIntoBI" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="imageProcessingProgram" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="IPControllerGUIImplTest" />
-      <option name="METHOD_NAME" value="testCommandHandlerBadSpecialArgument" />
+      <option name="MAIN_CLASS_NAME" value="BufferedImageUtilsTest" />
+      <option name="METHOD_NAME" value="testTurnIntoBI" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IPControllerGUIImplTest.testCommandHandlerGoodArgumentsSepia2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BufferedImageUtilsTest.testTurnIntoBIAndCreateBIProduceEqualBufferedImagesFromSameImage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="imageProcessingProgram" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="IPControllerGUIImplTest" />
-      <option name="METHOD_NAME" value="testCommandHandlerGoodArgumentsSepia2" />
+      <option name="MAIN_CLASS_NAME" value="BufferedImageUtilsTest" />
+      <option name="METHOD_NAME" value="testTurnIntoBIAndCreateBIProduceEqualBufferedImagesFromSameImage" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IPControllerGUIImplTest.testCommandHandlerPreInitLoad" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BufferedImageUtilsTest.testTurnIntoBICreateBIEquality" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="imageProcessingProgram" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="IPControllerGUIImplTest" />
-      <option name="METHOD_NAME" value="testCommandHandlerPreInitLoad" />
+      <option name="MAIN_CLASS_NAME" value="BufferedImageUtilsTest" />
+      <option name="METHOD_NAME" value="testTurnIntoBICreateBIEquality" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IPModelImplTest.testLoadPNG" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="imageProcessingProgram" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="IPModelImplTest" />
+      <option name="METHOD_NAME" value="testLoadPNG" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.IPControllerGUIImplTest" />
-      <item itemvalue="JUnit.IPControllerGUIImplTest.testCommandHandlerBadCommand" />
-      <item itemvalue="JUnit.IPControllerGUIImplTest.testCommandHandlerBadSpecialArgument" />
-      <item itemvalue="JUnit.IPControllerGUIImplTest.testCommandHandlerGoodArgumentsSepia2" />
-      <item itemvalue="JUnit.IPControllerGUIImplTest.testCommandHandlerPreInitLoad" />
+      <item itemvalue="JUnit.BufferedImageUtilsTest.testCreateBI" />
+      <item itemvalue="JUnit.BufferedImageUtilsTest.testTurnIntoBI" />
+      <item itemvalue="JUnit.BufferedImageUtilsTest.testTurnIntoBIAndCreateBIProduceEqualBufferedImagesFromSameImage" />
+      <item itemvalue="JUnit.BufferedImageUtilsTest.testTurnIntoBICreateBIEquality" />
+      <item itemvalue="JUnit.IPModelImplTest.testLoadPNG" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.IPControllerGUIImplTest" />
-        <item itemvalue="JUnit.IPControllerGUIImplTest.testCommandHandlerPreInitLoad" />
-        <item itemvalue="JUnit.IPControllerGUIImplTest.testCommandHandlerBadSpecialArgument" />
-        <item itemvalue="JUnit.IPControllerGUIImplTest.testCommandHandlerBadCommand" />
-        <item itemvalue="JUnit.IPControllerGUIImplTest.testCommandHandlerGoodArgumentsSepia2" />
+        <item itemvalue="JUnit.BufferedImageUtilsTest.testTurnIntoBICreateBIEquality" />
+        <item itemvalue="JUnit.BufferedImageUtilsTest.testCreateBI" />
+        <item itemvalue="JUnit.BufferedImageUtilsTest.testTurnIntoBI" />
+        <item itemvalue="JUnit.BufferedImageUtilsTest.testTurnIntoBIAndCreateBIProduceEqualBufferedImagesFromSameImage" />
+        <item itemvalue="JUnit.IPModelImplTest.testLoadPNG" />
       </list>
     </recent_temporary>
   </component>
@@ -153,6 +164,11 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test/BufferedImageUtilsTest.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
