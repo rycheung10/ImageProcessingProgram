@@ -53,7 +53,8 @@ public class BufferedImageUtils {
 
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
-        Map<IPModelState.PixelComponents, Integer> thisPixelInfo = model.getPixelInfo(imgName, i, j);
+        Map<IPModelState.PixelComponents, Integer> thisPixelInfo =
+            model.getPixelInfo(imgName, i, j);
         int red = thisPixelInfo.get(Red);
         int green = thisPixelInfo.get(Green);
         int blue = thisPixelInfo.get(Blue);

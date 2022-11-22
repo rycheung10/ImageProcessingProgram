@@ -1,6 +1,4 @@
 import controller.IPControllerGUI;
-import view.IPHistogram;
-import view.IPHistogramImpl;
 import view.IPViewGUI;
 
 /**

@@ -39,6 +39,7 @@ public class IPHistogramImplTest {
       fail("you failed");
     }
   }
+  
   // test illegal argument in createHistogramData class
   @Test(expected = IllegalArgumentException.class)
   public void testCreateHistogramDataIAE() {

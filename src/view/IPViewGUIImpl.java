@@ -1,24 +1,25 @@
 package view;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.Map;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import java.awt.Component;
+import java.awt.GridLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JScrollPane;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import controller.BufferedImageUtils;
 import controller.IPControllerGUI;
 import model.IPModel;
-
-import static model.IPModelState.PixelComponents.Blue;
-import static model.IPModelState.PixelComponents.Green;
-import static model.IPModelState.PixelComponents;
-import static model.IPModelState.PixelComponents.Red;
 
 /**
  * This class represents a view of the IP program with a GUI.
@@ -56,11 +57,11 @@ public class IPViewGUIImpl extends JFrame implements IPViewGUI, ActionListener {
     // create the layout of the GUI
     this.setLayout(new GridLayout(1, 2));
 
-//    |-----------------------||-----------------------|
-//    |                       ||    histogramPanel     |
-//    |       imgPanel        ||------rightPanel-------|
-//    |                       ||     buttonsPanel      |
-//    |_______________________||_______________________|
+    //    |-----------------------||-----------------------|
+    //    |                       ||    histogramPanel     |
+    //    |       imgPanel        ||------rightPanel-------|
+    //    |                       ||     buttonsPanel      |
+    //    |_______________________||_______________________|
 
     // histogramPanel:
     // top left: red; top right: green; bottom left: blue; bottom right: intensity;
@@ -163,7 +164,7 @@ public class IPViewGUIImpl extends JFrame implements IPViewGUI, ActionListener {
    * @param load A boolean representing if the method should help a user load an image (true)
    *             or save an image (false)
    * @return A String representing the path of a file that has either been selected to be
-   * uploaded or the desired saving destination.
+   *         uploaded or the desired saving destination.
    */
   private String browseFiles(boolean load) {
     

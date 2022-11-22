@@ -7,7 +7,8 @@ import model.IPModelImpl;
 import view.IPViewGUI;
 import view.IPViewGUIImpl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
 
 /**
  * This class represents test classes for IPControllerGUIImpl class.

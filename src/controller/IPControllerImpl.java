@@ -31,14 +31,14 @@ import static model.IPModelState.PixelComponents.Value;
  * communicates with the model/view.
  */
 public class IPControllerImpl implements IPController {
-
+  
   private final IPModel model;
   private final IPView view;
   private final Readable input;
   private boolean programRunning;
-
+  
   private final Map<String, Function<Scanner, IPCommand>> commands;
-
+  
   /**
    * This first constructor takes a model, view, and readable to create a controller
    * that operates with all three objects in cohesion and appropriately.
@@ -49,21 +49,21 @@ public class IPControllerImpl implements IPController {
    * @throws IllegalArgumentException when given a null object
    */
   public IPControllerImpl(IPModel model, IPView view, Readable input)
-          throws IllegalArgumentException {
-
+      throws IllegalArgumentException {
+    
     if (model == null || view == null || input == null) {
       throw new IllegalArgumentException("You can't input null!");
     }
-
+    
     this.model = model;
     this.view = view;
     this.input = input;
     this.programRunning = true;
-
+    
     this.commands = new HashMap<>();
     this.loadCommands();
   }
-
+  
   /**
    * Starts the Image Processing program.
    */
@@ -71,27 +71,27 @@ public class IPControllerImpl implements IPController {
   public void startIP() throws IllegalStateException {
     Scanner sc = new Scanner(this.input);
     IPCommand command;
-
+    
     // while the program should be running
     while (programRunning) {
-
+      
       // render the instructional message
       this.renderMessage("What would you like to do?\n");
-
+      
       // assume the first string entered to be the desired command to be executed
       String commandEntered = getStringInput(sc);
-
+      
       // if it is "q", quit the program
       if (commandEntered.equals("q")) {
         programRunning = false;
         this.renderMessage("IP quit!");
         break;
       }
-
+      
       // find the command in the Map and set it equal to cmd, if not there, set cmd to null
       Function<Scanner, IPCommand> cmd =
-              this.commands.getOrDefault(commandEntered, null);
-
+          this.commands.getOrDefault(commandEntered, null);
+      
       // if cmd is null
       if (cmd == null) {
         this.renderMessage("Invalid command given: " + commandEntered + "\n");
@@ -106,7 +106,7 @@ public class IPControllerImpl implements IPController {
       }
     }
   }
-
+  
   /**
    * This method appends a message to the view's appendable.
    *
@@ -121,7 +121,7 @@ public class IPControllerImpl implements IPController {
       throw new IllegalStateException("Error rendering");
     }
   }
-
+  
   /**
    * This method gets the next String from the given scanner if possible.
    *
@@ -137,7 +137,7 @@ public class IPControllerImpl implements IPController {
       throw new IllegalStateException("Readable out of arguments");
     }
   }
-
+  
   /**
    * This method gets the next integer from the given scanner if possible.
    *
@@ -153,40 +153,40 @@ public class IPControllerImpl implements IPController {
       throw new IllegalArgumentException("invalid command arguments given");
     }
   }
-
+  
   /**
    * This method loads all valid commands into the commands Map for this controller.
    */
   private void loadCommands() {
     this.commands.put("load", sc ->
-            new Load(getStringInput(sc), getStringInput(sc)));
+        new Load(getStringInput(sc), getStringInput(sc)));
     this.commands.put("brighten", sc ->
-            new Brighten(getIntInput(sc), getStringInput(sc), getStringInput(sc)));
+        new Brighten(getIntInput(sc), getStringInput(sc), getStringInput(sc)));
     this.commands.put("vertical-flip", sc ->
-            new Flip(true, getStringInput(sc), getStringInput(sc)));
+        new Flip(true, getStringInput(sc), getStringInput(sc)));
     this.commands.put("horizontal-flip", sc ->
-            new Flip(false, getStringInput(sc), getStringInput(sc)));
+        new Flip(false, getStringInput(sc), getStringInput(sc)));
     this.commands.put("red-component", sc ->
-            new Component(Red, getStringInput(sc), getStringInput(sc)));
+        new Component(Red, getStringInput(sc), getStringInput(sc)));
     this.commands.put("green-component", sc ->
-            new Component(Green, getStringInput(sc), getStringInput(sc)));
+        new Component(Green, getStringInput(sc), getStringInput(sc)));
     this.commands.put("blue-component", sc ->
-            new Component(Blue, getStringInput(sc), getStringInput(sc)));
+        new Component(Blue, getStringInput(sc), getStringInput(sc)));
     this.commands.put("value-component", sc ->
-            new Component(Value, getStringInput(sc), getStringInput(sc)));
+        new Component(Value, getStringInput(sc), getStringInput(sc)));
     this.commands.put("intensity-component", sc ->
-            new Component(Intensity, getStringInput(sc), getStringInput(sc)));
+        new Component(Intensity, getStringInput(sc), getStringInput(sc)));
     this.commands.put("luma-component", sc ->
-            new Component(Luma, getStringInput(sc), getStringInput(sc)));
+        new Component(Luma, getStringInput(sc), getStringInput(sc)));
     this.commands.put("save", sc ->
-            new Save(getStringInput(sc), getStringInput(sc)));
+        new Save(getStringInput(sc), getStringInput(sc)));
     this.commands.put("blur", sc ->
-            new Filter(Matrices.blur, getStringInput(sc), getStringInput(sc)));
+        new Filter(Matrices.blur, getStringInput(sc), getStringInput(sc)));
     this.commands.put("sharpen", sc ->
-            new Filter(Matrices.sharpen, getStringInput(sc), getStringInput(sc)));
+        new Filter(Matrices.sharpen, getStringInput(sc), getStringInput(sc)));
     this.commands.put("greyscale-luma", sc ->
-            new ColorTransformation(Matrices.greyscaleluma, getStringInput(sc), getStringInput(sc)));
+        new ColorTransformation(Matrices.greyscaleluma, getStringInput(sc), getStringInput(sc)));
     this.commands.put("sepia", sc ->
-            new ColorTransformation(Matrices.sepia, getStringInput(sc), getStringInput(sc)));
+        new ColorTransformation(Matrices.sepia, getStringInput(sc), getStringInput(sc)));
   }
 }

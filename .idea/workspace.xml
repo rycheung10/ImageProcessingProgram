@@ -3,28 +3,29 @@
   <component name="ChangeListManager">
     <list default="true" id="5fc8b992-2743-4992-9e92-ada7cc27bcd4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/USEME.md" beforeDir="false" afterPath="$PROJECT_DIR$/USEME.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/imageProcessingProgram_jar/imageProcessingProgram.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/ImageProcessing.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/ImageProcessing.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/ImageProcessingWGUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/IPControllerGUIImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/IPControllerGUIImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/imageProcessingProgram_jar/imageProcessingProgram.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/imageProcessingProgram_jar/imageProcessingProgram.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/BufferedImageUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/BufferedImageUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/commands/LoadGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/commands/LoadGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/commands/SaveGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/commands/SaveGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/model/IPModelImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/model/IPModelImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPHistogramImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPHistogramImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPViewGUIImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPViewGUIImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/imageProcessingProgram/IPControllerGUIImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/imageProcessingProgram/IPControllerGUIImplTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/imageProcessingProgram/IPHistogramTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/imageProcessingProgram/MockIPHistogramImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/imageProcessingProgram/MockIPHistogramImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/imageProcessingProgram/IPHistogramImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/imageProcessingProgram/IPHistogramImplTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/imageProcessingProgram/MockIPViewGUIImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/imageProcessingProgram/MockIPViewGUIImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/ImageProcessing.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageProcessing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageProcessing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageProcessingWGUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/IPController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/IPController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/IPControllerGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/IPControllerGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/techsupport.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/BufferedImageUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/BufferedImageUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/IPControllerGUIImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/IPControllerGUIImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/IPControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/IPControllerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/BufferedImageUtilsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/BufferedImageUtilsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/commands/LoadGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/commands/LoadGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/commands/SaveGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/commands/SaveGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/IPModelImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IPModelImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/IPHistogramImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/IPHistogramImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/IPViewGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/IPViewGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/IPViewGUIImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/IPViewGUIImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/IPControllerGUIImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/IPControllerGUIImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/IPHistogramImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/IPHistogramImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/IPHistogramTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/MockIPHistogramImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/MockIPHistogramImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/MockIPViewGUIImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/MockIPViewGUIImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,7 +63,7 @@
     "WebServerToolWindowFactoryState": "false",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
-    "last_opened_file_path": "C:/Users/ethan/Documents/prefixfinder",
+    "last_opened_file_path": "/Users/ry.cheung/Desktop/CS3500/Image Processing/ImageProcessingProgram/res",
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -70,6 +71,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/res" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
