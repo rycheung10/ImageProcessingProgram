@@ -2,13 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5fc8b992-2743-4992-9e92-ada7cc27bcd4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/view/DataBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/imageProcessingProgram_jar/imageProcessingProgram.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/imageProcessingProgram_jar/imageProcessingProgram.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/DataPoint.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/IPControllerGUIImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/IPControllerGUIImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPHistogram.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPHistogram.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPHistogramImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPHistogramImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/DataPoint.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPViewGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPViewGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPViewGUIImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPViewGUIImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/imageProcessingProgram/DataBarTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/imageProcessingProgram/DataBarTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/IPControllerGUIImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/IPControllerGUIImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/IPHistogram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/IPHistogram.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/IPHistogramImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/IPHistogramImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/IPViewGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/IPViewGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/IPViewGUIImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/IPViewGUIImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/DataBarTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/DataBarTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +38,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2H5umOQpPNd3zD7jaZCVUSHwzYe" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -44,7 +53,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
     "last_opened_file_path": "C:/Users/ethan/Documents/prefixfinder",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "configurable.group.tools"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -55,67 +64,74 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="controller" />
       <recent name="view" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DataBarTest">
-    <configuration name="ImageProcessing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ImageProcessing" />
-      <module name="imageProcessingProgram" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ImageProcessingWGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ImageProcessingWGUI" />
-      <module name="imageProcessingProgram" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DataBarTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.IPControllerGUIImplTest">
+    <configuration name="IPControllerGUIImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="imageProcessingProgram" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="DataBarTest" />
+      <option name="MAIN_CLASS_NAME" value="IPControllerGUIImplTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DataBarTest.testConstructor1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="IPControllerGUIImplTest.testCommandHandlerBadCommand" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="imageProcessingProgram" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="DataBarTest" />
-      <option name="METHOD_NAME" value="testConstructor1" />
+      <option name="MAIN_CLASS_NAME" value="IPControllerGUIImplTest" />
+      <option name="METHOD_NAME" value="testCommandHandlerBadCommand" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IPModelImplTest.testBlur" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="IPControllerGUIImplTest.testCommandHandlerBadSpecialArgument" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="imageProcessingProgram" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="IPModelImplTest" />
-      <option name="METHOD_NAME" value="testBlur" />
+      <option name="MAIN_CLASS_NAME" value="IPControllerGUIImplTest" />
+      <option name="METHOD_NAME" value="testCommandHandlerBadSpecialArgument" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IPControllerGUIImplTest.testCommandHandlerGoodArgumentsSepia2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="imageProcessingProgram" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="IPControllerGUIImplTest" />
+      <option name="METHOD_NAME" value="testCommandHandlerGoodArgumentsSepia2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IPControllerGUIImplTest.testCommandHandlerPreInitLoad" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="imageProcessingProgram" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="IPControllerGUIImplTest" />
+      <option name="METHOD_NAME" value="testCommandHandlerPreInitLoad" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.ImageProcessingWGUI" />
-      <item itemvalue="Application.ImageProcessing" />
-      <item itemvalue="JUnit.DataBarTest" />
-      <item itemvalue="JUnit.DataBarTest.testConstructor1" />
-      <item itemvalue="JUnit.IPModelImplTest.testBlur" />
+      <item itemvalue="JUnit.IPControllerGUIImplTest" />
+      <item itemvalue="JUnit.IPControllerGUIImplTest.testCommandHandlerBadCommand" />
+      <item itemvalue="JUnit.IPControllerGUIImplTest.testCommandHandlerBadSpecialArgument" />
+      <item itemvalue="JUnit.IPControllerGUIImplTest.testCommandHandlerGoodArgumentsSepia2" />
+      <item itemvalue="JUnit.IPControllerGUIImplTest.testCommandHandlerPreInitLoad" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DataBarTest" />
-        <item itemvalue="JUnit.DataBarTest.testConstructor1" />
-        <item itemvalue="Application.ImageProcessingWGUI" />
-        <item itemvalue="Application.ImageProcessing" />
-        <item itemvalue="JUnit.IPModelImplTest.testBlur" />
+        <item itemvalue="JUnit.IPControllerGUIImplTest" />
+        <item itemvalue="JUnit.IPControllerGUIImplTest.testCommandHandlerPreInitLoad" />
+        <item itemvalue="JUnit.IPControllerGUIImplTest.testCommandHandlerBadSpecialArgument" />
+        <item itemvalue="JUnit.IPControllerGUIImplTest.testCommandHandlerBadCommand" />
+        <item itemvalue="JUnit.IPControllerGUIImplTest.testCommandHandlerGoodArgumentsSepia2" />
       </list>
     </recent_temporary>
   </component>

@@ -19,7 +19,7 @@ import static model.IPModelState.PixelComponents.Red;
 //!!!!!!!! each histogram graph is 375 x 250
 
 /**
- * Represents the implementation of the creation of the four histogram graphs for a given image
+ * Represents the implementation of the creation of the four histogram graphs for a given image.
  */
 public class IPHistogramImpl extends JPanel implements IPHistogram {
 
@@ -35,10 +35,14 @@ public class IPHistogramImpl extends JPanel implements IPHistogram {
    * Represents the constructor to create histogram models
    *
    * @param height height of each histogram
-   * @param width width of each histogram
-   * @param model an IPModel object
+   * @param width  width of each histogram
+   * @param model  an IPModel object
+   * @throws IllegalArgumentException when height or width are negative or if the model is null.
    */
-  public IPHistogramImpl(int height, int width, IPModel model) {
+  public IPHistogramImpl(int height, int width, IPModel model) throws IllegalArgumentException {
+    if (height < 0 || width < 0 || model == null) {
+      throw new IllegalArgumentException("illegal parameter given");
+    }
     this.redBarsData = new ArrayList();
     this.greenBarsData = new ArrayList();
     this.blueBarsData = new ArrayList();
@@ -51,6 +55,9 @@ public class IPHistogramImpl extends JPanel implements IPHistogram {
 
   }
 
+  /**
+   * This method resets the class's arraylists to be empty.
+   */
   private void emptyArrayLists() {
     this.redBarsData = new ArrayList();
     this.greenBarsData = new ArrayList();
@@ -58,8 +65,16 @@ public class IPHistogramImpl extends JPanel implements IPHistogram {
     this.intensityBarsData = new ArrayList();
   }
 
+  /**
+   * This method finds the maximum value that lies in all four of the given Maps.
+   * @param redData A Map representing the red color data of an image.
+   * @param greenData A Map representing the green color data of an image.
+   * @param blueData A Map representing the blue color data of an image.
+   * @param intensityData A Map representing the intensity data of an image.
+   * @return An integer representing the max value of all the Map's values.
+   */
   private int mostFrequent(Map<Integer, Integer> redData, Map<Integer, Integer> greenData,
-                            Map<Integer, Integer> blueData, Map<Integer, Integer> intensityData) {
+                           Map<Integer, Integer> blueData, Map<Integer, Integer> intensityData) {
     int max = 0;
 
     for (Integer i : redData.keySet()) {
@@ -82,7 +97,7 @@ public class IPHistogramImpl extends JPanel implements IPHistogram {
   }
 
   @Override
-  public void createHistogramModel(String imgName) {
+  public void createHistogramData(String imgName) throws IllegalArgumentException {
     this.emptyArrayLists();
 
     Map<Integer, Integer> redData = collectData(Red, imgName);
@@ -128,12 +143,21 @@ public class IPHistogramImpl extends JPanel implements IPHistogram {
                 (int) ((double) intensityData.get(l) * this.height) / max / 4,
                 1));
       } else {
-        this.intensityBarsData.add(new DataBar( 0, 1));
+        this.intensityBarsData.add(new DataBar(0, 1));
       }
     }
   }
 
-  private Map<Integer, Integer> collectData(PixelComponents component, String imgName) {
+  /**
+   * This method finds the frequencies of a given component's values (0 through 255) from the
+   * given image.
+   * @param component A PixelComponent representing the desired component values.
+   * @param imgName A String representing the image that should be analyzed for values.
+   * @return A Map containing the frequencies of a given component's values.
+   * @throws IllegalArgumentException when an image is not found in this model.
+   */
+  private Map<Integer, Integer> collectData(PixelComponents component, String imgName)
+          throws IllegalArgumentException {
     Map<Integer, Integer> data = new HashMap<>();
     for (int i = 0; i < this.model.getHeight(imgName); i++) {
       for (int j = 0; j < this.model.getWidth(imgName); j++) {
@@ -190,7 +214,7 @@ public class IPHistogramImpl extends JPanel implements IPHistogram {
             && this.greenBarsData.size() > 0 && this.intensityBarsData.size() > 0) {
       for (int i = 0; i <= 255; i++) {
         g.setColor(Color.red);
-        g.fillRect(i * this.redBarsData.get(i).getWidth() + ((int)(0.05 * (double) this.width)),
+        g.fillRect(i * this.redBarsData.get(i).getWidth() + ((int) (0.05 * (double) this.width)),
                 this.height - this.redBarsData.get(i).getHeight() - (int) (this.height / 1.65),
                 this.redBarsData.get(i).getWidth(), this.redBarsData.get(i).getHeight());
       }
@@ -204,15 +228,15 @@ public class IPHistogramImpl extends JPanel implements IPHistogram {
 
       for (int i = 0; i <= 255; i++) {
         g.setColor(Color.blue);
-        g.fillRect(i * this.blueBarsData.get(i).getWidth() + ((int)(0.05 * (double) this.width)),
-                this.height - this.blueBarsData.get(i).getHeight() - this.height/7,
+        g.fillRect(i * this.blueBarsData.get(i).getWidth() + ((int) (0.05 * (double) this.width)),
+                this.height - this.blueBarsData.get(i).getHeight() - this.height / 7,
                 this.blueBarsData.get(i).getWidth(), this.blueBarsData.get(i).getHeight());
       }
 
       for (int i = 0; i <= 255; i++) {
         g.setColor(Color.gray);
         g.fillRect(i * this.intensityBarsData.get(i).getWidth() + ((int) (0.55 * (double) this.width)),
-                this.height - this.intensityBarsData.get(i).getHeight() - this.height/7,
+                this.height - this.intensityBarsData.get(i).getHeight() - this.height / 7,
                 this.intensityBarsData.get(i).getWidth(), this.intensityBarsData.get(i).getHeight());
       }
     }

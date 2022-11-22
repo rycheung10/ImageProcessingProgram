@@ -23,26 +23,26 @@ import static model.IPModelState.PixelComponents.Red;
  * This class represents a view of the IP program with a GUI.
  */
 public class IPViewGUIImpl extends JFrame implements IPViewGUI, ActionListener {
-  
-  private final String[] buttons;
+
   private final IPModel model;
   private IPControllerGUI controllerGUI;
   private final JLabel imgLabel;
-  private final JPanel rightPanel;
-  private IPHistogram histogramPanel;
-  private final JPanel buttonsPanel;
+  private final IPHistogram histogramPanel;
   
   /**
    * This first constructor creates the view with a GUI of an IP program.
+   * @throws IllegalArgumentException when the model given is null.
    */
-  public IPViewGUIImpl(IPModel model) {
-    super();
+  public IPViewGUIImpl(IPModel model) throws IllegalArgumentException {
+    if (model == null) {
+      throw new IllegalArgumentException("null model given");
+    }
     
     // initialize model
     this.model = model;
     
     // create list of buttons required
-    this.buttons = new String[]{"load", "save", "brighten", "darken", "vertical-flip",
+    String[] buttons = new String[]{"load", "save", "brighten", "darken", "vertical-flip",
         "horizontal-flip", "red-component", "green-component", "blue-component",
         "value-component", "intensity-component", "luma-component", "blur",
         "sharpen", "greyscale-luma", "sepia"};
@@ -70,33 +70,36 @@ public class IPViewGUIImpl extends JFrame implements IPViewGUI, ActionListener {
     this.add(scrollImg);
     
     // place panel to the right (for histogram and buttons)
-    this.rightPanel = new JPanel();
-    this.rightPanel.setLayout(new GridLayout(2, 1));
-    this.add(this.rightPanel);
+    JPanel rightPanel = new JPanel();
+    rightPanel.setLayout(new GridLayout(2, 1));
+    this.add(rightPanel);
     
     // place panel to top right (for histogram) and make it scrollable
     this.histogramPanel = new IPHistogramImpl(300, 600, this.model);
     JScrollPane scrollHisto = new JScrollPane((Component) this.histogramPanel);
-    this.rightPanel.add(scrollHisto);
+    rightPanel.add(scrollHisto);
     
     // place panel to bottom right (for buttons)
-    this.buttonsPanel = new JPanel();
-    this.buttonsPanel.setLayout(new GridLayout(4, 4));
-    this.rightPanel.add(this.buttonsPanel);
+    JPanel buttonsPanel = new JPanel();
+    buttonsPanel.setLayout(new GridLayout(4, 4));
+    rightPanel.add(buttonsPanel);
     
     ////////////////////////////////////////////////////////////////////////////////////////////////
     
     // create buttons
-    for (String button : this.buttons) {
+    for (String button : buttons) {
       JButton newButton = new JButton(button);
       newButton.setActionCommand(button);
       newButton.addActionListener(this);
-      this.buttonsPanel.add(newButton);
+      buttonsPanel.add(newButton);
     }
   }
   
   @Override
-  public void controllerGUI(IPControllerGUI controller) {
+  public void setControllerGUI(IPControllerGUI controller) throws IllegalArgumentException {
+    if (controller == null) {
+      throw new IllegalArgumentException("controller given is null");
+    }
     this.controllerGUI = controller;
   }
   
@@ -134,8 +137,8 @@ public class IPViewGUIImpl extends JFrame implements IPViewGUI, ActionListener {
   // method that takes in a IPHistogramImpl, gets four drawn histograms, and places them in their
   // respective panels
   @Override
-  public void drawHistogram(String imgName) {
-    this.histogramPanel.createHistogramModel(imgName);
+  public void drawHistogram(String imgName) throws IllegalArgumentException {
+    this.histogramPanel.createHistogramData(imgName);
     this.repaint();
   }
   

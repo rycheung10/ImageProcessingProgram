@@ -2,7 +2,8 @@ import org.junit.Test;
 
 import view.DataBar;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
 
 /**
  * This class represents a test class for the DataBar class.

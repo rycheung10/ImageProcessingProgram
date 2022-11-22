@@ -61,7 +61,7 @@ public class IPControllerGUIImpl implements IPControllerGUI {
   
   @Override
   public void startIPGUI() {
-    this.view.controllerGUI(this);
+    this.view.setControllerGUI(this);
     this.view.seeGUI();
   }
   
