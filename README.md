@@ -46,7 +46,7 @@ coupled with the command design pattern that allows for minimal coupling between
     - Along with the GUI implementation, four histograms are displayed in the top right corner to
       visualize the distribution of colors
     - With the new GUI implementation
-        - To implement this new GUI, a new controller was requierd to work with the new GUI
+        - To implement this new GUI, a new controller was required to work with the new GUI
           interface
         - Along with this, a "new" program to run the program with a GUI called "
           ImageProcessingWGUI" was created
