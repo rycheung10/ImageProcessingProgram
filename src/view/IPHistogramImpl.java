@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.*;
-import javax.xml.crypto.Data;
 
 import model.IPModel;
 import model.IPModelState.PixelComponents;
@@ -15,8 +14,6 @@ import static model.IPModelState.PixelComponents.Blue;
 import static model.IPModelState.PixelComponents.Green;
 import static model.IPModelState.PixelComponents.Intensity;
 import static model.IPModelState.PixelComponents.Red;
-
-//!!!!!!!! each histogram graph is 375 x 250
 
 /**
  * Represents the implementation of the creation of the four histogram graphs for a given image.
