@@ -4,10 +4,12 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.util.Scanner;
 
+import controller.IPControllerGUIImpl;
 import controller.IPControllerImpl;
 import model.IPModel;
 import model.IPModelImpl;
 import view.IPView;
+import view.IPViewGUIImpl;
 import view.IPViewImpl;
 
 /**
@@ -22,17 +24,21 @@ public class ImageProcessing {
    */
   public static void main(String[] args) {
     IPModel model = new IPModelImpl();
-    IPView view = new IPViewImpl();
-    Readable in = null;
-    
     if (args.length == 0) {
-      in = new InputStreamReader(System.in);
-    } else if (args[0].equalsIgnoreCase("-file")) {
-      in = new StringReader(read(args[1]));
+      new IPControllerGUIImpl(model, new IPViewGUIImpl(model)).startIPGUI();
+    } else {
+      IPView view = new IPViewImpl();
+      Readable in = null;
+      if (args[0].equalsIgnoreCase("-file")) {
+        in = new StringReader(read(args[1]));
+      } else if (args[0].equalsIgnoreCase("-text")) {
+        in = new InputStreamReader(System.in);
+      } else {
+        System.out.println("invalid command line arguments given: program quitting");
+        System.exit(0);
+      }
+      new IPControllerImpl(model, view, in).startIP();
     }
-    
-    new IPControllerImpl(model, view, in).startIP();
-    
   }
   
   /**

@@ -5,10 +5,10 @@ package controller;
  */
 
 public interface IPController {
-  
+
   /**
    * Starts the Image Processing program.
    */
   void startIP() throws IllegalStateException;
-  
+
 }

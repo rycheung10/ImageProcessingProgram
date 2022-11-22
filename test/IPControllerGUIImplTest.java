@@ -4,7 +4,6 @@ import controller.IPControllerGUI;
 import controller.IPControllerGUIImpl;
 import model.IPModel;
 import model.IPModelImpl;
-import view.IPHistogram;
 import view.IPViewGUI;
 import view.IPViewGUIImpl;
 

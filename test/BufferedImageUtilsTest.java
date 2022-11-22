@@ -7,7 +7,7 @@ import model.IPModelImpl;
 
 import static controller.BufferedImageUtils.createBI;
 import static controller.BufferedImageUtils.turnIntoBI;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * This class represents a test class for the BufferedImageUtils class.

@@ -4,12 +4,12 @@ package controller;
  * Represents the operations offered by the image processing GUI controller.
  */
 public interface IPControllerGUI {
-  
+
   /**
    * This method establishes a connection with the ViewGUI and begins the program with the GUI.
    */
   void startIPGUI();
-  
+
   /**
    * This method receives a desired command represented by a String and an extra argument
    * and executes the appropriate command if possible through the model.

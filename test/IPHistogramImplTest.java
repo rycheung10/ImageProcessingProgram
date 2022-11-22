@@ -7,7 +7,7 @@ import view.IPHistogramImpl;
 import static org.junit.Assert.fail;
 
 /**
- * This class represents a test class for the IPHistogramImpl class
+ * This class represents a test class for the IPHistogramImpl class.
  */
 public class IPHistogramImplTest {
   IPModel m1 = new IPModelImpl();

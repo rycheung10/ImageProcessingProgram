@@ -3,14 +3,29 @@
   <component name="ChangeListManager">
     <list default="true" id="5fc8b992-2743-4992-9e92-ada7cc27bcd4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/imageProcessingProgram_jar/imageProcessingProgram.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/imageProcessingProgram_jar/imageProcessingProgram.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/model/IPModelImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/model/IPModelImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPHistogramImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPHistogramImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPViewGUIImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/view/IPViewGUIImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/image1.ppm" beforeDir="false" afterPath="$PROJECT_DIR$/res/image1.ppm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/image2.ppm" beforeDir="false" afterPath="$PROJECT_DIR$/res/image2.ppm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/IPModelImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IPModelImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/IPViewGUIImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/IPViewGUIImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/USEME.md" beforeDir="false" afterPath="$PROJECT_DIR$/USEME.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/imageProcessingProgram_jar/imageProcessingProgram.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/ImageProcessing.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/ImageProcessing.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/ImageProcessingWGUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/IPControllerGUIImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/imageProcessingProgram/controller/IPControllerGUIImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/imageProcessingProgram/IPControllerGUIImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/imageProcessingProgram/IPControllerGUIImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/imageProcessingProgram/IPHistogramTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/imageProcessingProgram/MockIPHistogramImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/imageProcessingProgram/MockIPHistogramImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/imageProcessingProgram/MockIPViewGUIImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/imageProcessingProgram/MockIPViewGUIImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ImageProcessing.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageProcessing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageProcessing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageProcessingWGUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/IPController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/IPController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/IPControllerGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/IPControllerGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/IPControllerGUIImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/IPControllerGUIImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/IPControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/IPControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/BufferedImageUtilsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/BufferedImageUtilsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/IPControllerGUIImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/IPControllerGUIImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/IPHistogramImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/IPHistogramImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/IPHistogramTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/MockIPHistogramImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/MockIPHistogramImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/MockIPViewGUIImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/MockIPViewGUIImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +63,9 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
     "last_opened_file_path": "C:/Users/ethan/Documents/prefixfinder",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "configurable.group.tools"
   }
 }]]></component>
@@ -63,7 +81,15 @@
       <recent name="view" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BufferedImageUtilsTest.testTurnIntoBICreateBIEquality">
+  <component name="RunManager" selected="Application.ImageProcessing">
+    <configuration name="ImageProcessing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ImageProcessing" />
+      <module name="imageProcessingProgram" />
+      <option name="PROGRAM_PARAMETERS" value="yikes" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BufferedImageUtilsTest.testCreateBI" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="imageProcessingProgram" />
       <option name="PACKAGE_NAME" value="" />
@@ -104,30 +130,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IPModelImplTest.testLoadPNG" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="imageProcessingProgram" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="IPModelImplTest" />
-      <option name="METHOD_NAME" value="testLoadPNG" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
+      <item itemvalue="Application.ImageProcessing" />
       <item itemvalue="JUnit.BufferedImageUtilsTest.testCreateBI" />
       <item itemvalue="JUnit.BufferedImageUtilsTest.testTurnIntoBI" />
       <item itemvalue="JUnit.BufferedImageUtilsTest.testTurnIntoBIAndCreateBIProduceEqualBufferedImagesFromSameImage" />
       <item itemvalue="JUnit.BufferedImageUtilsTest.testTurnIntoBICreateBIEquality" />
-      <item itemvalue="JUnit.IPModelImplTest.testLoadPNG" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ImageProcessing" />
         <item itemvalue="JUnit.BufferedImageUtilsTest.testTurnIntoBICreateBIEquality" />
         <item itemvalue="JUnit.BufferedImageUtilsTest.testCreateBI" />
         <item itemvalue="JUnit.BufferedImageUtilsTest.testTurnIntoBI" />
         <item itemvalue="JUnit.BufferedImageUtilsTest.testTurnIntoBIAndCreateBIProduceEqualBufferedImagesFromSameImage" />
-        <item itemvalue="JUnit.IPModelImplTest.testLoadPNG" />
       </list>
     </recent_temporary>
   </component>
@@ -164,11 +180,6 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/test/BufferedImageUtilsTest.java</url>
-          <line>29</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

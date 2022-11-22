@@ -9,6 +9,27 @@ coupled with the command design pattern that allows for minimal coupling between
 
 <br>________________________________________________________________________________________________
 
+#### Changes made since Assignment 5:
+
+- Added a new interactive GUI interface implementation of the Image processing program
+    - Image is displayed within the GUI so that changes to the image are immediately visible
+    - Implementation allows for the user to click button commands to make changes to desired
+      image
+    - Along with the GUI implementation, four histograms are displayed in the top right corner to
+      visualize the distribution of colors
+    - With the new GUI implementation
+        - To implement this new GUI, a new controller was required to work with the new GUI (
+          ControllerGUI interface and class)
+        - A new view was also required to create the GUI (ViewGUI interface and class)
+        - A DataBar class was created to manage the sizing of the histograms that were required with
+          the GUI
+        - A specialized Load and Save command class specifically for the GUI were created to deal
+          with when the user cancels the command
+    - A BufferedImageUtils utilities class was created in the controller to reuse duplicate code (
+      and to also move methods that perform I/O to the controller)
+
+<br>________________________________________________________________________________________________
+
 #### Changes made since Assignment 4:
 
 - Removed the previous abstract classes AIPModel and AIPView and removed the 'super'ing of
@@ -34,22 +55,6 @@ coupled with the command design pattern that allows for minimal coupling between
 - Created a jar file that can run the program itself.
 - The required jar file is named ImageProcessing.jar and can be found in the res folder.
 - The required script file is named script.txt and can be found in the res folder.
-
-<br>________________________________________________________________________________________________
-
-#### Changes made since Assignment 5:
-
-- Added a new interactive GUI interface implementation of the Image processing program
-    - Image is displayed within the GUI so that changes to the image are immediately visible
-    - Implementation allows for the user to click button commands to make changes to desired
-      image
-    - Along with the GUI implementation, four histograms are displayed in the top right corner to
-      visualize the distribution of colors
-    - With the new GUI implementation
-        - To implement this new GUI, a new controller was required to work with the new GUI
-          interface
-        - Along with this, a "new" program to run the program with a GUI called "
-          ImageProcessingWGUI" was created
 
 <br>________________________________________________________________________________________________
 
